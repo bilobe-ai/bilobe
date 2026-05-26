@@ -1,21 +1,123 @@
+// ── h2 pixel-scramble: on-view (once) + per-word hover ──
+(function () {
+  const GLYPHS = '■□▪▫●▮▯▰▱•';
+  const STEP = 18;
+
+  function rand() {
+    return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+  }
+
+  // Collect non-empty text nodes from an element
+  function textNodes(el) {
+    const list = [];
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    let n;
+    while ((n = walker.nextNode())) {
+      if (n.nodeValue.trim()) list.push({ node: n, original: n.nodeValue });
+    }
+    return list;
+  }
+
+  // Animate nodes from scrambled → revealed over `duration` ms.
+  // Returns a cancel function.
+  function scramble(nodes, duration) {
+    let timer = null;
+    function restore() {
+      clearTimeout(timer);
+      nodes.forEach(({ node, original }) => { node.nodeValue = original; });
+    }
+    const t0 = Date.now();
+    function tick() {
+      const p = Math.min((Date.now() - t0) / duration, 1);
+      nodes.forEach(({ node, original }) => {
+        node.nodeValue = original.split('').map((ch, i) => {
+          if (ch === ' ' || ch === '\n') return ch;
+          return i / original.length < p ? ch : rand();
+        }).join('');
+      });
+      if (p < 1) timer = setTimeout(tick, STEP);
+      else restore();
+    }
+    tick();
+    return restore;
+  }
+
+  // Wrap every word in a text node (preserving sibling elements) with a span
+  function wrapWords(el) {
+    Array.from(el.childNodes).forEach(child => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const parts = child.nodeValue.split(/(\s+)/);
+        if (parts.length <= 1) return;
+        const frag = document.createDocumentFragment();
+        parts.forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+          } else {
+            const span = document.createElement('span');
+            span.className = 'h2-word';
+            span.textContent = part;
+            frag.appendChild(span);
+          }
+        });
+        el.replaceChild(frag, child);
+      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('h2-word')) {
+        wrapWords(child);
+      }
+    });
+  }
+
+  document.querySelectorAll('h2').forEach(h2 => {
+    wrapWords(h2);
+
+    let cancelInitial = null;
+
+    // Per-word hover
+    h2.querySelectorAll('.h2-word').forEach(word => {
+      let cancelWord = null;
+      word.addEventListener('mouseenter', () => {
+        if (cancelInitial) { cancelInitial(); cancelInitial = null; }
+        if (cancelWord) cancelWord();
+        cancelWord = scramble(textNodes(word), 180);
+      });
+      word.addEventListener('mouseleave', () => {
+        if (cancelWord) { cancelWord(); cancelWord = null; }
+      });
+    });
+
+    // First-view animation (once, after reveal completes)
+    let fired = false;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !fired) {
+        fired = true;
+        io.unobserve(h2);
+        setTimeout(() => {
+          cancelInitial = scramble(textNodes(h2), 450);
+        }, 500);
+      }
+    }, { threshold: 0.5 });
+    io.observe(h2);
+  });
+})();
+
 // ── Hero particle network ────────────────────────────────
 (function () {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  const LINK_DIST    = 140;
+  const LINK_DIST = 160;
   const MOUSE_RADIUS = 200;
-  const SPEED        = 0.35;
-  const particles    = [];
-  const mouse        = { x: null, y: null };
+  const SPEED = 0.35;
+  const particles = [];
+  const mouse = { x: null, y: null };
 
   function particleCount() {
-    return Math.min(Math.floor((canvas.width * canvas.height) / 9000), 130);
+    return Math.min(Math.floor((canvas.width * canvas.height) / 7500), 145);
   }
 
   function resize() {
-    canvas.width  = canvas.offsetWidth;
+    canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     particles.length = 0;
     for (let i = 0; i < particleCount(); i++) particles.push(new Particle());
@@ -23,21 +125,21 @@
 
   class Particle {
     constructor() {
-      this.x  = Math.random() * canvas.width;
-      this.y  = Math.random() * canvas.height;
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * SPEED;
       this.vy = (Math.random() - 0.5) * SPEED;
-      this.r  = Math.random() * 1.2 + 0.4;
+      this.r = Math.random() * 1.4 + 0.5;
     }
     update() {
       // Soft wall bounce
-      if (this.x <= 0 || this.x >= canvas.width)  this.vx *= -1;
-      if (this.y <= 0 || this.y >= canvas.height)  this.vy *= -1;
+      if (this.x <= 0 || this.x >= canvas.width) this.vx *= -1;
+      if (this.y <= 0 || this.y >= canvas.height) this.vy *= -1;
 
       // Mouse repulsion
       if (mouse.x !== null) {
-        const dx   = this.x - mouse.x;
-        const dy   = this.y - mouse.y;
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
         const dist = Math.hypot(dx, dy);
         if (dist < MOUSE_RADIUS && dist > 0) {
           const force = ((MOUSE_RADIUS - dist) / MOUSE_RADIUS) * 0.025;
@@ -54,7 +156,7 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
       ctx.fill();
     }
   }
@@ -65,15 +167,15 @@
 
       // Particle–particle links
       for (let j = i + 1; j < particles.length; j++) {
-        const pj   = particles[j];
+        const pj = particles[j];
         const dist = Math.hypot(pi.x - pj.x, pi.y - pj.y);
         if (dist < LINK_DIST) {
-          const alpha = (1 - dist / LINK_DIST) * 0.18;
+          const alpha = (1 - dist / LINK_DIST) * 0.28;
           ctx.beginPath();
           ctx.moveTo(pi.x, pi.y);
           ctx.lineTo(pj.x, pj.y);
           ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-          ctx.lineWidth = 0.6;
+          ctx.lineWidth = 0.75;
           ctx.stroke();
         }
       }
@@ -82,12 +184,12 @@
       if (mouse.x !== null) {
         const dist = Math.hypot(pi.x - mouse.x, pi.y - mouse.y);
         if (dist < MOUSE_RADIUS) {
-          const alpha = (1 - dist / MOUSE_RADIUS) * 0.6;
+          const alpha = (1 - dist / MOUSE_RADIUS) * 0.7;
           ctx.beginPath();
           ctx.moveTo(pi.x, pi.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.strokeStyle = `rgba(13,195,161,${alpha})`;
-          ctx.lineWidth = 0.75;
+          ctx.lineWidth = 0.9;
           ctx.stroke();
         }
       }
@@ -130,8 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // ── Navbar: switch to light when leaving dark hero ──────
-  const navbar  = document.getElementById('navbar');
-  const hero    = document.getElementById('hero');
+  const navbar = document.getElementById('navbar');
+  const hero = document.getElementById('hero');
 
   const heroObserver = new IntersectionObserver(([entry]) => {
     navbar.classList.toggle('light', !entry.isIntersecting);
@@ -140,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   heroObserver.observe(hero);
 
   // ── Mobile nav ──────────────────────────────────────────
-  const burger   = document.querySelector('.nav-burger');
+  const burger = document.querySelector('.nav-burger');
   const navLinks = document.querySelector('.nav-links');
 
   burger.addEventListener('click', () => {
@@ -156,14 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Cookie consent ──────────────────────────────────────
-  const banner       = document.getElementById('cookie-banner');
-  const modal        = document.getElementById('cookie-modal');
-  const backdrop     = document.getElementById('cookie-modal-backdrop');
+  const banner = document.getElementById('cookie-banner');
+  const modal = document.getElementById('cookie-modal');
+  const backdrop = document.getElementById('cookie-modal-backdrop');
 
   function hideBanner() { banner.hidden = true; }
   function showBanner() { banner.hidden = false; }
-  function hideModal()  { modal.hidden  = true; }
-  function showModal()  { modal.hidden  = false; }
+  function hideModal() { modal.hidden = true; }
+  function showModal() { modal.hidden = false; }
 
   // Show banner only if consent not yet recorded
   if (!localStorage.getItem('cookie-consent')) showBanner();

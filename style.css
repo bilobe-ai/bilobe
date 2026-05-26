@@ -93,6 +93,18 @@ section {
   transition-delay: 0.35s;
 }
 
+/* ─── TYPOGRAPHY ──────────────────────────────────────── */
+h2 {
+  font-family: 'Funnel Display', sans-serif;
+  cursor: crosshair;
+}
+
+.h2-word {
+  display: inline;
+  cursor: crosshair;
+  white-space: pre;
+}
+
 /* ─── SHARED ──────────────────────────────────────────── */
 .label {
   display: block;
@@ -188,6 +200,11 @@ section {
   width: auto;
 }
 
+.nav-logo-img-footer {
+  height: 25px;
+  width: auto;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -211,6 +228,27 @@ section {
 
 #navbar.light .nav-links a:hover {
   color: var(--accent);
+}
+
+.nav-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-demo-btn:hover {
+  background: var(--accent-d);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(13, 195, 161, 0.35);
 }
 
 .nav-burger {
@@ -316,6 +354,7 @@ section {
   display: flex;
   flex-direction: column;
   font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-family: 'Funnel Display', sans-serif;
   font-weight: 800;
   line-height: 1.04;
   letter-spacing: -0.045em;
@@ -759,9 +798,25 @@ section {
 }
 
 .people-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: var(--gap);
+}
+
+.people-row {
+  display: grid;
+  gap: var(--gap);
+}
+
+.people-row--main {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 75%;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.people-row--consultants {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .person-card {
@@ -918,7 +973,7 @@ section {
   gap: 0.5rem;
   font-size: 0.82rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .trust-item .material-symbols-outlined {
@@ -1021,7 +1076,126 @@ section {
 
 #footer p {
   font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ─── PRODUCTS ────────────────────────────────────────── */
+#products {
+  background: var(--bg);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.product-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(.16, 1, .3, 1),
+    box-shadow 0.35s cubic-bezier(.16, 1, .3, 1),
+    border-color 0.25s;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #38AEFF 100%);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.09);
+  border-color: rgba(13, 195, 161, 0.3);
+}
+
+.product-card-top {
+  padding: 2rem 2rem 1.5rem;
+}
+
+.product-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.product-name {
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.82;
+}
+
+.product-ingredients {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+}
+
+.product-ingredients-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+
+.ingredient-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ingredient-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.ingredient-icon {
+  font-size: 1.1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.ingredient-item strong {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+
+.ingredient-item span {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.68;
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
@@ -1030,8 +1204,17 @@ section {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
   .people-grid {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .people-row {
+    display: contents;
   }
 
   .hero-split {
@@ -1054,6 +1237,10 @@ section {
 @media (max-width: 768px) {
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+
+  .nav-demo-btn {
+    display: none;
   }
 
   .nav-links {
@@ -1086,6 +1273,14 @@ section {
 
   .features-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-card-top {
+    padding: 1.5rem 1.5rem 1.25rem;
+  }
+
+  .product-ingredients {
+    padding: 1.25rem 1.5rem 1.5rem;
   }
 
   .feature-card {
