@@ -248,108 +248,122 @@
       </div>
       <div class="products-grid">
 
-        <div class="product-card reveal delay-1">
-          <div class="product-card-top">
-            <h3 class="product-name">OrientaMed</h3>
-            <p class="product-desc">An advanced conversational decision-support system grounded in medical guidelines.
-              Deployable across multiple clinical scenarios — from triage support for general practitioners to treatment
-              adherence monitoring in hospital wards.</p>
+        <!-- OrientaMed — featured full-width row -->
+        <div class="product-card product-card--featured reveal delay-1">
+          <div class="product-cover">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="./images/products/orientamed_cover.png">
+              <img src="./images/products/orientamed_cover_vertical.png" alt="OrientaMed" loading="lazy">
+            </picture>
           </div>
-          <div class="product-ingredients">
-            <p class="product-ingredients-label">The Ingredients</p>
-            <ul class="ingredient-list">
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">public</span>
-                <div>
-                  <strong>Europe First</strong>
-                  <span>Models hosted exclusively on European servers, with three sovereignty tiers: international
-                    cloud, European cloud, or fully on-premise.</span>
-                </div>
-              </li>
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">verified</span>
-                <div>
-                  <strong>Guideline-Grounded, Human-Validated</strong>
-                  <span>Knowledge sourced exclusively from guidelines and procedures carefully curated and approved by
-                    our medical team.</span>
-                </div>
-              </li>
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">account_tree</span>
-                <div>
-                  <strong>Not Just a RAG</strong>
-                  <span>Knowledge graphs built on established medical ontologies for retrieval guided by real clinical
-                    entity relationships — not just semantics.</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="product-card reveal delay-2">
-          <div class="product-card-top">
-            <h3 class="product-name">Elicita</h3>
-            <p class="product-desc">An AI agent system that elicits an eCRF in a data-driven way — turning a clinician's
-              high-level description into a structured variable registry grounded in the actual content of clinical
-              notes.</p>
-          </div>
-          <div class="product-ingredients">
-            <p class="product-ingredients-label">The Ingredients</p>
-            <ul class="ingredient-list">
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">person_check</span>
-                <div>
-                  <strong>For the Human, Through the Human</strong>
-                  <span>Starts with the clinician's description and a brief conversation, then loops back at every step
-                    so the user can edit variables or add new requirements.</span>
-                </div>
-              </li>
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">analytics</span>
-                <div>
-                  <strong>Data-Based, Not Eminence-Based</strong>
-                  <span>Fields emerge directly from real-world data, not from abstract theory. Ambiguity stays with the
-                    decision maker — not the data-entry person.</span>
-                </div>
-              </li>
-            </ul>
+          <div class="product-card-body">
+            <div class="product-card-top">
+              <h3 class="product-name">OrientaMed</h3>
+              <p class="product-desc">An advanced conversational decision-support system grounded in medical guidelines.
+                Deployable across multiple clinical scenarios — from triage support for general practitioners to treatment
+                adherence monitoring in hospital wards.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">public</span>
+                  <div>
+                    <strong>Europe First</strong>
+                    <span>Models hosted exclusively on European servers, with three sovereignty tiers: international
+                      cloud, European cloud, or fully on-premise.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">verified</span>
+                  <div>
+                    <strong>Guideline-Grounded, Human-Validated</strong>
+                    <span>Knowledge sourced exclusively from guidelines and procedures carefully curated and approved by
+                      our medical team.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">account_tree</span>
+                  <div>
+                    <strong>Not Just a RAG</strong>
+                    <span>Knowledge graphs built on established medical ontologies for retrieval guided by real clinical
+                      entity relationships — not just semantics.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div class="product-card reveal delay-3">
-          <div class="product-card-top">
-            <h3 class="product-name">Bionymizer</h3>
-            <p class="product-desc">A highly customizable pseudonymization system purpose-built for the biomedical
-              context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.</p>
+        <!-- Elicita + Bionymizer — two-column row -->
+        <div class="products-row">
+
+          <div class="product-card reveal delay-2">
+            <div class="product-card-top">
+              <h3 class="product-name">Elicita</h3>
+              <p class="product-desc">An AI agent system that elicits an eCRF in a data-driven way — turning a clinician's
+                high-level description into a structured variable registry grounded in the actual content of clinical
+                notes.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">person_check</span>
+                  <div>
+                    <strong>For the Human, Through the Human</strong>
+                    <span>Starts with the clinician's description and a brief conversation, then loops back at every step
+                      so the user can edit variables or add new requirements.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">analytics</span>
+                  <div>
+                    <strong>Data-Based, Not Eminence-Based</strong>
+                    <span>Fields emerge directly from real-world data, not from abstract theory. Ambiguity stays with the
+                      decision maker — not the data-entry person.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="product-ingredients">
-            <p class="product-ingredients-label">The Ingredients</p>
-            <ul class="ingredient-list">
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">lock</span>
-                <div>
-                  <strong>Your Data, Your Service</strong>
-                  <span>Runs fully on-premise with zero data transmitted outside your infrastructure.</span>
-                </div>
-              </li>
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
-                <div>
-                  <strong>Plug &amp; Play</strong>
-                  <span>Drag and drop files directly into the interface for instant pseudonymization — no setup needed
-                    for one-off use.</span>
-                </div>
-              </li>
-              <li class="ingredient-item">
-                <span class="material-symbols-outlined ingredient-icon">mediation</span>
-                <div>
-                  <strong>Pipeline-Ready Middle Layer</strong>
-                  <span>Connect it directly into your existing data streams as transparent middleware — it runs silently
-                    in the background.</span>
-                </div>
-              </li>
-            </ul>
+
+          <div class="product-card reveal delay-3">
+            <div class="product-card-top">
+              <h3 class="product-name">Bionymizer</h3>
+              <p class="product-desc">A highly customizable pseudonymization system purpose-built for the biomedical
+                context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">lock</span>
+                  <div>
+                    <strong>Your Data, Your Service</strong>
+                    <span>Runs fully on-premise with zero data transmitted outside your infrastructure.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
+                  <div>
+                    <strong>Plug &amp; Play</strong>
+                    <span>Drag and drop files directly into the interface for instant pseudonymization — no setup needed
+                      for one-off use.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">mediation</span>
+                  <div>
+                    <strong>Pipeline-Ready Middle Layer</strong>
+                    <span>Connect it directly into your existing data streams as transparent middleware — it runs silently
+                      in the background.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
+
         </div>
 
       </div>
