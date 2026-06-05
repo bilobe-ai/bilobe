@@ -1,4 +1,7 @@
 // ── h2 pixel-scramble: on-view (once) + per-word hover ──
+// Set to true to re-enable title scramble animations.
+const TITLE_ANIMATIONS_ENABLED = false;
+
 (function () {
   const GLYPHS = '■□▪▫●▮▯▰▱•';
   const STEP = 18;
@@ -72,31 +75,33 @@
 
     let cancelInitial = null;
 
-    // Per-word hover
-    h2.querySelectorAll('.h2-word').forEach(word => {
-      let cancelWord = null;
-      word.addEventListener('mouseenter', () => {
-        if (cancelInitial) { cancelInitial(); cancelInitial = null; }
-        if (cancelWord) cancelWord();
-        cancelWord = scramble(textNodes(word), 180);
+    if (TITLE_ANIMATIONS_ENABLED) {
+      // Per-word hover
+      h2.querySelectorAll('.h2-word').forEach(word => {
+        let cancelWord = null;
+        word.addEventListener('mouseenter', () => {
+          if (cancelInitial) { cancelInitial(); cancelInitial = null; }
+          if (cancelWord) cancelWord();
+          cancelWord = scramble(textNodes(word), 180);
+        });
+        word.addEventListener('mouseleave', () => {
+          if (cancelWord) { cancelWord(); cancelWord = null; }
+        });
       });
-      word.addEventListener('mouseleave', () => {
-        if (cancelWord) { cancelWord(); cancelWord = null; }
-      });
-    });
 
-    // First-view animation (once, after reveal completes)
-    let fired = false;
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !fired) {
-        fired = true;
-        io.unobserve(h2);
-        setTimeout(() => {
-          cancelInitial = scramble(textNodes(h2), 450);
-        }, 500);
-      }
-    }, { threshold: 0.5 });
-    io.observe(h2);
+      // First-view animation (once, after reveal completes)
+      let fired = false;
+      const io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !fired) {
+          fired = true;
+          io.unobserve(h2);
+          setTimeout(() => {
+            cancelInitial = scramble(textNodes(h2), 450);
+          }, 500);
+        }
+      }, { threshold: 0.5 });
+      io.observe(h2);
+    }
   });
 })();
 
