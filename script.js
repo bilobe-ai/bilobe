@@ -161,7 +161,7 @@ const TITLE_ANIMATIONS_ENABLED = false;
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillStyle = 'rgba(255,255,255,0.65)';
       ctx.fill();
     }
   }
