@@ -1485,6 +1485,21 @@ h2 {
     color: rgba(255, 255, 255, 0.75);
   }
 
+  #navbar.light .nav-links.open {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  #navbar.light .nav-links.open a {
+    color: var(--text);
+  }
+
+  #navbar.light .nav-links.open a:hover {
+    color: var(--accent);
+  }
+
   .nav-burger {
     display: flex;
   }
@@ -1522,6 +1537,10 @@ h2 {
 
   .insights-grid {
     grid-template-columns: 1fr;
+  }
+
+  .insight-body p {
+    display: none;
   }
 
   .people-grid {
