@@ -30,15 +30,31 @@
         <span>Bilobe</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#partners">Partners</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#contact">People</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#get-in-touch">Contact</a></li>
+        <li><a href="#features" data-i18n="nav_features">Features</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#products" class="nav-dropdown-trigger">
+            <span data-i18n="nav_products">Products</span>
+            <span class="nav-chevron material-symbols-outlined">expand_more</span>
+          </a>
+          <ul class="nav-dropdown">
+            <li><a href="#orientamed">OrientaMed</a></li>
+            <li><a href="#elicita">Elicita</a></li>
+            <li><a href="#bionymizer">Bionymizer</a></li>
+          </ul>
+        </li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#contact" data-i18n="nav_people">People</a></li>
+        <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
+        <li><a href="#get-in-touch" data-i18n="nav_contact">Contact</a></li>
       </ul>
-      <a href="#get-in-touch" class="nav-demo-btn">Book a demo</a>
+      <div class="nav-right">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-option active" data-lang="en">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-option" data-lang="it">IT</span>
+        </button>
+        <a href="#get-in-touch" class="nav-demo-btn" data-i18n="nav_book_demo">Book a demo</a>
+      </div>
       <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -55,13 +71,12 @@
     <div class="container">
 
       <div class="hero-split">
-        <!-- Text -->
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="reveal delay-1">Trustworthy.</span>
-            <span class="reveal delay-2 accent-text">for&nbsp;Healthcare.</span>
+            <span class="reveal delay-1" data-i18n="hero_title_1">Trustworthy.</span>
+            <span class="reveal delay-2 accent-text" data-i18n="hero_title_2">for&nbsp;Healthcare.</span>
           </h1>
-          <p class="hero-sub reveal delay-3">
+          <p class="hero-sub reveal delay-3" data-i18n="hero_sub">
             We build compliant, explainable AI that empowers clinicians,
             protects patients, and transforms healthcare delivery.
           </p>
@@ -71,12 +86,12 @@
       <div class="hero-stats reveal delay-5">
         <div class="stat">
           <span class="stat-num">40+</span>
-          <span class="stat-lbl">Years of research</span>
+          <span class="stat-lbl" data-i18n="stat_research">Years of research</span>
         </div>
         <div class="stat-div" aria-hidden="true"></div>
         <div class="stat">
           <span class="stat-num">7</span>
-          <span class="stat-lbl">Expert founders</span>
+          <span class="stat-lbl" data-i18n="stat_founders">Expert founders</span>
         </div>
         <div class="stat-div" aria-hidden="true"></div>
         <div class="stat">
@@ -86,7 +101,7 @@
         <div class="stat-div" aria-hidden="true"></div>
         <div class="stat">
           <span class="stat-num">5</span>
-          <span class="stat-lbl">Research partners</span>
+          <span class="stat-lbl" data-i18n="stat_partners">Research partners</span>
         </div>
       </div>
     </div>
@@ -96,8 +111,8 @@
   <section id="features">
     <div class="container">
       <div class="section-header reveal">
-        <p class="label">Our Capabilities</p>
-        <h2>Built for the complexity<br>of clinical data.</h2>
+        <p class="label" data-i18n="features_label">Our Capabilities</p>
+        <h2 data-i18n="features_h2">Built for the complexity<br>of clinical data.</h2>
       </div>
       <div class="features-grid">
 
@@ -112,8 +127,8 @@
               <span class="material-symbols-outlined feature-icon">error_med</span>
               <span class="feature-num">01</span>
             </div>
-            <h3>Handling Unstructured Data</h3>
-            <p>Is your health institution data mostly unstructured — text, images, biosignals — but filled with valuable
+            <h3 data-i18n="feat1_h3">Handling Unstructured Data</h3>
+            <p data-i18n="feat1_p">Is your health institution data mostly unstructured — text, images, biosignals — but filled with valuable
               insights? Bilobe leverages modern AI to unlock what's hidden in clinical data.</p>
           </div>
         </div>
@@ -129,8 +144,8 @@
               <span class="material-symbols-outlined feature-icon">health_and_safety</span>
               <span class="feature-num">02</span>
             </div>
-            <h3>Trustworthy, Compliant &amp; Secure</h3>
-            <p>Our AI solutions are built with trustworthiness at their core — compliant with EU MDR, GDPR, and the AI
+            <h3 data-i18n="feat2_h3">Trustworthy, Compliant &amp; Secure</h3>
+            <p data-i18n="feat2_p">Our AI solutions are built with trustworthiness at their core — compliant with EU MDR, GDPR, and the AI
               Act, with data protection and explainability at every layer.</p>
           </div>
         </div>
@@ -146,10 +161,178 @@
               <span class="material-symbols-outlined feature-icon">diagnosis</span>
               <span class="feature-num">03</span>
             </div>
-            <h3>Human-Centered Interaction</h3>
-            <p>Clinical evaluation practices and human-AI collaboration designed to keep practitioners in control —
+            <h3 data-i18n="feat3_h3">Human-Centered Interaction</h3>
+            <p data-i18n="feat3_p">Clinical evaluation practices and human-AI collaboration designed to keep practitioners in control —
               achieving the best of both human expertise and AI synergy.</p>
           </div>
+        </div>
+
+      </div>
+
+      <div class="partners-strip reveal">
+        <p class="partners-strip-label" data-i18n="partners_label">Research Partners</p>
+        <div class="partners-carousel" aria-label="Research partners">
+          <div class="partners-track">
+            <!-- set 1 -->
+            <div class="partner-logo-item"><img
+                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
+                alt="Nvidia" loading="lazy"></div>
+            <div class="partner-logo-item"><img
+                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
+                alt="University of Pavia" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri" loading="lazy"></div>
+            <div class="partner-logo-item"><img
+                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
+                alt="University of Florida" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png"
+                alt="Biomeris" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
+            <!-- set 2 (duplicate for seamless loop) -->
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
+                alt="" loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
+                alt="" loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri"
+                loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp" alt=""
+                loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png" alt="" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label" data-i18n="products_label">Our Products</p>
+        <h2 data-i18n="products_h2">Purpose-built tools<br>for clinical practice.</h2>
+      </div>
+      <div class="products-grid">
+
+        <!-- OrientaMed — featured full-width row -->
+        <div id="orientamed" class="product-card product-card--featured reveal delay-1">
+          <div class="product-cover">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="./images/products/orientamed_cover.png">
+              <img src="./images/products/orientamed_cover_vertical.png" alt="OrientaMed" loading="lazy">
+            </picture>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-top">
+              <h3 class="product-name">OrientaMed</h3>
+              <p class="product-desc" data-i18n="orientamed_desc">An advanced conversational decision-support system grounded in medical guidelines.
+                Deployable across multiple clinical scenarios — from triage support for general practitioners to
+                treatment adherence monitoring in hospital wards.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">public</span>
+                  <div>
+                    <strong data-i18n="ing_europe_title">Europe First</strong>
+                    <span data-i18n="ing_europe_desc">Models hosted exclusively on European servers, with three sovereignty tiers: international
+                      cloud, European cloud, or fully on-premise.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">verified</span>
+                  <div>
+                    <strong data-i18n="ing_guideline_title">Guideline-Grounded, Human-Validated</strong>
+                    <span data-i18n="ing_guideline_desc">Knowledge sourced exclusively from guidelines and procedures carefully curated and approved by
+                      our medical team.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">account_tree</span>
+                  <div>
+                    <strong data-i18n="ing_rag_title">Not Just a RAG</strong>
+                    <span data-i18n="ing_rag_desc">Knowledge graphs built on established medical ontologies for retrieval guided by real clinical
+                      entity relationships — not just semantics.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elicita + Bionymizer — two-column row -->
+        <div class="products-row">
+
+          <div id="elicita" class="product-card reveal delay-2">
+            <div class="product-card-top">
+              <h3 class="product-name">Elicita</h3>
+              <p class="product-desc" data-i18n="elicita_desc">An AI agent system that elicits an eCRF in a data-driven way — turning a
+                clinician's high-level description into a structured variable registry grounded in the actual content of clinical notes.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">person_check</span>
+                  <div>
+                    <strong data-i18n="ing_human_title">For the Human, Through the Human</strong>
+                    <span data-i18n="ing_human_desc">Starts with the clinician's description and a brief conversation, then loops back at every
+                      step so the user can edit variables or add new requirements.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">analytics</span>
+                  <div>
+                    <strong data-i18n="ing_databased_title">Data-Based, Not Eminence-Based</strong>
+                    <span data-i18n="ing_databased_desc">Fields emerge directly from real-world data, not from abstract theory. Ambiguity stays with
+                      the decision maker — not the data-entry person.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="bionymizer" class="product-card reveal delay-3">
+            <div class="product-card-top">
+              <h3 class="product-name">Bionymizer</h3>
+              <p class="product-desc" data-i18n="bionymizer_desc">A highly customizable pseudonymization system purpose-built for the biomedical
+                context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.</p>
+            </div>
+            <div class="product-ingredients">
+              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
+              <ul class="ingredient-list">
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">lock</span>
+                  <div>
+                    <strong data-i18n="ing_yourdata_title">Your Data, Your Service</strong>
+                    <span data-i18n="ing_yourdata_desc">Runs fully on-premise with zero data transmitted outside your infrastructure.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
+                  <div>
+                    <strong data-i18n="ing_plug_title">Plug &amp; Play</strong>
+                    <span data-i18n="ing_plug_desc">Drag and drop files directly into the interface for instant pseudonymization — no setup needed
+                      for one-off use.</span>
+                  </div>
+                </li>
+                <li class="ingredient-item">
+                  <span class="material-symbols-outlined ingredient-icon">mediation</span>
+                  <div>
+                    <strong data-i18n="ing_pipeline_title">Pipeline-Ready Middle Layer</strong>
+                    <span data-i18n="ing_pipeline_desc">Connect it directly into your existing data streams as transparent middleware — it runs
+                      silently in the background.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -162,20 +345,20 @@
       <div class="about-layout">
 
         <div class="about-text">
-          <p class="label reveal">About Us</p>
-          <h2 class="about-statement reveal delay-1">Born from 40 years of biomedical informatics research.</h2>
+          <p class="label reveal" data-i18n="about_label">About Us</p>
+          <h2 class="about-statement reveal delay-1" data-i18n="about_h2">Born from 40 years of biomedical informatics research.</h2>
           <div class="about-tag reveal delay-2">
             <span class="material-symbols-outlined">location_on</span>
-            Pavia, Italy
+            <span data-i18n="about_location">Pavia, Italy</span>
           </div>
           <div class="about-body">
-            <p class="reveal delay-3">Born in Pavia, Italy from the 40-year tradition of the Biomedical Informatics Lab
+            <p class="reveal delay-3" data-i18n="about_p1">Born in Pavia, Italy from the 40-year tradition of the Biomedical Informatics Lab
               "Mario Stefanelli", Bilobe is the melting pot of cutting-edge academic research and real-world
               implementation in healthcare.</p>
-            <p class="reveal delay-4">Our mission is to support healthcare practitioners, enhance patient outcomes, and
+            <p class="reveal delay-4" data-i18n="about_p2">Our mission is to support healthcare practitioners, enhance patient outcomes, and
               improve healthcare organizations with innovative technology — turning complex, unstructured data into
               actionable insights through transparent and trustworthy solutions.</p>
-            <p class="reveal delay-5">By combining advanced algorithms with deep medical domain expertise, we make
+            <p class="reveal delay-5" data-i18n="about_p3">By combining advanced algorithms with deep medical domain expertise, we make
               healthcare more efficient, accessible, and personalized.</p>
           </div>
         </div>
@@ -188,192 +371,12 @@
     </div>
   </section>
 
-  <!-- PARTNERS -->
-  <section id="partners">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label">Research Partners</p>
-        <h2>Trusted by leading<br>institutions worldwide.</h2>
-      </div>
-      <div class="partners-carousel" aria-label="Research partners">
-        <div class="partners-track">
-          <!-- set 1 -->
-          <div class="partner-logo-item"><img
-              src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-              alt="Nvidia" loading="lazy"></div>
-          <div class="partner-logo-item"><img
-              src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-              alt="University of Pavia" loading="lazy"></div>
-          <div class="partner-logo-item"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri" loading="lazy"></div>
-          <div class="partner-logo-item"><img
-              src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
-              alt="University of Florida" loading="lazy"></div>
-          <div class="partner-logo-item"><img src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png"
-              alt="Biomeris" loading="lazy"></div>
-          <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-          <!-- set 2 (duplicate for seamless loop) -->
-          <div class="partner-logo-item" aria-hidden="true"><img
-              src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-              alt="" loading="lazy"></div>
-          <div class="partner-logo-item" aria-hidden="true"><img
-              src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-              alt="" loading="lazy"></div>
-          <div class="partner-logo-item" aria-hidden="true"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri"
-              loading="lazy"></div>
-          <div class="partner-logo-item" aria-hidden="true"><img
-              src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp" alt=""
-              loading="lazy"></div>
-          <div class="partner-logo-item" aria-hidden="true"><img
-              src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png" alt="" loading="lazy"></div>
-          <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label">Our Products</p>
-        <h2>Purpose-built tools<br>for clinical practice.</h2>
-      </div>
-      <div class="products-grid">
-
-        <!-- OrientaMed — featured full-width row -->
-        <div class="product-card product-card--featured reveal delay-1">
-          <div class="product-cover">
-            <picture>
-              <source media="(max-width: 1024px)" srcset="./images/products/orientamed_cover.png">
-              <img src="./images/products/orientamed_cover_vertical.png" alt="OrientaMed" loading="lazy">
-            </picture>
-          </div>
-          <div class="product-card-body">
-            <div class="product-card-top">
-              <h3 class="product-name">OrientaMed</h3>
-              <p class="product-desc">An advanced conversational decision-support system grounded in medical guidelines.
-                Deployable across multiple clinical scenarios — from triage support for general practitioners to
-                treatment
-                adherence monitoring in hospital wards.</p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">public</span>
-                  <div>
-                    <strong>Europe First</strong>
-                    <span>Models hosted exclusively on European servers, with three sovereignty tiers: international
-                      cloud, European cloud, or fully on-premise.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">verified</span>
-                  <div>
-                    <strong>Guideline-Grounded, Human-Validated</strong>
-                    <span>Knowledge sourced exclusively from guidelines and procedures carefully curated and approved by
-                      our medical team.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">account_tree</span>
-                  <div>
-                    <strong>Not Just a RAG</strong>
-                    <span>Knowledge graphs built on established medical ontologies for retrieval guided by real clinical
-                      entity relationships — not just semantics.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Elicita + Bionymizer — two-column row -->
-        <div class="products-row">
-
-          <div class="product-card reveal delay-2">
-            <div class="product-card-top">
-              <h3 class="product-name">Elicita</h3>
-              <p class="product-desc">An AI agent system that elicits an eCRF in a data-driven way — turning a
-                clinician's
-                high-level description into a structured variable registry grounded in the actual content of clinical
-                notes.</p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">person_check</span>
-                  <div>
-                    <strong>For the Human, Through the Human</strong>
-                    <span>Starts with the clinician's description and a brief conversation, then loops back at every
-                      step
-                      so the user can edit variables or add new requirements.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">analytics</span>
-                  <div>
-                    <strong>Data-Based, Not Eminence-Based</strong>
-                    <span>Fields emerge directly from real-world data, not from abstract theory. Ambiguity stays with
-                      the
-                      decision maker — not the data-entry person.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="product-card reveal delay-3">
-            <div class="product-card-top">
-              <h3 class="product-name">Bionymizer</h3>
-              <p class="product-desc">A highly customizable pseudonymization system purpose-built for the biomedical
-                context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.
-              </p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">lock</span>
-                  <div>
-                    <strong>Your Data, Your Service</strong>
-                    <span>Runs fully on-premise with zero data transmitted outside your infrastructure.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
-                  <div>
-                    <strong>Plug &amp; Play</strong>
-                    <span>Drag and drop files directly into the interface for instant pseudonymization — no setup needed
-                      for one-off use.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">mediation</span>
-                  <div>
-                    <strong>Pipeline-Ready Middle Layer</strong>
-                    <span>Connect it directly into your existing data streams as transparent middleware — it runs
-                      silently
-                      in the background.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- PEOPLE -->
   <section id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <p class="label">Our Team</p>
-        <h2>The people behind<br><img src="images/logo/logo.gif" alt="Bilobe" class="inline-icon"> Bilobe.</h2>
+        <p class="label" data-i18n="people_label">Our Team</p>
+        <h2><span data-i18n="people_h2">The people behind</span><br><img src="images/logo/logo.gif" alt="Bilobe" class="inline-icon"> Bilobe.</h2>
       </div>
       <div class="people-grid">
 
@@ -385,7 +388,7 @@
             </div>
             <div class="person-info">
               <h3>Enea Parimbelli</h3>
-              <p class="person-role">CEO, Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_ceo">CEO, Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener"
                 class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
@@ -403,7 +406,7 @@
             </div>
             <div class="person-info">
               <h3>Tommaso&nbsp;Buonocore</h3>
-              <p class="person-role">CTO, Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_cto">CTO, Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
                   <path
@@ -420,7 +423,7 @@
             </div>
             <div class="person-info">
               <h3>Lorenza Rossi</h3>
-              <p class="person-role">CFO, Co-Founder · MEng</p>
+              <p class="person-role" data-i18n="role_cfo">CFO, Co-Founder · MEng</p>
               <a href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener"
                 class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
@@ -442,7 +445,7 @@
             </div>
             <div class="person-info">
               <h3>Giovanna Nicora</h3>
-              <p class="person-role">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener"
                 class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
@@ -460,7 +463,7 @@
             </div>
             <div class="person-info">
               <h3>Lucia Sacchi</h3>
-              <p class="person-role">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
                   <path
@@ -477,7 +480,7 @@
             </div>
             <div class="person-info">
               <h3>Arianna Dagliati</h3>
-              <p class="person-role">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener"
                 class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
@@ -497,12 +500,12 @@
             </div>
             <div class="person-info">
               <h3>Riccardo Bellazzi</h3>
-              <p class="person-role">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
+              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
               <a href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener"
                 class="linkedin-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
                   <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.77z" />
+                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.77z" />
                 </svg>
                 LinkedIn
               </a>
@@ -520,11 +523,11 @@
     <div class="container">
       <div class="insights-header reveal">
         <div>
-          <p class="label">Insights</p>
-          <h2>News, ideas &amp;<br>research updates.</h2>
+          <p class="label" data-i18n="insights_label">Insights</p>
+          <h2 data-i18n="insights_h2">News, ideas &amp;<br>research updates.</h2>
         </div>
         <a href="insights.html" class="insights-view-all">
-          View all <span class="material-symbols-outlined">arrow_forward</span>
+          <span data-i18n="insights_view_all">View all</span> <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
 
@@ -535,14 +538,14 @@
             <div class="insight-img-wrap">
               <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80&auto=format&fit=crop"
                 alt="Explainable AI in clinical settings" loading="lazy">
-              <span class="insight-tag research">Research</span>
+              <span class="insight-tag research" data-i18n="tag_research">Research</span>
             </div>
             <div class="insight-body">
               <time class="insight-date" datetime="2025-03-10">March 2025</time>
-              <h3>Explainable AI in Clinical Decision Support</h3>
-              <p>How XAI techniques are reshaping clinician trust — and why transparency is the next frontier for
+              <h3 data-i18n="insight1_h3">Explainable AI in Clinical Decision Support</h3>
+              <p data-i18n="insight1_p">How XAI techniques are reshaping clinician trust — and why transparency is the next frontier for
                 medical AI adoption.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span class="material-symbols-outlined">arrow_forward</span></span>
             </div>
           </a>
         </article>
@@ -552,14 +555,14 @@
             <div class="insight-img-wrap">
               <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=700&q=80&auto=format&fit=crop"
                 alt="EU AI Act and healthcare compliance" loading="lazy">
-              <span class="insight-tag policy">Policy</span>
+              <span class="insight-tag policy" data-i18n="tag_policy">Policy</span>
             </div>
             <div class="insight-body">
               <time class="insight-date" datetime="2025-02-18">February 2025</time>
-              <h3>EU AI Act: What It Means for HealthTech Startups</h3>
-              <p>A practical guide to navigating the new EU AI Act requirements for high-risk medical AI systems — from
+              <h3 data-i18n="insight2_h3">EU AI Act: What It Means for HealthTech Startups</h3>
+              <p data-i18n="insight2_p">A practical guide to navigating the new EU AI Act requirements for high-risk medical AI systems — from
                 risk classification to conformity assessment.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span class="material-symbols-outlined">arrow_forward</span></span>
             </div>
           </a>
         </article>
@@ -569,14 +572,14 @@
             <div class="insight-img-wrap">
               <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&auto=format&fit=crop"
                 alt="ViraLingo viral variant prediction" loading="lazy">
-              <span class="insight-tag technology">Technology</span>
+              <span class="insight-tag technology" data-i18n="tag_technology">Technology</span>
             </div>
             <div class="insight-body">
               <time class="insight-date" datetime="2025-01-22">January 2025</time>
-              <h3>ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3>
-              <p>Our collaboration with the University of Florida on a large language model trained across HIV,
+              <h3 data-i18n="insight3_h3">ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3>
+              <p data-i18n="insight3_p">Our collaboration with the University of Florida on a large language model trained across HIV,
                 Hepatitis, and Coronavirus genomes to predict dangerous variants.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span class="material-symbols-outlined">arrow_forward</span></span>
             </div>
           </a>
         </article>
@@ -591,40 +594,40 @@
       <div class="contact-layout">
 
         <div class="contact-left reveal">
-          <p class="label">Contact Us</p>
-          <h2 class="contact-title">Let's get<br><span class="accent-text">in touch.</span></h2>
-          <p class="contact-intro">Whether you're looking to integrate AI into your clinical workflow, explore a
+          <p class="label" data-i18n="contact_label">Contact Us</p>
+          <h2 class="contact-title"><span data-i18n="contact_title_1">Let's get</span><br><span class="accent-text" data-i18n="contact_title_2">in touch.</span></h2>
+          <p class="contact-intro" data-i18n="contact_intro">Whether you're looking to integrate AI into your clinical workflow, explore a
             research collaboration, or simply learn more about what we do — we'd love to hear from you.</p>
           <ul class="contact-services">
-            <li>AI solutions for healthcare organizations</li>
-            <li>Regulatory-compliant deployments (EU MDR, GDPR, AI Act)</li>
-            <li>Research collaborations and partnerships</li>
-            <li>Custom NLP and XAI for clinical data</li>
+            <li data-i18n="contact_service1">AI solutions for healthcare organizations</li>
+            <li data-i18n="contact_service2">Regulatory-compliant deployments (EU MDR, GDPR, AI Act)</li>
+            <li data-i18n="contact_service3">Research collaborations and partnerships</li>
+            <li data-i18n="contact_service4">Custom NLP and XAI for clinical data</li>
           </ul>
           <div class="contact-trust">
             <div class="trust-item">
               <span class="material-symbols-outlined">schedule</span>
-              Response within 2 business days
+              <span data-i18n="trust_response">Response within 2 business days</span>
             </div>
             <div class="trust-item">
               <span class="material-symbols-outlined">lock</span>
-              Confidential by default
+              <span data-i18n="trust_confidential">Confidential by default</span>
             </div>
           </div>
         </div>
 
         <div class="contact-right reveal delay-2">
           <div class="contact-card">
-            <p class="contact-card-label">Direct line</p>
+            <p class="contact-card-label" data-i18n="contact_card_label">Direct line</p>
             <a href="mailto:info@bilobe.eu" class="contact-email">info@bilobe.eu</a>
             <div class="contact-actions">
               <a href="mailto:info@bilobe.eu" class="btn-primary">
                 <span class="material-symbols-outlined">mail</span>
-                Compose email
+                <span data-i18n="contact_compose">Compose email</span>
               </a>
               <button class="btn-copy" id="copy-email-btn">
                 <span class="material-symbols-outlined">content_copy</span>
-                Copy email
+                <span data-i18n="contact_copy">Copy email</span>
               </button>
             </div>
           </div>
@@ -639,13 +642,13 @@
     <div class="cookie-banner-inner">
       <div class="cookie-banner-text">
         <span class="material-symbols-outlined cookie-banner-icon">cookie</span>
-        <p>We use essential cookies to keep the site running and analytics cookies to understand how visitors use it.
-          <button class="cookie-policy-link" id="open-cookie-policy">Cookie Policy</button>
+        <p><span data-i18n="cookie_text">We use essential cookies to keep the site running and analytics cookies to understand how visitors use it.</span>
+          <button class="cookie-policy-link" id="open-cookie-policy" data-i18n="cookie_policy_link">Cookie Policy</button>
         </p>
       </div>
       <div class="cookie-banner-actions">
-        <button class="btn-cookie-decline" id="cookie-decline">Decline</button>
-        <button class="btn-cookie-accept" id="cookie-accept">Accept all</button>
+        <button class="btn-cookie-decline" id="cookie-decline" data-i18n="cookie_decline">Decline</button>
+        <button class="btn-cookie-accept" id="cookie-accept" data-i18n="cookie_accept">Accept all</button>
       </div>
     </div>
   </div>
@@ -698,8 +701,8 @@
           by clearing your browser's local storage or using the buttons below.</p>
 
         <div class="cookie-modal-actions">
-          <button class="btn-cookie-decline" id="modal-cookie-decline">Decline analytics</button>
-          <button class="btn-cookie-accept" id="modal-cookie-accept">Accept all</button>
+          <button class="btn-cookie-decline" id="modal-cookie-decline" data-i18n="cookie_decline">Decline analytics</button>
+          <button class="btn-cookie-accept" id="modal-cookie-accept" data-i18n="cookie_accept">Accept all</button>
         </div>
 
         <h3>Contact</h3>

@@ -62,6 +62,13 @@ a {
 
 section {
   padding-block: clamp(5rem, 10vw, 8rem);
+  scroll-margin-top: var(--nav-h);
+}
+
+#orientamed,
+#elicita,
+#bionymizer {
+  scroll-margin-top: calc(var(--nav-h) + 2rem);
 }
 
 /* ─── REVEAL ──────────────────────────────────────────── */
@@ -232,6 +239,120 @@ h2 {
 
 #navbar.light .nav-links a:hover {
   color: var(--accent);
+}
+
+/* ─ Nav right group ─ */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ─ Language toggle ─ */
+.lang-toggle {
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  gap: 0;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.lang-option {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.lang-option.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.lang-option:not(.active):hover {
+  color: var(--text);
+}
+
+.lang-sep {
+  display: none;
+}
+
+/* ─ Products dropdown ─ */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  vertical-align: middle;
+}
+
+.nav-chevron {
+  font-size: 0.9rem !important;
+  line-height: 1;
+  transition: transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-item-dropdown:hover .nav-chevron,
+.nav-item-dropdown.open .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.11);
+  list-style: none;
+  min-width: 150px;
+  padding: 0.4rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  z-index: 100;
+}
+
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown.open .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown li a {
+  display: block;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.845rem;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+  border-radius: 8px;
+  margin: 0 0.3rem;
+}
+
+.nav-dropdown li a:hover {
+  color: var(--accent);
+  background: rgba(13, 195, 161, 0.06);
 }
 
 .nav-demo-btn {
@@ -533,7 +654,7 @@ h2 {
 
 /* ─── FEATURES — full-bleed overlay cards ─────────────── */
 #features {
-  background: var(--bg-alt);
+  background: linear-gradient(to bottom, var(--bg-alt) 80%, var(--bg) 100%);
 }
 
 .features-grid {
@@ -671,7 +792,7 @@ h2 {
 
 /* ─── ABOUT ───────────────────────────────────────────── */
 #about {
-  background: var(--bg);
+  background: linear-gradient(to bottom, var(--bg-alt) 80%, var(--bg) 100%);
 }
 
 .about-layout {
@@ -742,9 +863,22 @@ h2 {
   transform: scale(1.04);
 }
 
-/* ─── PARTNERS ────────────────────────────────────────── */
-#partners {
-  background: var(--bg-alt);
+/* ─── PARTNERS STRIP (inside features) ───────────────── */
+.partners-strip {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--border);
+}
+
+.partners-strip-label {
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  opacity: 0.55;
+  margin-bottom: 1.5rem;
 }
 
 /* ─── PARTNERS CAROUSEL ───────────────────────────────── */
@@ -809,10 +943,6 @@ h2 {
       rgba(245, 246, 248, 1) 100%),
     url('images/bg/bg1.webp') center / cover no-repeat;
   background-color: #00c5a8;
-}
-
-#contact .section-header h2 {
-  color: var(--text);
 }
 
 .people-grid {
@@ -1111,7 +1241,7 @@ h2 {
 
 /* ─── PRODUCTS ────────────────────────────────────────── */
 #products {
-  background: var(--bg);
+  background: linear-gradient(to bottom, var(--bg) 80%, var(--bg-alt) 100%);
 }
 
 .products-grid {
@@ -1322,7 +1452,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .nav-demo-btn {
+  .nav-right {
     display: none;
   }
 
