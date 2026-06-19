@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="images/logo/logo-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -155,16 +155,34 @@
     <div class="nav-inner">
       <a href="index.html#hero" class="nav-brand">
         <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>AI</sup></span>
+        <span>Bilobe<sup>&nbsp;&nbsp;AI</sup></span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#features">Features</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#partners">Partners</a></li>
-        <li><a href="index.html#contact">People</a></li>
-        <li><a href="insights.html" aria-current="page">Insights</a></li>
-        <li><a href="index.html#get-in-touch">Contact</a></li>
+        <li><a href="index.html#features" data-i18n="nav_features">Features</a></li>
+        <li class="nav-item-dropdown">
+          <a href="index.html#products" class="nav-dropdown-trigger">
+            <span data-i18n="nav_products">Products</span>
+            <span class="nav-chevron material-symbols-outlined">expand_more</span>
+          </a>
+          <ul class="nav-dropdown">
+            <li><a href="index.html#orientamed">OrientaMed</a></li>
+            <li><a href="index.html#elicita">Elicita</a></li>
+            <li><a href="index.html#bionymizer">Bionymizer</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+        <li><a href="index.html#contact" data-i18n="nav_people">People</a></li>
+        <li><a href="insights.html" aria-current="page" data-i18n="nav_insights">Insights</a></li>
+        <li><a href="index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
       </ul>
+      <div class="nav-right">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-option active" data-lang="en">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-option" data-lang="it">IT</span>
+        </button>
+        <a href="index.html#get-in-touch" class="nav-demo-btn" data-i18n="nav_book_demo">Book a demo</a>
+      </div>
       <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -302,26 +320,16 @@
   <!-- FOOTER -->
   <footer id="footer">
     <div class="container footer-inner">
-      <a href="index.html#hero" class="footer-brand">Bilobe<sup>AI</sup></a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · Cap.Soc. € 10.000 i.v.</p>
+      <a href="index.html#hero" class="nav-brand">
+        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img-footer">
+        <span>Bilobe<sup>AI</sup></span>
+      </a>
+      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · P.IVA/C.F. 030039860188 · n.REA 341149 · Cap.Soc. € 10.000 i.v.</p>
     </div>
   </footer>
 
+  <script src="script.js"></script>
   <script>
-    // Mobile nav
-    const burger   = document.querySelector('.nav-burger');
-    const navLinks = document.querySelector('.nav-links');
-    burger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      burger.setAttribute('aria-expanded', String(open));
-    });
-
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     // Category filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards      = document.querySelectorAll('.insight-card[data-category]');
@@ -332,8 +340,7 @@
         btn.classList.add('active');
         const filter = btn.dataset.filter;
         cards.forEach(card => {
-          const match = filter === 'all' || card.dataset.category === filter;
-          card.hidden = !match;
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
         });
       });
     });

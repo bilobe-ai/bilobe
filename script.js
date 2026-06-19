@@ -367,11 +367,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const hero = document.getElementById('hero');
 
-  const heroObserver = new IntersectionObserver(([entry]) => {
-    navbar.classList.toggle('light', !entry.isIntersecting);
-  }, { threshold: 0.05 });
-
-  heroObserver.observe(hero);
+  if (hero) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      navbar.classList.toggle('light', !entry.isIntersecting);
+    }, { threshold: 0.05 });
+    heroObserver.observe(hero);
+  }
 
   // ── Language toggle ─────────────────────────────────────
   applyLanguage(currentLang);
@@ -418,42 +419,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('cookie-modal');
   const backdrop = document.getElementById('cookie-modal-backdrop');
 
-  function hideBanner() { banner.hidden = true; }
-  function showBanner() { banner.hidden = false; }
-  function hideModal() { modal.hidden = true; }
-  function showModal() { modal.hidden = false; }
+  if (banner && modal) {
+    function hideBanner() { banner.hidden = true; }
+    function showBanner() { banner.hidden = false; }
+    function hideModal() { modal.hidden = true; }
+    function showModal() { modal.hidden = false; }
 
-  // Show banner only if consent not yet recorded
-  if (!localStorage.getItem('cookie-consent')) showBanner();
+    if (!localStorage.getItem('cookie-consent')) showBanner();
 
-  document.getElementById('cookie-accept').addEventListener('click', () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    hideBanner();
-  });
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      hideBanner();
+    });
 
-  document.getElementById('cookie-decline').addEventListener('click', () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    hideBanner();
-  });
+    document.getElementById('cookie-decline').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'declined');
+      hideBanner();
+    });
 
-  document.getElementById('open-cookie-policy').addEventListener('click', showModal);
-  document.getElementById('close-cookie-modal').addEventListener('click', hideModal);
-  backdrop.addEventListener('click', hideModal);
+    document.getElementById('open-cookie-policy').addEventListener('click', showModal);
+    document.getElementById('close-cookie-modal').addEventListener('click', hideModal);
+    backdrop.addEventListener('click', hideModal);
 
-  document.getElementById('modal-cookie-accept').addEventListener('click', () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    hideModal(); hideBanner();
-  });
+    document.getElementById('modal-cookie-accept').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      hideModal(); hideBanner();
+    });
 
-  document.getElementById('modal-cookie-decline').addEventListener('click', () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    hideModal(); hideBanner();
-  });
+    document.getElementById('modal-cookie-decline').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'declined');
+      hideModal(); hideBanner();
+    });
 
-  // Close modal on Escape
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !modal.hidden) hideModal();
-  });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.hidden) hideModal();
+    });
+  }
 
   // ── Copy email button ────────────────────────────────────
   const copyBtn = document.getElementById('copy-email-btn');
