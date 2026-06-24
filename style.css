@@ -1461,10 +1461,6 @@ h2 {
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .insights-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .products-row {
     grid-template-columns: 1fr;
   }
@@ -1588,14 +1584,6 @@ h2 {
     transform: scaleX(1);
   }
 
-  .insights-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .insight-body p {
-    display: none;
-  }
-
   .people-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1667,6 +1655,18 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap);
+}
+
+@media (max-width: 1024px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Card */
