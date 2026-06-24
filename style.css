@@ -6,6 +6,7 @@
   --dark-2: #0F0F12;
   --bg: #FFFFFF;
   --bg-alt: #F5F6F8;
+  --text-white: #f3faf3;
   --text: #0A0A0A;
   --text-2: #575768;
   --premium-bg:
@@ -407,11 +408,11 @@ h2 {
   align-items: center;
   background:
     linear-gradient(to bottom,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.55) 10%,
-      rgba(255, 255, 255, 0.55) 90%,
-      rgba(245, 246, 248, 1) 100%),
-    url('images/bg/bg2.webp') center / cover no-repeat;
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0.1) 90%,
+      rgba(245, 246, 248, 0.3) 100%),
+    url('images/bg/hero_3.png') center / cover no-repeat;
   background-color: #a8dce8;
   overflow: hidden;
   padding-top: calc(var(--nav-h) + 3rem);
@@ -443,13 +444,6 @@ h2 {
   right: 5%;
 }
 
-#hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
 
 .hero-split {
   display: grid;
@@ -490,7 +484,7 @@ h2 {
   font-weight: 800;
   line-height: 1.04;
   letter-spacing: -0.045em;
-  color: var(--text);
+  color: var(--text-white);
   margin-bottom: 1.75rem;
 }
 
@@ -499,8 +493,8 @@ h2 {
 }
 
 .hero-sub {
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  color: var(--text-2);
+  font-size: clamp(1.35rem, 1.8vw, 1.1rem);
+  color: var(--text-white);
   max-width: 440px;
   margin-bottom: 2.5rem;
   line-height: 1.8;
@@ -562,50 +556,109 @@ h2 {
   font-size: 1rem;
 }
 
-/* Hero stats */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.5rem, 3.5vw, 3rem);
-  padding: 1.75rem clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+.hero-cta {
+  margin-top: 2rem;
 }
 
-.stat {
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.9rem;
+  background: transparent;
+  color: var(--text-white);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+/* Hero scroll */
+.hero-scroll {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--text-white);
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  transition: color 0.2s;
 }
 
-.stat-num {
-  font-size: 1.65rem;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.04em;
-  line-height: 1;
+.hero-scroll:hover {
+  color: var(--accent);
 }
 
-.stat-lbl {
+.hero-scroll-label {
   font-size: 0.7rem;
-  color: var(--text-2);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+  font-weight: 600;
+  color: var(--text-white);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: scrollLabelPulse 2.4s ease-in-out infinite;
 }
 
-.stat-div {
-  width: 1px;
+.hero-scroll-mouse {
+  width: 24px;
   height: 38px;
-  background: rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.hero-scroll-wheel {
+  width: 3px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: scrollWheel 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  61% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scrollLabelPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Buttons */
@@ -1545,15 +1598,6 @@ h2 {
 
   .people-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-stats {
-    gap: 1.5rem;
-    padding: 1.5rem;
-  }
-
-  .stat-div {
-    display: none;
   }
 
   .footer-inner {
