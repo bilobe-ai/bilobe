@@ -66,7 +66,7 @@ section {
   scroll-margin-top: var(--nav-h);
 }
 
-#laurel-navigator,
+#mangrove-navigator,
 #fireweed-elicitation,
 #moss-anonymizer {
   scroll-margin-top: calc(var(--nav-h) + 2rem);
@@ -1315,7 +1315,7 @@ h2 {
   align-items: stretch;
 }
 
-/* Featured card (Laurel Navigator) */
+/* Featured card (mangrove Navigator) */
 .product-card.product-card--featured {
   flex-direction: row;
   align-items: stretch;
