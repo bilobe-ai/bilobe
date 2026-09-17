@@ -66,9 +66,9 @@ section {
   scroll-margin-top: var(--nav-h);
 }
 
-#orientamed,
-#elicita,
-#bionymizer {
+#laurel-navigator,
+#fireweed-elicitation,
+#moss-anonymizer {
   scroll-margin-top: calc(var(--nav-h) + 2rem);
 }
 
@@ -1315,7 +1315,7 @@ h2 {
   align-items: stretch;
 }
 
-/* Featured card (OrientaMed) */
+/* Featured card (Laurel Navigator) */
 .product-card.product-card--featured {
   flex-direction: row;
   align-items: stretch;
@@ -1400,6 +1400,15 @@ h2 {
   color: var(--text);
   margin-bottom: 0.75rem;
   line-height: 1.2;
+}
+
+.product-tagline {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: -0.4rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
 }
 
 .product-desc {
