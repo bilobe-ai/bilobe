@@ -1,0 +1,147 @@
+/* Bilobe design tokens.
+   Source of truth: website-kit/brand-book/tokens.json (brand kit of 9 November 2026).
+   Do not invent values here: change tokens.json in the brand folder first. */
+
+/* ---------- Fonts (self-hosted) ---------- */
+
+/* Bilobe: original file only (never the -Extended file). Headlines only, weight 400, >= 24px. */
+@font-face {
+  font-family: "Bilobe";
+  src: url("../fonts/Bilobe-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter: separate fallback face for the characters Bilobe lacks (OFL). */
+@font-face {
+  font-family: "Bilobe";
+  src: url("../fonts/Inter-bilobe-fallback.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+00A9, U+00AE, U+00B1, U+00B7, U+00C6, U+00D7-00D8, U+00DF, U+00E6, U+00F8,
+    U+0152-0153, U+2022, U+2122, U+2190, U+2192;
+}
+
+/* Figtree (OFL): variable font, serves 400 and 600. */
+@font-face {
+  font-family: "Figtree";
+  src: url("../fonts/figtree-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("../fonts/figtree-latin-ext.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  /* Brand colours: identical in both themes */
+  --deep: #013b48;
+  --teal: #035365;
+  --lagoon: #208f93;
+  --leaf: #30b092;
+  --lime: #8cd687;
+  --white: #ffffff;
+  --on-leaf: #013b48;
+
+  /* Semantic colours: light theme */
+  --signal: #1f6fbf;
+  --surface: #ffffff;
+  --surface-raised: #eef5f4;
+  --line: #d3e2e1;
+  --ink: #013b48;
+  --ink-muted: #4a6168;
+  --action: #013b48;
+  --on-action: #ffffff;
+  --action-hover: #035365;
+  --link: var(--signal);
+  --focus: #1f6fbf;
+  --success: #146763;
+  --warning: #8a5300;
+  --danger: #b42318;
+
+  /* Gradients */
+  --canopy: linear-gradient(135deg, #8cd687 0%, #30b092 35%, #208f93 62%, #013b48 100%);
+  --canopy-night: linear-gradient(180deg, #208f93 0%, #013b48 100%);
+
+  /* Type families */
+  --font-display: "Bilobe", "Figtree", system-ui, sans-serif;
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing (4px scale) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Shadows: light theme */
+  --shadow-card: 0 1px 2px rgba(1, 59, 72, 0.08), 0 8px 24px rgba(1, 59, 72, 0.08);
+  --shadow-lift: 0 2px 4px rgba(1, 59, 72, 0.1), 0 16px 40px rgba(1, 59, 72, 0.16);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --signal: #4a9be8;
+  --surface: #01242d;
+  --surface-raised: #05323d;
+  --line: #1d4d58;
+  --ink: #eef5f4;
+  --ink-muted: #9bbcbf;
+  --action: #8cd687;
+  --on-action: #013b48;
+  --action-hover: #a6e2a1;
+  --focus: #8cd687;
+  --success: #6fd0a8;
+  --warning: #f0b44d;
+  --danger: #ff9a8f;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+/* ---------- Type styles ---------- */
+/* Display (Bilobe): never bold, never italic, never under 24px. */
+
+.t-display-xl { font: 400 72px/76px var(--font-display); letter-spacing: -0.01em; }
+.t-display-lg { font: 400 56px/60px var(--font-display); letter-spacing: -0.01em; }
+.t-heading-1  { font: 400 40px/46px var(--font-display); letter-spacing: -0.005em; }
+.t-heading-2  { font: 400 32px/38px var(--font-display); }
+.t-heading-3  { font: 400 24px/30px var(--font-display); }
+
+.t-body-lg { font: 400 18px/28px var(--font-sans); }
+.t-body    { font: 400 16px/24px var(--font-sans); }
+.t-body-sm { font: 400 14px/20px var(--font-sans); }
+.t-label   { font: 600 14px/20px var(--font-sans); }
+.t-caption { font: 400 12px/16px var(--font-sans); }
+.t-eyebrow {
+  font: 600 12px/16px var(--font-sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}

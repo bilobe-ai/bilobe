@@ -1,85 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explainable AI in Clinical Decision Support — Bilobe AI</title>
-  <meta name="description" content="How XAI techniques are reshaping clinician trust and why transparency is the next frontier for medical AI adoption.">
-  <link rel="icon" href="../images/logo/logo.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../article.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <title>Explainable AI in clinical decision support — Bilobe</title>
+  <meta name="description" content="How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/articles/xai-clinical.html">
+  <meta property="og:title" content="Explainable AI in clinical decision support — Bilobe">
+  <meta property="og:description" content="How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
 </head>
+
 <body>
 
-  <nav id="navbar" class="light">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-brand">
-        <img src="../images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="../assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="../assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="../index.html#features">Features</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#partners">Partners</a></li>
-        <li><a href="../index.html#contact">People</a></li>
-        <li><a href="../insights.html">Insights</a></li>
-        <li><a href="../index.html#get-in-touch">Contact</a></li>
-      </ul>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+        </ul>
+        <a href="../index.html#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
+  <div class="read-progress" aria-hidden="true"></div>
 
-  <!-- HERO -->
-  <div class="article-hero">
-    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=85&auto=format&fit=crop" alt="Explainable AI in clinical settings">
-    <div class="article-hero-overlay"></div>
-    <div class="article-hero-meta">
-      <div class="container">
-        <nav class="article-breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="sep">›</span>
-          <a href="../insights.html">Insights</a>
-          <span class="sep">›</span>
-          <span>Explainable AI in Clinical Decision Support</span>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <!-- ARTICLE -->
-  <main>
-    <div class="container">
-      <header class="article-header">
-        <span class="insight-tag research">Research</span>
-        <h1>Explainable AI in Clinical Decision Support</h1>
-        <div class="article-byline">
-          <div class="byline-author">
-            <img src="https://www.tedxpavia.com/wp-content/uploads/2024/03/Speaker-TEDxPavia-2024-2.png" alt="Enea Parimbelli" class="byline-avatar">
-            <div>
-              <div class="byline-name">Enea Parimbelli</div>
-              <div class="byline-role">CEO &amp; Co-Founder</div>
-            </div>
-          </div>
-          <div class="byline-divider" aria-hidden="true"></div>
-          <div class="byline-meta">
-            <span><span class="material-symbols-outlined">calendar_today</span> March 10, 2025</span>
-            <span><span class="material-symbols-outlined">schedule</span> 7 min read</span>
+  <main class="page">
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../insights.html">Insights</a>
+          </nav>
+          <p class="post-head__meta"><span>Research</span><time datetime="2025-03-10">10 March 2025</time><span>7 min read</span></p>
+          <h1 class="post-head__title">Explainable AI in clinical decision support</h1>
+          <p class="post-head__lead">When a clinician asks "why does the model think this patient has sepsis?", the answer can be the difference between acceptance and rejection of an AI tool — or even between life and death. Explainability is not a feature. It is a prerequisite.</p>
+          <div class="byline">
+            <div class="byline__photo person__photo"><img src="../images/team/enea-parimbelli.png" alt="" width="56" height="56"></div>
+            <div><p class="byline__name">Enea Parimbelli</p><p class="byline__role">CEO, co-founder</p></div>
           </div>
         </div>
       </header>
 
-      <div class="article-layout">
-        <!-- PROSE -->
-        <article class="article-prose">
-          <p class="lead">When a clinician asks "why does the model think this patient has sepsis?", the answer can be the difference between acceptance and rejection of an AI tool — or even between life and death. Explainability is not a feature. It is a prerequisite.</p>
-
-          <h2>The Trust Problem in Medical AI</h2>
+      <div class="wrap post-body">
+        <div class="prose">
+          <h2>The trust problem in medical AI</h2>
           <p>Despite extraordinary progress in predictive accuracy, AI adoption in clinical settings remains sluggish. Studies consistently show that physicians distrust black-box models, even when those models outperform human judgment on benchmark datasets. The reason is not ignorance — it is rational skepticism. A clinician who cannot understand why a model reached its conclusion cannot assess whether the model's reasoning is clinically sound, whether it generalises to their specific patient, or whether it has been fooled by a confounding artefact in the data.</p>
           <p>This is particularly acute in healthcare, where mistakes are costly, patients are heterogeneous, and the model's training distribution may differ significantly from the deployment context. Trust requires transparency.</p>
 
@@ -88,7 +81,7 @@
             <cite>— Enea Parimbelli, CEO Bilobe</cite>
           </blockquote>
 
-          <h2>What Makes AI Explainable?</h2>
+          <h2>What makes AI explainable?</h2>
           <p>Explainability is not a single technique — it is a family of methods with different trade-offs. At Bilobe we work primarily with three approaches:</p>
           <ul>
             <li><strong>Post-hoc feature attribution</strong> (SHAP, LIME): methods that approximate the model locally and assign importance scores to input features for a given prediction.</li>
@@ -97,23 +90,18 @@
           </ul>
           <p>Each approach has its place. Feature attribution works well for tabular data such as lab results and vital signs. Attention explanations are naturally suited to NLP tasks like discharge letter analysis. Concept-based methods shine when you need to communicate with domain experts in their own vocabulary.</p>
 
-          <h2>Attention Maps in Diagnostic Models</h2>
+          <h2>Attention maps in diagnostic models</h2>
           <p>Much of our applied XAI work centres on clinical natural language processing. When a model reads a discharge letter to extract diagnoses, medications, or risk indicators, attention maps let us visualise which phrases the model found most relevant. This turns an opaque vector operation into something a clinician can scan in seconds.</p>
-
-          <figure>
-            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80&auto=format&fit=crop" alt="Medical data analysis on screen">
-            <figcaption>Attention weights overlaid on a synthetic discharge letter. Highlighted spans indicate tokens with the highest contribution to the predicted diagnosis code.</figcaption>
-          </figure>
 
           <p>In our implementation for ICS Maugeri, we visualise these explanations directly in the clinical information extraction interface. Physicians can hover over any extracted entity to see the evidence trail: which sentences contributed to the extraction, with what confidence, and which tokens carried the most weight.</p>
 
-          <h2>Our Experience at ICS Maugeri</h2>
+          <h2>Our experience at ICS Maugeri</h2>
           <p>ICS Maugeri is one of Italy's leading rehabilitation hospital networks, treating thousands of patients across cardiology, pneumology, and neurology. Our collaboration focuses on automated extraction of clinical information from Italian-language discharge letters — a notoriously noisy, abbreviated, and domain-specific document type.</p>
           <p>When we first deployed a BERT-based extraction model without explanations, clinical acceptance was low. Physicians described the system as a "black oracle" — they could see the outputs but had no way to evaluate their trustworthiness. Errors, when they occurred, felt arbitrary and unpredictable.</p>
           <p>After integrating attention-based explanations, the picture changed markedly. Clinicians began to identify systematic error patterns — the model's weakness for negated findings, for instance — and started applying a mental discount when the model highlighted only single words rather than full diagnostic phrases. The tool became something they could reason about.</p>
 
           <div class="key-highlights">
-            <h4>Key Takeaways</h4>
+            <h4>Key takeaways</h4>
             <ul>
               <li>Explainability increases clinical adoption by making model errors predictable and understandable</li>
               <li>Attention mechanisms are the most actionable XAI technique for clinical NLP tasks</li>
@@ -123,139 +111,104 @@
             </ul>
           </div>
 
-          <h2>Lessons Learned and Next Steps</h2>
+          <h2>Lessons learned and next steps</h2>
           <p>Three years of building and deploying XAI systems in clinical environments have taught us several hard lessons. First, explanations must be calibrated to the audience: what satisfies an informaticist is not what satisfies a cardiologist. Second, explanation fidelity matters — a beautiful but unfaithful explanation is worse than no explanation at all, because it actively misleads. Third, explanations must be fast: if retrieving an explanation adds two seconds to a query, clinicians will disable it.</p>
           <p>Our roadmap for 2025 includes work on causal explanations — moving beyond correlation-based attribution to models that can reason about intervention effects. We are also exploring multimodal explanations that combine text highlights with structured summary tables, and integrating explanation quality metrics directly into our model evaluation pipelines.</p>
           <p>The goal, ultimately, is not to make AI more explainable for its own sake. It is to build clinical AI systems that practitioners can use confidently, challenge appropriately, and improve collaboratively. Explainability is the foundation of that partnership.</p>
-        </article>
+        </div>
 
-        <!-- SIDEBAR -->
-        <aside class="article-sidebar">
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Share</p>
-            <div class="share-btns">
-              <a href="mailto:?subject=Explainable AI in Clinical Decision Support&body=https://bilobe.ai/articles/xai-clinical.html" class="share-btn">
-                <span class="material-symbols-outlined">mail</span> Share via email
-              </a>
-              <button class="share-btn" onclick="navigator.clipboard.writeText(location.href); this.textContent='Copied!'; setTimeout(()=>this.innerHTML='<span class=\'material-symbols-outlined\'>link</span> Copy link', 2000)">
-                <span class="material-symbols-outlined">link</span> Copy link
-              </button>
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Article details</p>
-            <div class="sidebar-meta-list">
-              <div class="sidebar-meta-item"><span class="meta-key">Published</span><span class="meta-val">March 10, 2025</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Reading time</span><span class="meta-val">7 min</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Category</span><span class="meta-val">Research</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Author</span><span class="meta-val">Enea Parimbelli</span></div>
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Related</p>
-            <div class="sidebar-related-list">
-              <a href="nlp-clinical-notes.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info">
-                  <time>December 2024</time>
-                  <p>NLP for Clinical Notes: Extracting Structure from the Unstructured</p>
-                </div>
-              </a>
-              <a href="gdpr-ai.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info">
-                  <time>October 2024</time>
-                  <p>GDPR Meets AI: Data Protection by Design in Medical Systems</p>
-                </div>
-              </a>
-              <a href="viralingo.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info">
-                  <time>January 2025</time>
-                  <p>ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</p>
-                </div>
-              </a>
+        <aside class="post-aside" aria-label="Article details">
+          <div class="post-aside__inner">
+            <p class="post-aside__label">Details</p>
+            <dl class="post-aside__meta">
+              <div><dt>Published</dt><dd><time datetime="2025-03-10">10 March 2025</time></dd></div>
+              <div><dt>Reading time</dt><dd>7 min</dd></div>
+              <div><dt>Category</dt><dd>Research</dd></div>
+              <div><dt>Author</dt><dd>Enea Parimbelli</dd></div>
+            </dl>
+            <p class="post-aside__label">Share</p>
+            <div class="post-aside__share">
+              <a href="mailto:?subject=Explainable AI in clinical decision support&amp;body=https://bilobe.eu/articles/xai-clinical.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
+              <button type="button" data-copy-link data-copied="Link copied"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Copy link</span></button>
             </div>
           </div>
         </aside>
       </div>
-    </div>
+    </article>
 
-    <!-- RELATED SECTION -->
-    <section class="article-related">
-      <div class="container">
-        <div class="article-related-header">
-          <h2>More from Bilobe</h2>
-          <a href="../insights.html" class="insights-view-all">All insights <span class="material-symbols-outlined">arrow_forward</span></a>
+    <section class="journal journal--related" aria-labelledby="related-title">
+      <div class="wrap">
+        <div class="journal__head">
+          <h2 class="journal__heading" id="related-title"><span>More from Bilobe</span></h2>
+          <a class="journal__all" href="../insights.html"><span>All insights</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="insights-grid">
-          <article class="insight-card">
-            <a href="nlp-clinical-notes.html" class="insight-card-link">
-              <div class="insight-img-wrap">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=700&q=80&auto=format&fit=crop" alt="NLP for clinical notes" loading="lazy">
-                <span class="insight-tag research">Research</span>
-              </div>
-              <div class="insight-body">
-                <time class="insight-date" datetime="2024-12-05">December 2024</time>
-                <h3>NLP for Clinical Notes: Extracting Structure from the Unstructured</h3>
-                <p>An overview of our biomedical NLP pipeline for Italian clinical discharge letters.</p>
-                <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-              </div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="eu-ai-act.html" class="insight-card-link">
-              <div class="insight-img-wrap">
-                <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=700&q=80&auto=format&fit=crop" alt="EU AI Act" loading="lazy">
-                <span class="insight-tag policy">Policy</span>
-              </div>
-              <div class="insight-body">
-                <time class="insight-date" datetime="2025-02-18">February 2025</time>
-                <h3>EU AI Act: What It Means for HealthTech Startups</h3>
-                <p>A practical guide to navigating the new EU AI Act requirements for high-risk medical AI systems.</p>
-                <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-              </div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="gdpr-ai.html" class="insight-card-link">
-              <div class="insight-img-wrap">
-                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=700&q=80&auto=format&fit=crop" alt="GDPR and AI" loading="lazy">
-                <span class="insight-tag policy">Policy</span>
-              </div>
-              <div class="insight-body">
-                <time class="insight-date" datetime="2024-10-08">October 2024</time>
-                <h3>GDPR Meets AI: Data Protection by Design in Medical Systems</h3>
-                <p>How to architect AI healthcare solutions that treat GDPR compliance as a feature, not an afterthought.</p>
-                <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-              </div>
-            </a>
-          </article>
+        <div class="journal__list">
+        <article class="journal__item">
+          <a class="journal__link" href="nlp-clinical-notes.html">
+            <p class="journal__meta"><span>Research</span><time datetime="2024-12-05">5 December 2024</time></p>
+            <h3 class="journal__title">NLP for clinical notes: extracting structure from the unstructured</h3>
+            <p class="journal__excerpt">An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="eu-ai-act.html">
+            <p class="journal__meta"><span>Policy</span><time datetime="2025-02-18">18 February 2025</time></p>
+            <h3 class="journal__title">EU AI Act: what it means for healthtech startups</h3>
+            <p class="journal__excerpt">A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="gdpr-ai.html">
+            <p class="journal__meta"><span>Policy</span><time datetime="2024-10-08">8 October 2024</time></p>
+            <h3 class="journal__title">GDPR meets AI: data protection by design in medical systems</h3>
+            <p class="journal__excerpt">How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer">
-    <div class="container footer-inner">
-      <a href="../index.html" class="footer-brand">Bilobe<sup>AI</sup></a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · Cap.Soc. € 10.000 i.v.</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a href="../index.html" class="site-footer__brand" aria-label="Bilobe, home">
+          <img src="../assets/logos/bilobe-logo-completo-reversed.svg" alt="Bilobe. Trustworthy. For healthcare. European." width="260" height="83">
+        </a>
+        <div class="site-footer__trust">
+          <p class="secure-badge">
+            <svg class="secure-badge__lock" viewBox="0 0 48 58" aria-hidden="true">
+              <defs><linearGradient id="secure-badge-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8cd687"/><stop offset="1" stop-color="#30b092"/></linearGradient></defs>
+              <path class="secure-badge__shackle" d="M12 27V17a12 12 0 0 1 24 0v10"/>
+              <rect x="3" y="25" width="42" height="31" rx="7" fill="url(#secure-badge-fill)"/>
+              <path class="secure-badge__check" d="m15 41 6 6 12-12"/>
+            </svg>
+            <span class="secure-badge__text"><b>Secure</b><span>SSL encryption</span></span>
+          </p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="site-footer__nav">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+          <li><a href="../index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
+        <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
+      <p class="site-footer__copy"><span>© 2026 Bilobe SRL</span><a href="../privacy.html" data-i18n="footer_privacy">Privacy &amp; cookies</a><a href="#" data-consent-open hidden data-i18n="footer_cookie_settings">Cookie settings</a></p>
     </div>
   </footer>
 
-  <script>
-    const burger = document.querySelector('.nav-burger');
-    const navLinks = document.querySelector('.nav-links');
-    burger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      burger.setAttribute('aria-expanded', String(open));
-    });
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="../assets/js/chrome.js" defer></script>
+  <script src="../assets/js/consent.js" defer></script>
 </body>
+
 </html>

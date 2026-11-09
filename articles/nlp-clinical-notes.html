@@ -1,84 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NLP for Clinical Notes: Extracting Structure from the Unstructured — Bilobe AI</title>
-  <meta name="description" content="An overview of our biomedical NLP pipeline for Italian clinical discharge letters — entity recognition, relation extraction, and temporal reasoning.">
-  <link rel="icon" href="../images/logo/logo.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../article.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <title>NLP for clinical notes: extracting structure from the unstructured — Bilobe</title>
+  <meta name="description" content="An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/articles/nlp-clinical-notes.html">
+  <meta property="og:title" content="NLP for clinical notes: extracting structure from the unstructured — Bilobe">
+  <meta property="og:description" content="An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
 </head>
+
 <body>
 
-  <nav id="navbar" class="light">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-brand">
-        <img src="../images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="../assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="../assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="../index.html#features">Features</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#partners">Partners</a></li>
-        <li><a href="../index.html#contact">People</a></li>
-        <li><a href="../insights.html">Insights</a></li>
-        <li><a href="../index.html#get-in-touch">Contact</a></li>
-      </ul>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+        </ul>
+        <a href="../index.html#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
+  <div class="read-progress" aria-hidden="true"></div>
 
-  <div class="article-hero">
-    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1600&q=85&auto=format&fit=crop" alt="Clinical notes and medical documentation">
-    <div class="article-hero-overlay"></div>
-    <div class="article-hero-meta">
-      <div class="container">
-        <nav class="article-breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a><span class="sep">›</span>
-          <a href="../insights.html">Insights</a><span class="sep">›</span>
-          <span>NLP for Clinical Notes</span>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <main>
-    <div class="container">
-      <header class="article-header">
-        <span class="insight-tag research">Research</span>
-        <h1>NLP for Clinical Notes: Extracting Structure from the Unstructured</h1>
-        <div class="article-byline">
-          <div class="byline-author">
-            <img src="../images/team/lucia-sacchi.png" alt="Lucia Sacchi" class="byline-avatar">
-            <div>
-              <div class="byline-name">Lucia Sacchi</div>
-              <div class="byline-role">Scientific Consultant &amp; Co-Founder</div>
-            </div>
-          </div>
-          <div class="byline-divider" aria-hidden="true"></div>
-          <div class="byline-meta">
-            <span><span class="material-symbols-outlined">calendar_today</span> December 5, 2024</span>
-            <span><span class="material-symbols-outlined">schedule</span> 7 min read</span>
+  <main class="page">
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../insights.html">Insights</a>
+          </nav>
+          <p class="post-head__meta"><span>Research</span><time datetime="2024-12-05">5 December 2024</time><span>7 min read</span></p>
+          <h1 class="post-head__title">NLP for clinical notes: extracting structure from the unstructured</h1>
+          <p class="post-head__lead">Clinical discharge letters are among the richest sources of patient information in any health system — and among the least accessible to computational analysis. Dense, abbreviated, inconsistent, and written in highly specialised medical language, they resist standard NLP approaches. This is our account of building a pipeline that works.</p>
+          <div class="byline">
+            <div class="byline__photo person__photo"><img src="../images/team/lucia-sacchi.png" alt="" width="56" height="56"></div>
+            <div><p class="byline__name">Lucia Sacchi</p><p class="byline__role">Scientific consultant, co-founder</p></div>
           </div>
         </div>
       </header>
 
-      <div class="article-layout">
-        <article class="article-prose">
-          <p class="lead">Clinical discharge letters are among the richest sources of patient information in any health system — and among the least accessible to computational analysis. Dense, abbreviated, inconsistent, and written in highly specialised medical language, they resist standard NLP approaches. This is our account of building a pipeline that works.</p>
-
-          <h2>The Italian Clinical Notes Challenge</h2>
+      <div class="wrap post-body">
+        <div class="prose">
+          <h2>The Italian clinical notes challenge</h2>
           <p>Italian clinical discharge letters present a particularly challenging NLP target. Written by clinicians under time pressure, they combine formal medical terminology, colloquial abbreviations, Latin phrases, numerical lab values, and patient-specific shorthand into documents that vary enormously in structure and length. A letter for a cardiac patient might run to four pages with structured sections; one for an emergency admission might be a single dense paragraph.</p>
           <p>The low-resource challenge compounds this. While English biomedical NLP benefits from large annotated corpora like MIMIC-III and i2b2, Italian clinical text is largely proprietary, scattered across hospital systems, and rarely annotated. Training robust models requires creative approaches to data scarcity.</p>
 
-          <h2>Named Entity Recognition for Medical Concepts</h2>
+          <h2>Named entity recognition for medical concepts</h2>
           <p>The first task in our pipeline is named entity recognition (NER) — identifying spans of text that refer to clinical concepts such as diagnoses, medications, procedures, and anatomical locations. We address this with a transformer model fine-tuned on a proprietary annotated corpus developed in collaboration with ICS Maugeri's clinical informatics team.</p>
           <p>Our annotation schema covers seven entity types: diagnoses, symptoms, medications, dosages, procedures, anatomical sites, and clinical findings. Training data totals approximately 3,200 discharge letters with full span-level annotation — modest by English NLP standards, but sufficient for robust performance when combined with pre-training on Italian biomedical text.</p>
           <p>We achieve F1 scores of 0.88 for diagnoses, 0.91 for medications, and 0.84 for procedures on our held-out test set. Performance drops to 0.76 for clinical findings — a heterogeneous category that includes laboratory abnormalities, imaging findings, and physiological measurements — reflecting the category's greater linguistic variability.</p>
@@ -88,21 +86,16 @@
             <cite>— Lucia Sacchi, Scientific Consultant &amp; Co-Founder</cite>
           </blockquote>
 
-          <h2>Temporal Reasoning in Discharge Letters</h2>
+          <h2>Temporal reasoning in discharge letters</h2>
           <p>Identifying what happened is only half the problem. Clinical decision support also requires knowing when things happened and in what order — whether a medication was prescribed before or after a diagnosis, whether a symptom was present on admission or developed during hospitalisation, whether a finding is acute or chronic.</p>
           <p>Temporal reasoning in clinical text is hard because clinicians use time in complex ways. "The patient, who has suffered from hypertension for twenty years, presented acutely with chest pain" encodes three temporal relations in a single sentence — and the model must disentangle them. We use a combination of a temporal expression normaliser (adapted from SUTime for Italian) and a neural relation classifier that identifies the temporal links between extracted entities and time expressions.</p>
 
-          <figure>
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80&auto=format&fit=crop" alt="Data analysis and timeline reconstruction">
-            <figcaption>Reconstructed patient timeline from a cardiac discharge letter. Each event is positioned relative to admission date, with confidence intervals derived from the model's temporal expression extraction.</figcaption>
-          </figure>
-
-          <h2>Low-Resource Italian NLP</h2>
+          <h2>Low-resource Italian NLP</h2>
           <p>The scarcity of annotated Italian clinical text pushed us toward several strategies to make the most of limited supervision. Cross-lingual transfer from English BERT models (using mBERT and XLM-RoBERTa as base models) proved effective — models pre-trained on multilingual text bring useful biomedical knowledge from English annotations even when fine-tuned on Italian text. Domain-adaptive pre-training on unannotated Italian clinical text, using masked language modelling, further narrows the gap.</p>
           <p>We also developed a data augmentation strategy specific to clinical text. By systematically replacing entity spans with semantically compatible alternatives from a medical ontology (SNOMED-CT Italian extension), we generate synthetic training examples that expose the model to a broader vocabulary while preserving document-level coherence.</p>
 
           <div class="key-highlights">
-            <h4>Key Takeaways</h4>
+            <h4>Key takeaways</h4>
             <ul>
               <li>Italian clinical NER achieves F1 of 0.88+ for diagnoses and medications on held-out test data</li>
               <li>Temporal reasoning enables reconstruction of patient event timelines from discharge letters</li>
@@ -116,81 +109,100 @@
           <p>The pipeline is deployed at ICS Maugeri as part of a clinical information extraction system that processes new discharge letters within minutes of their creation. Extracted entities are structured into a patient summary view available to treating physicians, with links back to the source text spans for verification. The system processes approximately 200 letters per day across ICS Maugeri's seven Italian facilities.</p>
           <p>Physician feedback has been positive, with particular appreciation for the medication extraction capability — reconciling medication lists across multiple hospitalisation episodes is a time-consuming task that the system automates reliably. The temporal reasoning module, while technically impressive, receives more mixed feedback: clinicians appreciate the timeline view but are cautious about trusting fine-grained temporal assignments without manual verification.</p>
           <p>This is a recurring theme in clinical AI deployment: the features that are hardest to build are often not the ones clinicians value most. Continuous user feedback is as important as model performance metrics, and we have built a structured feedback loop into the ICS Maugeri deployment that feeds directly into our model retraining pipeline.</p>
-        </article>
+        </div>
 
-        <aside class="article-sidebar">
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Share</p>
-            <div class="share-btns">
-              <a href="mailto:?subject=NLP for Clinical Notes&body=https://bilobe.ai/articles/nlp-clinical-notes.html" class="share-btn"><span class="material-symbols-outlined">mail</span> Share via email</a>
-              <button class="share-btn" onclick="navigator.clipboard.writeText(location.href); this.textContent='Copied!'; setTimeout(()=>this.innerHTML='<span class=\'material-symbols-outlined\'>link</span> Copy link', 2000)"><span class="material-symbols-outlined">link</span> Copy link</button>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Article details</p>
-            <div class="sidebar-meta-list">
-              <div class="sidebar-meta-item"><span class="meta-key">Published</span><span class="meta-val">Dec 5, 2024</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Reading time</span><span class="meta-val">7 min</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Category</span><span class="meta-val">Research</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Author</span><span class="meta-val">Lucia Sacchi</span></div>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Related</p>
-            <div class="sidebar-related-list">
-              <a href="xai-clinical.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info"><time>March 2025</time><p>Explainable AI in Clinical Decision Support</p></div>
-              </a>
-              <a href="viralingo.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info"><time>January 2025</time><p>ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</p></div>
-              </a>
+        <aside class="post-aside" aria-label="Article details">
+          <div class="post-aside__inner">
+            <p class="post-aside__label">Details</p>
+            <dl class="post-aside__meta">
+              <div><dt>Published</dt><dd><time datetime="2024-12-05">5 December 2024</time></dd></div>
+              <div><dt>Reading time</dt><dd>7 min</dd></div>
+              <div><dt>Category</dt><dd>Research</dd></div>
+              <div><dt>Author</dt><dd>Lucia Sacchi</dd></div>
+            </dl>
+            <p class="post-aside__label">Share</p>
+            <div class="post-aside__share">
+              <a href="mailto:?subject=NLP for clinical notes: extracting structure from the unstructured&amp;body=https://bilobe.eu/articles/nlp-clinical-notes.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
+              <button type="button" data-copy-link data-copied="Link copied"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Copy link</span></button>
             </div>
           </div>
         </aside>
       </div>
-    </div>
+    </article>
 
-    <section class="article-related">
-      <div class="container">
-        <div class="article-related-header">
-          <h2>More from Bilobe</h2>
-          <a href="../insights.html" class="insights-view-all">All insights <span class="material-symbols-outlined">arrow_forward</span></a>
+    <section class="journal journal--related" aria-labelledby="related-title">
+      <div class="wrap">
+        <div class="journal__head">
+          <h2 class="journal__heading" id="related-title"><span>More from Bilobe</span></h2>
+          <a class="journal__all" href="../insights.html"><span>All insights</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="insights-grid">
-          <article class="insight-card">
-            <a href="xai-clinical.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy"><span class="insight-tag research">Research</span></div>
-              <div class="insight-body"><time class="insight-date">March 2025</time><h3>Explainable AI in Clinical Decision Support</h3><p>How XAI techniques are reshaping clinician trust in AI-assisted diagnosis.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="viralingo.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy"><span class="insight-tag technology">Technology</span></div>
-              <div class="insight-body"><time class="insight-date">January 2025</time><h3>ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3><p>Our collaboration with the University of Florida on pan-viral language modelling.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="gdpr-ai.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy"><span class="insight-tag policy">Policy</span></div>
-              <div class="insight-body"><time class="insight-date">October 2024</time><h3>GDPR Meets AI: Data Protection by Design</h3><p>How to architect AI healthcare solutions that treat GDPR compliance as a feature.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
+        <div class="journal__list">
+        <article class="journal__item">
+          <a class="journal__link" href="xai-clinical.html">
+            <p class="journal__meta"><span>Research</span><time datetime="2025-03-10">10 March 2025</time></p>
+            <h3 class="journal__title">Explainable AI in clinical decision support</h3>
+            <p class="journal__excerpt">How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="viralingo.html">
+            <p class="journal__meta"><span>Technology</span><time datetime="2025-01-22">22 January 2025</time></p>
+            <h3 class="journal__title">ViraLingo: predicting viral variants with pan-viral LLMs</h3>
+            <p class="journal__excerpt">Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="gdpr-ai.html">
+            <p class="journal__meta"><span>Policy</span><time datetime="2024-10-08">8 October 2024</time></p>
+            <h3 class="journal__title">GDPR meets AI: data protection by design in medical systems</h3>
+            <p class="journal__excerpt">How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer">
-    <div class="container footer-inner">
-      <a href="../index.html" class="footer-brand">Bilobe<sup>AI</sup></a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · Cap.Soc. € 10.000 i.v.</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a href="../index.html" class="site-footer__brand" aria-label="Bilobe, home">
+          <img src="../assets/logos/bilobe-logo-completo-reversed.svg" alt="Bilobe. Trustworthy. For healthcare. European." width="260" height="83">
+        </a>
+        <div class="site-footer__trust">
+          <p class="secure-badge">
+            <svg class="secure-badge__lock" viewBox="0 0 48 58" aria-hidden="true">
+              <defs><linearGradient id="secure-badge-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8cd687"/><stop offset="1" stop-color="#30b092"/></linearGradient></defs>
+              <path class="secure-badge__shackle" d="M12 27V17a12 12 0 0 1 24 0v10"/>
+              <rect x="3" y="25" width="42" height="31" rx="7" fill="url(#secure-badge-fill)"/>
+              <path class="secure-badge__check" d="m15 41 6 6 12-12"/>
+            </svg>
+            <span class="secure-badge__text"><b>Secure</b><span>SSL encryption</span></span>
+          </p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="site-footer__nav">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+          <li><a href="../index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
+        <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
+      <p class="site-footer__copy"><span>© 2026 Bilobe SRL</span><a href="../privacy.html" data-i18n="footer_privacy">Privacy &amp; cookies</a><a href="#" data-consent-open hidden data-i18n="footer_cookie_settings">Cookie settings</a></p>
     </div>
   </footer>
-  <script>
-    const burger = document.querySelector('.nav-burger'); const navLinks = document.querySelector('.nav-links');
-    burger.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); });
-  </script>
+
+  <script src="../assets/js/chrome.js" defer></script>
+  <script src="../assets/js/consent.js" defer></script>
 </body>
+
 </html>

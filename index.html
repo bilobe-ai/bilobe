@@ -4,752 +4,510 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js')</script>
   <title>Bilobe — Trustworthy AI for Healthcare</title>
   <meta name="description"
     content="Bilobe builds trustworthy, compliant, human-centered AI solutions for healthcare practitioners and organizations.">
-  <link rel="icon" href="images/logo/logo.ico" type="image/x-icon">
-  <link rel="icon" href="images/logo/logo-32x32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="images/logo/logo-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Funnel+Display:wght@700;800&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/">
+  <meta property="og:title" content="Bilobe — Trustworthy AI for healthcare">
+  <meta property="og:description"
+    content="Compliant, explainable AI for clinicians, patient protection and healthcare delivery.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/products.css">
+  <link rel="stylesheet" href="assets/css/chapters.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-brand">
-        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>&nbsp;&nbsp;AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="#top" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="#features" data-i18n="nav_features">Features</a></li>
-        <li class="nav-item-dropdown">
-          <a href="#products" class="nav-dropdown-trigger">
-            <span data-i18n="nav_products">Products</span>
-            <span class="nav-chevron material-symbols-outlined">expand_more</span>
-          </a>
-          <ul class="nav-dropdown">
-            <li><a href="#mangrove-navigator">Mangrove Navigator</a></li>
-            <li><a href="#fireweed-elicitation">Fireweed Elicitation</a></li>
-            <li><a href="#moss-anonymizer">Moss Anonymizer</a></li>
-          </ul>
-        </li>
-        <li><a href="#about" data-i18n="nav_about">About</a></li>
-        <li><a href="#contact" data-i18n="nav_people">People</a></li>
-        <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
-        <li><a href="#get-in-touch" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-          <span class="lang-option active" data-lang="en">EN</span>
-          <span class="lang-sep">/</span>
-          <span class="lang-option" data-lang="it">IT</span>
-        </button>
-        <a href="#get-in-touch" class="nav-demo-btn" data-i18n="nav_book_demo">Book a demo</a>
-      </div>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#people" data-i18n="nav_people">People</a></li>
+          <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
+        </ul>
+        <button class="lang-switch" id="lang-toggle" type="button" aria-label="Switch language / Cambia lingua">
+          <span class="lang-switch__option active" data-lang="en">EN</span>
+          <span aria-hidden="true">/</span>
+          <span class="lang-switch__option" data-lang="it">IT</span>
+        </button>
+        <a href="#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-glow-1"></div>
-      <div class="hero-glow-2"></div>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__graphic" aria-hidden="true">
+      <img src="assets/graphics/bilobe-text-to-data-hero-dark.svg" alt="" width="980" height="600" fetchpriority="high">
     </div>
-    <div class="container">
-
-      <div class="hero-split">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="reveal delay-1" data-i18n="hero_title_1">Trustworthy.</span>
-            <span class="reveal delay-2 accent-text" data-i18n="hero_title_2">for&nbsp;Healthcare.</span>
-          </h1>
-          <p class="hero-sub reveal delay-3" data-i18n="hero_sub">
-            We build compliant, explainable AI that empowers clinicians,
-            protects patients, and transforms healthcare delivery.
-          </p>
-          <div class="hero-cta reveal delay-4">
-            <a href="#products" class="btn-outline-white" data-i18n="hero_cta">Explore our products</a>
-          </div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__title" id="hero-title">
+          <span data-i18n="hero_title_1">Trustworthy.</span>
+          <span class="hero__title-accent" data-i18n="hero_title_2">For healthcare.</span>
+        </h1>
+        <p class="hero__lead" data-i18n="hero_sub">Compliant, explainable AI for clinicians, patient protection and healthcare delivery.</p>
+        <div class="hero__actions">
+          <a href="#products" class="btn btn--lime">
+            <span data-i18n="hero_cta">Explore our products</span>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#get-in-touch" class="btn btn--outline-white" data-i18n="nav_book_demo">Book a demo</a>
         </div>
-      </div>
-
-      <a href="#features" class="hero-scroll reveal delay-5" aria-label="Scroll down to explore">
-        <span class="hero-scroll-label" data-i18n="hero_scroll">Explore</span>
-        <span class="hero-scroll-mouse">
-          <span class="hero-scroll-wheel"></span>
-        </span>
-      </a>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="features_label">Our Capabilities</p>
-        <h2 data-i18n="features_h2">Built for the complexity<br>of clinical data.</h2>
-      </div>
-      <div class="features-grid">
-
-        <div class="feature-card reveal delay-1">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop"
-              alt="Medical data analytics" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">error_med</span>
-              <span class="feature-num">01</span>
-            </div>
-            <h3 data-i18n="feat1_h3">Handling Unstructured Data</h3>
-            <p data-i18n="feat1_p">Is your health institution data mostly unstructured — text, images, biosignals — but
-              filled with valuable
-              insights? Bilobe leverages modern AI to unlock what's hidden in clinical data.</p>
-          </div>
-        </div>
-
-        <div class="feature-card reveal delay-2">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop"
-              alt="Secure technology infrastructure" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">health_and_safety</span>
-              <span class="feature-num">02</span>
-            </div>
-            <h3 data-i18n="feat2_h3">Trustworthy, Compliant &amp; Secure</h3>
-            <p data-i18n="feat2_p">Our AI solutions are built with trustworthiness at their core — compliant with EU
-              MDR, GDPR, and the AI
-              Act, with data protection and explainability at every layer.</p>
-          </div>
-        </div>
-
-        <div class="feature-card reveal delay-3">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop"
-              alt="Doctor using digital tools" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">diagnosis</span>
-              <span class="feature-num">03</span>
-            </div>
-            <h3 data-i18n="feat3_h3">Human-Centered Interaction</h3>
-            <p data-i18n="feat3_p">Clinical evaluation practices and human-AI collaboration designed to keep
-              practitioners in control —
-              achieving the best of both human expertise and AI synergy.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="partners-strip reveal">
-        <p class="partners-strip-label" data-i18n="partners_label">Research Partners</p>
-        <div class="partners-carousel" aria-label="Research partners">
-          <div class="partners-track">
-            <!-- set 1 -->
-            <div class="partner-logo-item"><img
-                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-                alt="Nvidia" loading="lazy"></div>
-            <div class="partner-logo-item"><img
-                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-                alt="University of Pavia" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri" loading="lazy">
-            </div>
-            <div class="partner-logo-item"><img
-                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
-                alt="University of Florida" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png"
-                alt="Biomeris" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-            <!-- set 2 (duplicate for seamless loop) -->
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri"
-                loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png" alt="" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="products_label">Our Products</p>
-        <h2 data-i18n="products_h2">Purpose-built tools<br>for clinical practice.</h2>
-      </div>
-      <div class="products-grid">
-
-        <!-- mangrove Navigator — featured full-width row -->
-        <div id="mangrove-navigator" class="product-card product-card--featured reveal delay-1">
-          <div class="product-cover">
-            <picture>
-              <source media="(max-width: 1024px)" srcset="./images/products/mangrove_cover.png">
-              <img src="./images/products/mangrove_cover_vertical.png" alt="Mangrove Navigator" loading="lazy">
-            </picture>
-          </div>
-          <div class="product-card-body">
-            <div class="product-card-top">
-              <h3 class="product-name">Mangrove Navigator</h3>
-              <p class="product-tagline" data-i18n="mangrove_tagline">Your expert guide through medical knowledge</p>
-              <p class="product-desc" data-i18n="mangrove_desc">An advanced conversational decision-support system
-                grounded in medical guidelines.
-                Deployable across multiple clinical scenarios — from triage support for general practitioners to
-                treatment adherence monitoring in hospital wards.</p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">public</span>
-                  <div>
-                    <strong data-i18n="ing_europe_title">Europe First</strong>
-                    <span data-i18n="ing_europe_desc">Models hosted exclusively on European servers, with three
-                      sovereignty tiers: international
-                      cloud, European cloud, or fully on-premise.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">verified</span>
-                  <div>
-                    <strong data-i18n="ing_guideline_title">Guideline-Grounded, Human-Validated</strong>
-                    <span data-i18n="ing_guideline_desc">Knowledge sourced exclusively from guidelines and procedures
-                      carefully curated and approved by
-                      our medical team.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">account_tree</span>
-                  <div>
-                    <strong data-i18n="ing_rag_title">Not Just a RAG</strong>
-                    <span data-i18n="ing_rag_desc">Knowledge graphs built on established medical ontologies for
-                      retrieval guided by real clinical
-                      entity relationships — not just semantics.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fireweed Elicitation + Moss Anonymizer — two-column row -->
-        <div class="products-row">
-
-          <div id="fireweed-elicitation" class="product-card reveal delay-2">
-            <div class="product-card-top">
-              <h3 class="product-name">Fireweed Elicitation</h3>
-              <p class="product-tagline" data-i18n="fireweed_tagline">Helps you discover and define structure in your
-                clinical notes</p>
-              <p class="product-desc" data-i18n="fireweed_desc">An AI agent system that elicits an eCRF in a data-driven
-                way — turning a
-                clinician's high-level description into a structured variable registry grounded in the actual content of
-                clinical notes.</p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">person_check</span>
-                  <div>
-                    <strong data-i18n="ing_human_title">For the Human, Through the Human</strong>
-                    <span data-i18n="ing_human_desc">Starts with the clinician's description and a brief conversation,
-                      then loops back at every
-                      step so the user can edit variables or add new requirements.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">analytics</span>
-                  <div>
-                    <strong data-i18n="ing_databased_title">Data-Based, Not Eminence-Based</strong>
-                    <span data-i18n="ing_databased_desc">Fields emerge directly from real-world data, not from abstract
-                      theory. Ambiguity stays with
-                      the decision maker — not the data-entry person.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div id="moss-anonymizer" class="product-card reveal delay-3">
-            <div class="product-card-top">
-              <h3 class="product-name">Moss Anonymizer</h3>
-              <p class="product-tagline" data-i18n="moss_tagline">Making biomedical data ready for secondary use and
-                sharing</p>
-              <p class="product-desc" data-i18n="moss_desc">A highly customizable pseudonymization system
-                purpose-built for the biomedical
-                context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.
-              </p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">lock</span>
-                  <div>
-                    <strong data-i18n="ing_yourdata_title">Your Data, Your Service</strong>
-                    <span data-i18n="ing_yourdata_desc">Runs fully on-premise with zero data transmitted outside your
-                      infrastructure.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
-                  <div>
-                    <strong data-i18n="ing_plug_title">Plug &amp; Play</strong>
-                    <span data-i18n="ing_plug_desc">Drag and drop files directly into the interface for instant
-                      pseudonymization — no setup needed
-                      for one-off use.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">mediation</span>
-                  <div>
-                    <strong data-i18n="ing_pipeline_title">Pipeline-Ready Middle Layer</strong>
-                    <span data-i18n="ing_pipeline_desc">Connect it directly into your existing data streams as
-                      transparent middleware — it runs
-                      silently in the background.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-layout">
-
-        <div class="about-text">
-          <p class="label reveal" data-i18n="about_label">About Us</p>
-          <h2 class="about-statement reveal delay-1" data-i18n="about_h2">Born from 40 years of biomedical informatics
-            research.</h2>
-          <div class="about-tag reveal delay-2">
-            <span class="material-symbols-outlined">location_on</span>
-            <span data-i18n="about_location">Pavia, Italy</span>
+  <!-- PRODUCTS: one tab per product; each product works live on the stage (assets/js/product-demos.js) -->
+  <section class="products" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <p class="t-eyebrow products__eyebrow" data-i18n="products_label">Our products</p>
+      <h2 class="products__title" id="products-title">
+        <span data-i18n="products_h2_1">Purpose-built tools</span>
+        <span class="products__title-accent" data-i18n="products_h2_2">for clinical practice.</span>
+      </h2>
+      <div class="products__body">
+        <div class="products__side">
+          <div class="products__item is-active" data-product="mangrove" id="mangrove-navigator">
+            <button type="button" class="products__tab" aria-expanded="true" aria-controls="products-detail-mangrove">
+              <span class="products__kicker" data-i18n="kicker_mangrove">Decision support</span>
+              <span class="products__name">Mangrove<span class="products__name-2"> Navigator</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-mangrove">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="mangrove_tagline">Your expert guide through medical knowledge</p>
+                <p class="products__desc" data-i18n="mangrove_desc">A conversational decision-support system grounded in medical guidelines. It works across clinical scenarios, from triage support for general practitioners to treatment adherence monitoring on hospital wards.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_europe_title">Europe first</b><span data-i18n="ing_europe_desc">Hosted on European servers, with three sovereignty tiers: international cloud, European cloud or fully on-premise.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_guideline_title">Guideline-grounded, human-validated</b><span data-i18n="ing_guideline_desc">Knowledge comes only from guidelines and procedures curated and approved by our medical team.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_rag_title">Not just a RAG</b><span data-i18n="ing_rag_desc">Knowledge graphs built on established medical ontologies guide retrieval through real relationships between clinical entities, not text similarity alone.</span></li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="about-body">
-            <p class="reveal delay-3" data-i18n="about_p1">Born in Pavia, Italy from the 40-year tradition of the
-              Biomedical Informatics Lab
-              "Mario Stefanelli", Bilobe is the melting pot of cutting-edge academic research and real-world
-              implementation in healthcare.</p>
-            <p class="reveal delay-4" data-i18n="about_p2">Our mission is to support healthcare practitioners, enhance
-              patient outcomes, and
-              improve healthcare organizations with innovative technology — turning complex, unstructured data into
-              actionable insights through transparent and trustworthy solutions.</p>
-            <p class="reveal delay-5" data-i18n="about_p3">By combining advanced algorithms with deep medical domain
-              expertise, we make
-              healthcare more efficient, accessible, and personalized.</p>
+          <div class="products__item" data-product="fireweed" id="fireweed-elicitation">
+            <button type="button" class="products__tab" aria-expanded="false" aria-controls="products-detail-fireweed">
+              <span class="products__kicker" data-i18n="kicker_fireweed">Study design</span>
+              <span class="products__name">Fireweed<span class="products__name-2"> Elicitation</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-fireweed">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="fireweed_tagline">Helps you discover and define structure in your clinical notes</p>
+                <p class="products__desc" data-i18n="fireweed_desc">An AI agent system that drafts an eCRF from the data. It turns a clinician's high-level description into a structured variable registry, grounded in what the clinical notes actually contain.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_human_title">For the human, through the human</b><span data-i18n="ing_human_desc">It starts from the clinician's description and a short conversation, then checks back at every step so variables can be edited or added.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_databased_title">Data-based, not eminence-based</b><span data-i18n="ing_databased_desc">Fields come from real-world data, not abstract theory. Ambiguity stays with the decision maker, not with the person entering the data.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="products__item" data-product="moss" id="moss-anonymizer">
+            <button type="button" class="products__tab" aria-expanded="false" aria-controls="products-detail-moss">
+              <span class="products__kicker" data-i18n="kicker_moss">Data protection</span>
+              <span class="products__name">Moss<span class="products__name-2"> Anonymizer</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-moss">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="moss_tagline">Making biomedical data ready for secondary use and sharing</p>
+                <p class="products__desc" data-i18n="moss_desc">A highly customisable pseudonymization system built for biomedical data. It runs entirely on-premise: no data ever leaves your institution.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_yourdata_title">Your data, your service</b><span data-i18n="ing_yourdata_desc">Runs fully on-premise. Nothing is transmitted outside your infrastructure.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_plug_title">Plug and play</b><span data-i18n="ing_plug_desc">Drag files into the interface for immediate pseudonymization. One-off use needs no setup.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_pipeline_title">Pipeline-ready middle layer</b><span data-i18n="ing_pipeline_desc">Connect it to your existing data streams as transparent middleware that runs in the background.</span></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="about-visual reveal delay-2">
-          <img src="./images/tamburo.jpg" alt="Biomedical research laboratory">
+        <div class="products__stage">
+          <div class="products__screens">
+            <div class="products__screen is-active" data-product="mangrove" data-demo="mangrove"></div>
+            <div class="products__screen" data-product="fireweed" data-demo="fireweed"></div>
+            <div class="products__screen" data-product="moss" data-demo="moss"></div>
+          </div>
+          <p class="products__note" data-i18n="products_note">Illustrative example with synthetic data. Try it: every element responds.</p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- PEOPLE -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="people_label">Our Team</p>
-        <h2><span data-i18n="people_h2">The people behind</span><br><img src="images/logo/logo.gif" alt="Bilobe"
-            class="inline-icon"> Bilobe.</h2>
+  <!-- CAPABILITIES -->
+  <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
+    <div class="wrap capabilities__grid">
+      <div class="capabilities__intro">
+        <div class="capabilities__sticky">
+          <p class="t-eyebrow capabilities__eyebrow" data-i18n="features_label">Our capabilities</p>
+          <h2 class="capabilities__title" id="capabilities-title">
+            <span data-i18n="features_h2_1">Built for the complexity</span>
+            <span class="capabilities__title-accent" data-i18n="features_h2_2">of clinical data.</span>
+          </h2>
+          <ol class="capabilities__index">
+            <li><a href="#cap-data" data-i18n="cap1_label">Data</a></li>
+            <li><a href="#cap-trust" data-i18n="cap2_label">Trust</a></li>
+            <li><a href="#cap-people" data-i18n="cap3_label">People</a></li>
+          </ol>
+        </div>
       </div>
-      <div class="people-grid">
-
-        <div class="people-row people-row--main">
-
-          <div class="person-card reveal delay-1">
-            <div class="person-img-wrap">
-              <img src="./images/team/enea-parimbelli.png" alt="Enea Parimbelli" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Enea Parimbelli</h3>
-              <p class="person-role" data-i18n="role_ceo">CEO, Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-2">
-            <div class="person-img-wrap">
-              <img src="images/team/tommaso-buonocore.png" alt="Tommaso Buonocore" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Tommaso&nbsp;Buonocore</h3>
-              <p class="person-role" data-i18n="role_cto">CTO, Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-3">
-            <div class="person-img-wrap">
-              <img src="./images/team/placeholder-woman.png" alt="Lorenza Rossi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Lorenza Rossi</h3>
-              <p class="person-role" data-i18n="role_cfo">CFO, Co-Founder · MEng</p>
-              <a href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="people-row people-row--consultants">
-
-          <div class="person-card reveal delay-1">
-            <div class="person-img-wrap">
-              <img src="./images/team/giovanna-nicora.png" alt="Giovanna Nicora" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Giovanna Nicora</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-2">
-            <div class="person-img-wrap">
-              <img src="./images/team/lucia-sacchi.png" alt="Lucia Sacchi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Lucia Sacchi</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-3">
-            <div class="person-img-wrap">
-              <img src="./images/team/arianna-dagliati.png" alt="Arianna Dagliati" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Arianna Dagliati</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-4">
-            <div class="person-img-wrap">
-              <img
-                src="https://www.ilgiorno.it/image-service/version/c:YWE4NjQ1YTktNmNkMC00:YmQwNjc1/riccardo-bellazzi-premiato-per-la-dedizione-allinformatica-medica.webp"
-                alt="Riccardo Bellazzi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Riccardo Bellazzi</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="capabilities__list">
+        <article class="capability" id="cap-data">
+          <p class="t-eyebrow capability__label" data-i18n="cap1_label">Data</p>
+          <h3 class="capability__title" data-i18n="cap1_title">Unstructured data, made usable.</h3>
+          <p class="capability__body" data-i18n="cap1_body">Most clinical information lives in free text, images and biosignals. We build AI that reads it and returns structured data your teams can search, count and analyse.</p>
+          <p class="capability__detail" data-i18n="cap1_detail">Clinical notes · Reports · Images · Biosignals</p>
+        </article>
+        <article class="capability" id="cap-trust">
+          <p class="t-eyebrow capability__label" data-i18n="cap2_label">Trust</p>
+          <h3 class="capability__title" data-i18n="cap2_title">Trustworthy by design.</h3>
+          <p class="capability__body" data-i18n="cap2_body">We design for the European rules from the start: the EU MDR, the GDPR and the AI Act. Data protection and explainability are part of every layer, not added at the end.</p>
+          <p class="capability__detail" data-i18n="cap2_detail">Explainable outputs · Data protection · European hosting</p>
+        </article>
+        <article class="capability" id="cap-people">
+          <p class="t-eyebrow capability__label" data-i18n="cap3_label">People</p>
+          <h3 class="capability__title" data-i18n="cap3_title">Clinicians stay in control.</h3>
+          <p class="capability__body" data-i18n="cap3_body">Our tools support clinical judgement; they do not replace it. We evaluate them with clinicians and design each interaction so that the practitioner makes the final decision.</p>
+          <p class="capability__detail" data-i18n="cap3_detail">Clinical evaluation · Human oversight · Fits existing workflows</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- INSIGHTS PREVIEW -->
-  <section id="insights">
-    <div class="container">
-      <div class="insights-header reveal">
+  <!-- PARTNERS: an endless row of logos in one brand colour; their own colours on hover.
+       sections.js repeats the set until it fills the widest screen. -->
+  <section id="partners" class="partners" aria-labelledby="partners-label">
+    <div class="wrap">
+      <p class="t-eyebrow partners__label" id="partners-label" data-i18n="partners_label">Research partners</p>
+    </div>
+    <div class="partners__marquee">
+      <ul class="partners__track">
+          <li class="partner">
+            <span class="partner__logo" style="--w:65px; --h:86px">
+              <img class="partner__mono" src="assets/images/partners/university-of-pavia-mono.webp" alt="University of Pavia" width="65" height="86" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/university-of-pavia.webp" alt="" width="65" height="86" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:106px; --h:53px">
+              <img class="partner__mono" src="assets/images/partners/ics-maugeri-mono.webp" alt="ICS Maugeri" width="106" height="53" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/ics-maugeri.webp" alt="" width="106" height="53" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:75px; --h:75px">
+              <img class="partner__mono" src="assets/images/partners/university-of-florida-mono.webp" alt="University of Florida" width="75" height="75" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/university-of-florida.webp" alt="" width="75" height="75" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:168px; --h:27px">
+              <img class="partner__mono" src="assets/images/partners/biomeris-mono.webp" alt="Biomeris" width="168" height="27" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/biomeris.webp" alt="" width="168" height="27" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:117px; --h:48px">
+              <img class="partner__mono" src="assets/images/partners/bmi-mono.webp" alt="BMI" width="117" height="48" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/bmi.webp" alt="" width="117" height="48" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT: our story, told in chapters (assets/js/chapters.js) -->
+  <section class="chapters about" id="about" aria-labelledby="about-title" data-nav-label="About Bilobe">
+    <div class="chapters__pin">
+      <div class="chapters__track">
+        <article class="chapters__panel chapters__panel--intro" data-label="Overview" data-label-i18n="about_nav">
+          <div class="wrap chapters__intro-grid">
+            <div>
+              <p class="t-eyebrow chapters__eyebrow" data-i18n="about_label">About us</p>
+              <h2 class="chapters__title" id="about-title">
+                <span data-i18n="about_h2_1">Born from 40 years</span>
+                <span class="chapters__title-accent" data-i18n="about_h2_2">of biomedical informatics research.</span>
+              </h2>
+            </div>
+            <div class="chapters__intro-side">
+              <p class="chapters__intro-text" data-i18n="about_intro">A company from Pavia that brings academic research into everyday clinical work.</p>
+              <p class="chapters__hint" aria-hidden="true"><span data-i18n="about_scroll">Scroll</span><svg viewBox="0 0 48 24"><path d="M2 12h42M34 4l10 8-10 8"/></svg></p>
+            </div>
+          </div>
+        </article>
+        <article class="chapters__panel chapters__panel--deep chapters__panel--photo" data-label="Origins" data-label-i18n="about_origins_nav" aria-labelledby="about_origins-name">
+          <div class="chapters__photo" aria-hidden="true">
+            <img src="assets/images/about-pavia-2000.webp" srcset="assets/images/about-pavia-1100.webp 1100w, assets/images/about-pavia-2000.webp 2000w" sizes="(max-width: 899px) 100vw, 55vw" alt="" width="2000" height="1500" loading="lazy" decoding="async">
+          </div>
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_origins_kicker">Origins</p>
+              <h3 class="chapters__name" id="about_origins-name"><span data-i18n="about_origins_name1">Born</span><span data-i18n="about_origins_name2">in Pavia.</span></h3>
+            </div>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_origins_tagline">Forty years of biomedical informatics behind us.</p>
+              <p class="chapters__desc" data-i18n="about_origins_desc">Bilobe grew out of the Biomedical Informatics Lab “Mario Stefanelli” in Pavia and its forty-year research tradition. We bring that research into real-world healthcare.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li1_t">Pavia, Italy</b><span data-i18n="about_origins_li1_d">Where Bilobe was born and where it has its home.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li2_t">Biomedical Informatics Lab “Mario Stefanelli”</b><span data-i18n="about_origins_li2_d">Four decades of research in biomedical informatics.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li3_t">Research and practice</b><span data-i18n="about_origins_li3_d">Academic research, put to work in real clinical settings.</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="chapters__panel chapters__panel--light" data-label="Mission" data-label-i18n="about_mission_nav" aria-labelledby="about_mission-name">
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_mission_kicker">Mission</p>
+              <h3 class="chapters__name" id="about_mission-name"><span data-i18n="about_mission_name1">From data</span><span data-i18n="about_mission_name2">to care.</span></h3>
+            </div>
+            <svg class="chapters__mark" viewBox="0 0 240 240" aria-hidden="true"><path pathLength="1" d="M24 80h70M24 120h86M24 160h70"/><path pathLength="1" d="M94 80c22 0 26 40 46 40M94 160c22 0 26-40 46-40M110 120h30"/><circle pathLength="1" cx="176" cy="120" r="36"/><path pathLength="1" d="M169 103h14v10h10v14h-10v10h-14v-10h-10v-14h10z"/></svg>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_mission_tagline">Complex data, turned into information people can act on.</p>
+              <p class="chapters__desc" data-i18n="about_mission_desc">Our mission is to support healthcare practitioners, improve patient outcomes and help healthcare organisations work better, with technology that is transparent and trustworthy.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li1_t">Practitioners</b><span data-i18n="about_mission_li1_d">Support for clinical decisions and everyday work.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li2_t">Patients</b><span data-i18n="about_mission_li2_d">Better outcomes, with their data protected.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li3_t">Organisations</b><span data-i18n="about_mission_li3_d">Unstructured data, made usable for care and research.</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="chapters__panel chapters__panel--teal" data-label="Approach" data-label-i18n="about_approach_nav" aria-labelledby="about_approach-name">
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_approach_kicker">Approach</p>
+              <h3 class="chapters__name" id="about_approach-name"><span data-i18n="about_approach_name1">Algorithms</span><span data-i18n="about_approach_name2">and medicine.</span></h3>
+            </div>
+            <svg class="chapters__mark" viewBox="0 0 240 240" aria-hidden="true"><circle pathLength="1" cx="92" cy="120" r="62"/><circle pathLength="1" cx="148" cy="120" r="62"/><path pathLength="1" d="M120 66v108"/></svg>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_approach_tagline">Advanced methods, guided by clinical knowledge.</p>
+              <p class="chapters__desc" data-i18n="about_approach_desc">We combine advanced algorithms with deep medical domain expertise, so that healthcare becomes more efficient, more accessible and more personal.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_approach_li1_t">Advanced algorithms</b><span data-i18n="about_approach_li1_d">Methods from current research in AI and biomedical informatics.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_approach_li2_t">Medical expertise</b><span data-i18n="about_approach_li2_d">Knowledge of clinical practice built into how each tool works.</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE: portraits in the brand duotone; natural colour on hover (or at the centre of the screen on touch) -->
+  <section class="people" id="people" aria-labelledby="people-title">
+    <div class="wrap">
+      <div class="people__grid">
+      <div class="people__intro">
+        <div class="people__sticky">
+          <p class="t-eyebrow people__eyebrow" data-i18n="people_label">Our team</p>
+          <h2 class="people__title" id="people-title">
+            <span data-i18n="people_h2_1">The people</span>
+            <span class="people__title-accent" data-i18n="people_h2_2">behind Bilobe.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="people__groups">
+
+      <div class="people__group">
+        <p class="people__group-label" data-i18n="people_founders">Founders</p>
+        <ul class="people__list people__list--lead">
+          <li class="person">
+            <div class="person__photo"><img src="images/team/enea-parimbelli.png" alt="Enea Parimbelli" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Enea</span> <span class="person__last">Parimbelli</span></h3>
+            <p class="person__role" data-i18n="role_ceo">CEO, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener" aria-label="Enea Parimbelli on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/tommaso-buonocore.png" alt="Tommaso Buonocore" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Tommaso</span> <span class="person__last">Buonocore</span></h3>
+            <p class="person__role" data-i18n="role_cto">CTO, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" aria-label="Tommaso Buonocore on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo person__photo--zoom"><img src="images/team/placeholder-woman.png" alt="Lorenza Rossi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Lorenza</span> <span class="person__last">Rossi</span></h3>
+            <p class="person__role" data-i18n="role_cfo">CFO, co-founder · MEng</p>
+            <a class="person__link" href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener" aria-label="Lorenza Rossi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="people__group">
+        <p class="people__group-label" data-i18n="people_board">Scientific consultants</p>
+        <ul class="people__list people__list--board">
+          <li class="person">
+            <div class="person__photo"><img src="images/team/giovanna-nicora.png" alt="Giovanna Nicora" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Giovanna</span> <span class="person__last">Nicora</span></h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener" aria-label="Giovanna Nicora on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/lucia-sacchi.png" alt="Lucia Sacchi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Lucia</span> <span class="person__last">Sacchi</span></h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" aria-label="Lucia Sacchi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/arianna-dagliati.png" alt="Arianna Dagliati" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Arianna</span> <span class="person__last">Dagliati</span></h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener" aria-label="Arianna Dagliati on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/riccardo-bellazzi.webp" alt="Riccardo Bellazzi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name"><span class="person__first">Riccardo</span> <span class="person__last">Bellazzi</span></h3>
+            <p class="person__role" data-i18n="role_sci_m">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener" aria-label="Riccardo Bellazzi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+        </ul>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS: latest articles as editorial columns -->
+  <section class="journal" id="insights" aria-labelledby="insights-title">
+    <div class="wrap">
+      <div class="journal__head">
         <div>
-          <p class="label" data-i18n="insights_label">Insights</p>
-          <h2 data-i18n="insights_h2">News, ideas &amp;<br>research updates.</h2>
+          <p class="t-eyebrow journal__eyebrow" data-i18n="insights_label">Insights</p>
+          <h2 class="journal__heading" id="insights-title">
+            <span data-i18n="insights_h2_1">News, ideas</span>
+            <span class="journal__heading-accent" data-i18n="insights_h2_2">and research updates.</span>
+          </h2>
         </div>
-        <a href="insights.html" class="insights-view-all">
-          <span data-i18n="insights_view_all">View all</span> <span
-            class="material-symbols-outlined">arrow_forward</span>
-        </a>
+        <a class="journal__all" href="insights.html"><span data-i18n="insights_view_all">All insights</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-
-      <div class="insights-grid">
-
-        <article class="insight-card reveal delay-1">
-          <a href="articles/xai-clinical.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80&auto=format&fit=crop"
-                alt="Explainable AI in clinical settings" loading="lazy">
-              <span class="insight-tag research" data-i18n="tag_research">Research</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-03-10">March 2025</time>
-              <h3 data-i18n="insight1_h3">Explainable AI in Clinical Decision Support</h3>
-              <p data-i18n="insight1_p">How XAI techniques are reshaping clinician trust — and why transparency is the
-                next frontier for
-                medical AI adoption.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+      <div class="journal__list">
+        <article class="journal__item">
+          <a class="journal__link" href="articles/xai-clinical.html">
+            <p class="journal__meta"><span data-i18n="tag_research">Research</span><time datetime="2025-03-10" data-i18n="date1">10 March 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight1_h3">Explainable AI in clinical decision support</h3>
+            <p class="journal__excerpt" data-i18n="insight1_p">How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
-        <article class="insight-card reveal delay-2">
-          <a href="articles/eu-ai-act.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=700&q=80&auto=format&fit=crop"
-                alt="EU AI Act and healthcare compliance" loading="lazy">
-              <span class="insight-tag policy" data-i18n="tag_policy">Policy</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-02-18">February 2025</time>
-              <h3 data-i18n="insight2_h3">EU AI Act: What It Means for HealthTech Startups</h3>
-              <p data-i18n="insight2_p">A practical guide to navigating the new EU AI Act requirements for high-risk
-                medical AI systems — from
-                risk classification to conformity assessment.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        <article class="journal__item">
+          <a class="journal__link" href="articles/eu-ai-act.html">
+            <p class="journal__meta"><span data-i18n="tag_policy">Policy</span><time datetime="2025-02-18" data-i18n="date2">18 February 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight2_h3">EU AI Act: what it means for healthtech startups</h3>
+            <p class="journal__excerpt" data-i18n="insight2_p">A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
-        <article class="insight-card reveal delay-3">
-          <a href="articles/viralingo.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&auto=format&fit=crop"
-                alt="ViraLingo viral variant prediction" loading="lazy">
-              <span class="insight-tag technology" data-i18n="tag_technology">Technology</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-01-22">January 2025</time>
-              <h3 data-i18n="insight3_h3">ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3>
-              <p data-i18n="insight3_p">Our collaboration with the University of Florida on a large language model
-                trained across HIV,
-                Hepatitis, and Coronavirus genomes to predict dangerous variants.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        <article class="journal__item">
+          <a class="journal__link" href="articles/viralingo.html">
+            <p class="journal__meta"><span data-i18n="tag_technology">Technology</span><time datetime="2025-01-22" data-i18n="date3">22 January 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight3_h3">ViraLingo: predicting viral variants with pan-viral LLMs</h3>
+            <p class="journal__excerpt" data-i18n="insight3_p">Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- CONTACT US -->
-  <section id="get-in-touch">
-    <div class="container">
-      <div class="contact-layout">
-
-        <div class="contact-left reveal">
-          <p class="label" data-i18n="contact_label">Contact Us</p>
-          <h2 class="contact-title"><span data-i18n="contact_title_1">Let's get</span><br><span class="accent-text"
-              data-i18n="contact_title_2">in touch.</span></h2>
-          <p class="contact-intro" data-i18n="contact_intro">Whether you're looking to integrate AI into your clinical
-            workflow, explore a
-            research collaboration, or simply learn more about what we do — we'd love to hear from you.</p>
-          <ul class="contact-services">
-            <li data-i18n="contact_service1">AI solutions for healthcare organizations</li>
-            <li data-i18n="contact_service2">Regulatory-compliant deployments (EU MDR, GDPR, AI Act)</li>
-            <li data-i18n="contact_service3">Research collaborations and partnerships</li>
-            <li data-i18n="contact_service4">Custom NLP and XAI for clinical data</li>
-          </ul>
-          <div class="contact-trust">
-            <div class="trust-item">
-              <span class="material-symbols-outlined">schedule</span>
-              <span data-i18n="trust_response">Response within 2 business days</span>
-            </div>
-            <div class="trust-item">
-              <span class="material-symbols-outlined">lock</span>
-              <span data-i18n="trust_confidential">Confidential by default</span>
-            </div>
-          </div>
+  <!-- CONTACT: the closing of the page on the canopy gradient, lime top right to deep bottom left.
+       All text stays on the teal and deep end. -->
+  <section id="get-in-touch" class="contact" aria-labelledby="contact-title">
+    <div class="contact__glow" aria-hidden="true"></div>
+    <div class="wrap contact__grid">
+      <div class="contact__head">
+        <p class="t-eyebrow contact__eyebrow" data-i18n="contact_label">Contact</p>
+        <h2 class="contact__title" id="contact-title">
+          <span data-i18n="contact_title_1">Let's get</span>
+          <span class="contact__title-accent" data-i18n="contact_title_2">in touch.</span>
+        </h2>
+      </div>
+      <div class="contact__main">
+        <p class="contact__intro" data-i18n="contact_intro">Whether you're looking to integrate AI into your clinical workflow, explore a research collaboration, or simply learn more about what we do — we'd love to hear from you.</p>
+        <a class="contact__email" href="mailto:info@bilobe.eu">info@bilobe.eu</a>
+        <div class="contact__actions">
+          <a class="btn btn--lime btn--pill" href="mailto:info@bilobe.eu"><span data-i18n="contact_compose">Write to us</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="btn btn--outline-white btn--pill contact__copy" type="button" data-copy-text="info@bilobe.eu" data-copied="Address copied" data-copied-it="Indirizzo copiato"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span data-i18n="contact_copy">Copy address</span></button>
         </div>
-
-        <div class="contact-right reveal delay-2">
-          <div class="contact-card">
-            <p class="contact-card-label" data-i18n="contact_card_label">Direct line</p>
-            <a href="mailto:info@bilobe.eu" class="contact-email">info@bilobe.eu</a>
-            <div class="contact-actions">
-              <a href="mailto:info@bilobe.eu" class="btn-primary">
-                <span class="material-symbols-outlined">mail</span>
-                <span data-i18n="contact_compose">Compose email</span>
-              </a>
-              <button class="btn-copy" id="copy-email-btn">
-                <span class="material-symbols-outlined">content_copy</span>
-                <span data-i18n="contact_copy">Copy email</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
+        <p class="contact__note"><span data-i18n="trust_response">Response within 2 business days</span><span data-i18n="trust_confidential">Confidential by default</span></p>
+      </div>
+      <div class="contact__side">
+        <p class="contact__side-label" data-i18n="contact_topics">Write to us about</p>
+        <ol class="contact__topics">
+          <li data-i18n="contact_service1">AI solutions for healthcare organizations</li>
+          <li data-i18n="contact_service3">Research collaborations and partnerships</li>
+          <li data-i18n="contact_service4">Custom NLP and XAI for clinical data</li>
+        </ol>
       </div>
     </div>
   </section>
-
-  <!-- COOKIE BANNER -->
-  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
-    <div class="cookie-banner-inner">
-      <div class="cookie-banner-text">
-        <span class="material-symbols-outlined cookie-banner-icon">cookie</span>
-        <p><span data-i18n="cookie_text">We use essential cookies to keep the site running and analytics cookies to
-            understand how visitors use it.</span>
-          <button class="cookie-policy-link" id="open-cookie-policy" data-i18n="cookie_policy_link">Cookie
-            Policy</button>
-        </p>
-      </div>
-      <div class="cookie-banner-actions">
-        <button class="btn-cookie-decline" id="cookie-decline" data-i18n="cookie_decline">Decline</button>
-        <button class="btn-cookie-accept" id="cookie-accept" data-i18n="cookie_accept">Accept all</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- COOKIE POLICY MODAL -->
-  <div id="cookie-modal" class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title"
-    hidden>
-    <div class="cookie-modal-backdrop" id="cookie-modal-backdrop"></div>
-    <div class="cookie-modal-box">
-      <div class="cookie-modal-header">
-        <h2 id="cookie-modal-title">Cookie Policy</h2>
-        <button class="cookie-modal-close" id="close-cookie-modal" aria-label="Close">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-      <div class="cookie-modal-body">
-        <p class="cookie-modal-updated">Last updated: March 2025</p>
-
-        <h3>What are cookies?</h3>
-        <p>Cookies are small text files placed on your device when you visit a website. They help the site remember
-          information about your visit and improve your experience.</p>
-
-        <h3>Cookies we use</h3>
-
-        <div class="cookie-table">
-          <div class="cookie-row cookie-row--head">
-            <span>Name</span><span>Type</span><span>Purpose</span><span>Duration</span>
-          </div>
-          <div class="cookie-row">
-            <span><code>cookie-consent</code></span>
-            <span class="cookie-tag essential">Essential</span>
-            <span>Stores your cookie consent choice so we don't ask again.</span>
-            <span>1 year</span>
-          </div>
-          <div class="cookie-row">
-            <span><code>_ga</code>, <code>_ga_*</code></span>
-            <span class="cookie-tag analytics">Analytics</span>
-            <span>Google Analytics — tracks page views and visitor behaviour in aggregate. Only set if you accept
-              analytics cookies.</span>
-            <span>2 years</span>
-          </div>
-        </div>
-
-        <h3>Third-party resources</h3>
-        <p>This site loads fonts from Google Fonts and images from external domains. These requests may result in
-          cookies or tracking set by those third parties under their own privacy policies.</p>
-
-        <h3>Your choices</h3>
-        <p>You can accept or decline non-essential cookies via the banner below. You can change your choice at any time
-          by clearing your browser's local storage or using the buttons below.</p>
-
-        <div class="cookie-modal-actions">
-          <button class="btn-cookie-decline" id="modal-cookie-decline" data-i18n="cookie_decline">Decline
-            analytics</button>
-          <button class="btn-cookie-accept" id="modal-cookie-accept" data-i18n="cookie_accept">Accept all</button>
-        </div>
-
-        <h3>Contact</h3>
-        <p>For privacy-related questions contact us at <a href="mailto:info@bilobe.eu">info@bilobe.eu</a>.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- FOOTER -->
-  <footer id="footer">
-    <div class="container footer-inner">
-      <a href="#hero" class="nav-brand">
-        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img-footer">
-        <span>Bilobe<sup>&nbsp;&nbsp;AI</sup></span>
-      </a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · P.IVA/C.F. 03039860188 · n.REA 341149 · Cap.Soc. € 10.000
-        i.v.</p>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a href="index.html" class="site-footer__brand" aria-label="Bilobe, home">
+          <img src="assets/logos/bilobe-logo-completo-reversed.svg" alt="Bilobe. Trustworthy. For healthcare. European." width="260" height="83">
+        </a>
+        <div class="site-footer__trust">
+          <p class="secure-badge">
+            <svg class="secure-badge__lock" viewBox="0 0 48 58" aria-hidden="true">
+              <defs><linearGradient id="secure-badge-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8cd687"/><stop offset="1" stop-color="#30b092"/></linearGradient></defs>
+              <path class="secure-badge__shackle" d="M12 27V17a12 12 0 0 1 24 0v10"/>
+              <rect x="3" y="25" width="42" height="31" rx="7" fill="url(#secure-badge-fill)"/>
+              <path class="secure-badge__check" d="m15 41 6 6 12-12"/>
+            </svg>
+            <span class="secure-badge__text"><b>Secure</b><span>SSL encryption</span></span>
+          </p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="site-footer__nav">
+          <li><a href="#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#people" data-i18n="nav_people">People</a></li>
+          <li><a href="insights.html" data-i18n="nav_insights">Insights</a></li>
+          <li><a href="#get-in-touch" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
+        <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
+      <p class="site-footer__copy"><span>© 2026 Bilobe SRL</span><a href="privacy.html" data-i18n="footer_privacy">Privacy &amp; cookies</a><a href="#" data-consent-open hidden data-i18n="footer_cookie_settings">Cookie settings</a></p>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script src="assets/js/chrome.js" defer></script>
+  <script src="assets/js/consent.js" defer></script>
+  <script src="assets/js/hero-graphic.js" defer></script>
+  <script src="assets/js/product-demos.js" defer></script>
+  <script src="assets/js/sections.js" defer></script>
+  <script src="assets/js/chapters.js" defer></script>
 </body>
 
 </html>

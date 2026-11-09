@@ -1,227 +1,211 @@
-// ── h2 pixel-scramble: on-view (once) + per-word hover ──
-// Set to true to re-enable title scramble animations.
-const TITLE_ANIMATIONS_ENABLED = false;
-
-(function () {
-  const GLYPHS = '■□▪▫●▮▯▰▱•';
-  const STEP = 18;
-
-  function rand() {
-    return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-  }
-
-  // Collect non-empty text nodes from an element
-  function textNodes(el) {
-    const list = [];
-    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-    let n;
-    while ((n = walker.nextNode())) {
-      if (n.nodeValue.trim()) list.push({ node: n, original: n.nodeValue });
-    }
-    return list;
-  }
-
-  // Animate nodes from scrambled → revealed over `duration` ms.
-  // Returns a cancel function.
-  function scramble(nodes, duration) {
-    let timer = null;
-    function restore() {
-      clearTimeout(timer);
-      nodes.forEach(({ node, original }) => { node.nodeValue = original; });
-    }
-    const t0 = Date.now();
-    function tick() {
-      const p = Math.min((Date.now() - t0) / duration, 1);
-      nodes.forEach(({ node, original }) => {
-        node.nodeValue = original.split('').map((ch, i) => {
-          if (ch === ' ' || ch === '\n') return ch;
-          return i / original.length < p ? ch : rand();
-        }).join('');
-      });
-      if (p < 1) timer = setTimeout(tick, STEP);
-      else restore();
-    }
-    tick();
-    return restore;
-  }
-
-  // Wrap every word in a text node (preserving sibling elements) with a span
-  function wrapWords(el) {
-    Array.from(el.childNodes).forEach(child => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const parts = child.nodeValue.split(/(\s+)/);
-        if (parts.length <= 1) return;
-        const frag = document.createDocumentFragment();
-        parts.forEach(part => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) {
-            frag.appendChild(document.createTextNode(part));
-          } else {
-            const span = document.createElement('span');
-            span.className = 'h2-word';
-            span.textContent = part;
-            frag.appendChild(span);
-          }
-        });
-        el.replaceChild(frag, child);
-      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('h2-word')) {
-        wrapWords(child);
-      }
-    });
-  }
-
-  document.querySelectorAll('h2').forEach(h2 => {
-    wrapWords(h2);
-
-    let cancelInitial = null;
-
-    if (TITLE_ANIMATIONS_ENABLED) {
-      // Per-word hover
-      h2.querySelectorAll('.h2-word').forEach(word => {
-        let cancelWord = null;
-        word.addEventListener('mouseenter', () => {
-          if (cancelInitial) { cancelInitial(); cancelInitial = null; }
-          if (cancelWord) cancelWord();
-          cancelWord = scramble(textNodes(word), 180);
-        });
-        word.addEventListener('mouseleave', () => {
-          if (cancelWord) { cancelWord(); cancelWord = null; }
-        });
-      });
-
-      // First-view animation (once, after reveal completes)
-      let fired = false;
-      const io = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !fired) {
-          fired = true;
-          io.unobserve(h2);
-          setTimeout(() => {
-            cancelInitial = scramble(textNodes(h2), 450);
-          }, 500);
-        }
-      }, { threshold: 0.5 });
-      io.observe(h2);
-    }
-  });
-})();
-
 // ── i18n ────────────────────────────────────────────────
 const TRANSLATIONS = {
   en: {
-    nav_features: 'Features', nav_partners: 'Partners', nav_products: 'Products',
+    nav_features: 'Features', nav_products: 'Products',
     nav_insights: 'Insights', nav_about: 'About', nav_people: 'People',
     nav_contact: 'Contact', nav_book_demo: 'Book a demo',
-    hero_title_1: 'Trustworthy.', hero_title_2: 'for Healthcare.',
-    hero_sub: 'We build compliant, explainable AI that empowers clinicians, protects patients, and transforms healthcare delivery.',
+    hero_title_1: 'Trustworthy.', hero_title_2: 'For healthcare.',
+    hero_sub: 'Compliant, explainable AI for clinicians, patient protection and healthcare delivery.',
     hero_cta: 'Explore our products',
-    hero_scroll: 'Explore',
-    stat_research: 'Years of research', stat_founders: 'Expert founders', stat_partners: 'Research partners',
-    features_label: 'Our Capabilities', features_h2: 'Built for the complexity\nof clinical data.',
-    partners_label: 'Research Partners',
-    feat1_h3: 'Handling Unstructured Data',
-    feat1_p: 'Is your health institution data mostly unstructured — text, images, biosignals — but filled with valuable insights? Bilobe leverages modern AI to unlock what\'s hidden in clinical data.',
-    feat2_h3: 'Trustworthy, Compliant & Secure',
-    feat2_p: 'Our AI solutions are built with trustworthiness at their core — compliant with EU MDR, GDPR, and the AI Act, with data protection and explainability at every layer.',
-    feat3_h3: 'Human-Centered Interaction',
-    feat3_p: 'Clinical evaluation practices and human-AI collaboration designed to keep practitioners in control — achieving the best of both human expertise and AI synergy.',
-    products_label: 'Our Products', products_h2: 'Purpose-built tools\nfor clinical practice.',
-    ingredients_label: 'The Ingredients',
+    features_label: 'Our capabilities',
+    features_h2_1: 'Built for the complexity', features_h2_2: 'of clinical data.',
+    cap1_label: 'Data', cap1_title: 'Unstructured data, made usable.',
+    cap1_body: 'Most clinical information lives in free text, images and biosignals. We build AI that reads it and returns structured data your teams can search, count and analyse.',
+    cap1_detail: 'Clinical notes · Reports · Images · Biosignals',
+    cap2_label: 'Trust', cap2_title: 'Trustworthy by design.',
+    cap2_body: 'We design for the European rules from the start: the EU MDR, the GDPR and the AI Act. Data protection and explainability are part of every layer, not added at the end.',
+    cap2_detail: 'Explainable outputs · Data protection · European hosting',
+    cap3_label: 'People', cap3_title: 'Clinicians stay in control.',
+    cap3_body: 'Our tools support clinical judgement; they do not replace it. We evaluate them with clinicians and design each interaction so that the practitioner makes the final decision.',
+    cap3_detail: 'Clinical evaluation · Human oversight · Fits existing workflows',
+    partners_label: 'Research partners',
+    products_label: 'Our products',
+    products_h2_1: 'Purpose-built tools', products_h2_2: 'for clinical practice.',
+    products_note: 'Illustrative example with synthetic data. Try it: every element responds.',
+    kicker_mangrove: 'Decision support', kicker_fireweed: 'Study design', kicker_moss: 'Data protection',
     mangrove_tagline: 'Your expert guide through medical knowledge',
-    mangrove_desc: 'An advanced conversational decision-support system grounded in medical guidelines. Deployable across multiple clinical scenarios — from triage support for general practitioners to treatment adherence monitoring in hospital wards.',
-    ing_europe_title: 'Europe First', ing_europe_desc: 'Models hosted exclusively on European servers, with three sovereignty tiers: international cloud, European cloud, or fully on-premise.',
-    ing_guideline_title: 'Guideline-Grounded, Human-Validated', ing_guideline_desc: 'Knowledge sourced exclusively from guidelines and procedures carefully curated and approved by our medical team.',
-    ing_rag_title: 'Not Just a RAG', ing_rag_desc: 'Knowledge graphs built on established medical ontologies for retrieval guided by real clinical entity relationships — not just semantics.',
+    mangrove_desc: 'A conversational decision-support system grounded in medical guidelines. It works across clinical scenarios, from triage support for general practitioners to treatment adherence monitoring on hospital wards.',
+    ing_europe_title: 'Europe first', ing_europe_desc: 'Hosted on European servers, with three sovereignty tiers: international cloud, European cloud or fully on-premise.',
+    ing_guideline_title: 'Guideline-grounded, human-validated', ing_guideline_desc: 'Knowledge comes only from guidelines and procedures curated and approved by our medical team.',
+    ing_rag_title: 'Not just a RAG', ing_rag_desc: 'Knowledge graphs built on established medical ontologies guide retrieval through real relationships between clinical entities, not text similarity alone.',
     fireweed_tagline: 'Helps you discover and define structure in your clinical notes',
-    fireweed_desc: 'An AI agent system that elicits an eCRF in a data-driven way — turning a clinician\'s high-level description into a structured variable registry grounded in the actual content of clinical notes.',
-    ing_human_title: 'For the Human, Through the Human', ing_human_desc: 'Starts with the clinician\'s description and a brief conversation, then loops back at every step so the user can edit variables or add new requirements.',
-    ing_databased_title: 'Data-Based, Not Eminence-Based', ing_databased_desc: 'Fields emerge directly from real-world data, not from abstract theory. Ambiguity stays with the decision maker — not the data-entry person.',
+    fireweed_desc: 'An AI agent system that drafts an eCRF from the data. It turns a clinician\'s high-level description into a structured variable registry, grounded in what the clinical notes actually contain.',
+    ing_human_title: 'For the human, through the human', ing_human_desc: 'It starts from the clinician\'s description and a short conversation, then checks back at every step so variables can be edited or added.',
+    ing_databased_title: 'Data-based, not eminence-based', ing_databased_desc: 'Fields come from real-world data, not abstract theory. Ambiguity stays with the decision maker, not with the person entering the data.',
     moss_tagline: 'Making biomedical data ready for secondary use and sharing',
-    moss_desc: 'A highly customizable pseudonymization system purpose-built for the biomedical context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.',
-    ing_yourdata_title: 'Your Data, Your Service', ing_yourdata_desc: 'Runs fully on-premise with zero data transmitted outside your infrastructure.',
-    ing_plug_title: 'Plug & Play', ing_plug_desc: 'Drag and drop files directly into the interface for instant pseudonymization — no setup needed for one-off use.',
-    ing_pipeline_title: 'Pipeline-Ready Middle Layer', ing_pipeline_desc: 'Connect it directly into your existing data streams as transparent middleware — it runs silently in the background.',
-    insights_label: 'Insights', insights_h2: 'News, ideas &\nresearch updates.', insights_view_all: 'View all',
+    moss_desc: 'A highly customisable pseudonymization system built for biomedical data. It runs entirely on-premise: no data ever leaves your institution.',
+    ing_yourdata_title: 'Your data, your service', ing_yourdata_desc: 'Runs fully on-premise. Nothing is transmitted outside your infrastructure.',
+    ing_plug_title: 'Plug and play', ing_plug_desc: 'Drag files into the interface for immediate pseudonymization. One-off use needs no setup.',
+    ing_pipeline_title: 'Pipeline-ready middle layer', ing_pipeline_desc: 'Connect it to your existing data streams as transparent middleware that runs in the background.',
+    insights_label: 'Insights', insights_h2_1: 'News, ideas', insights_h2_2: 'and research updates.', insights_view_all: 'All insights',
     tag_research: 'Research', tag_policy: 'Policy', tag_technology: 'Technology',
-    insight1_h3: 'Explainable AI in Clinical Decision Support', insight1_p: 'How XAI techniques are reshaping clinician trust — and why transparency is the next frontier for medical AI adoption.',
-    insight2_h3: 'EU AI Act: What It Means for HealthTech Startups', insight2_p: 'A practical guide to navigating the new EU AI Act requirements for high-risk medical AI systems — from risk classification to conformity assessment.',
-    insight3_h3: 'ViraLingo: Predicting Viral Variants with Pan-Viral LLMs', insight3_p: 'Our collaboration with the University of Florida on a large language model trained across HIV, Hepatitis, and Coronavirus genomes to predict dangerous variants.',
-    read_more: 'Read more',
-    about_label: 'About Us', about_h2: 'Born from 40 years of biomedical informatics research.', about_location: 'Pavia, Italy',
-    about_p1: 'Born in Pavia, Italy from the 40-year tradition of the Biomedical Informatics Lab "Mario Stefanelli", Bilobe is the melting pot of cutting-edge academic research and real-world implementation in healthcare.',
-    about_p2: 'Our mission is to support healthcare practitioners, enhance patient outcomes, and improve healthcare organizations with innovative technology — turning complex, unstructured data into actionable insights through transparent and trustworthy solutions.',
-    about_p3: 'By combining advanced algorithms with deep medical domain expertise, we make healthcare more efficient, accessible, and personalized.',
-    people_label: 'Our Team', people_h2: 'The people behind',
-    role_ceo: 'CEO, Co-Founder · Ph.D.', role_cto: 'CTO, Co-Founder · Ph.D.', role_cfo: 'CFO, Co-Founder · MEng',
-    role_scientific: 'Scientific Consultant & Co-Founder · Ph.D.',
-    contact_label: 'Contact Us', contact_title_1: 'Let\'s get', contact_title_2: 'in touch.',
+    date1: '10 March 2025', date2: '18 February 2025', date3: '22 January 2025',
+    insight1_h3: 'Explainable AI in clinical decision support', insight1_p: 'How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.',
+    insight2_h3: 'EU AI Act: what it means for healthtech startups', insight2_p: 'A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.',
+    insight3_h3: 'ViraLingo: predicting viral variants with pan-viral LLMs', insight3_p: 'Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.',
+    insights_page_intro: 'Perspectives on trustworthy AI, healthcare technology and our latest research collaborations.',
+    filter_all: 'All', tag_news: 'News', date4: '5 December 2024', date5: '14 November 2024', date6: '8 October 2024',
+    insight4_h3: 'NLP for clinical notes: extracting structure from the unstructured', insight4_p: 'An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.',
+    insight5_h3: 'Bilobe joins the NVIDIA BioNeMo ecosystem', insight5_p: 'Our collaboration with NVIDIA BioNeMo and access to the HiPerGator supercomputer to accelerate AI research in molecular medicine.',
+    insight6_h3: 'GDPR meets AI: data protection by design in medical systems', insight6_p: 'How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.',
+    read_more: 'Read article',
+    about_label: 'About us',
+    about_h2_1: 'Born from 40 years',
+    about_h2_2: 'of biomedical informatics research.',
+    about_intro: 'A company from Pavia that brings academic research into everyday clinical work.',
+    about_scroll: 'Scroll',
+    about_nav: 'Overview',
+    about_origins_nav: 'Origins',
+    about_origins_kicker: 'Origins',
+    about_origins_name1: 'Born',
+    about_origins_name2: 'in Pavia.',
+    about_origins_tagline: 'Forty years of biomedical informatics behind us.',
+    about_origins_desc: 'Bilobe grew out of the Biomedical Informatics Lab “Mario Stefanelli” in Pavia and its forty-year research tradition. We bring that research into real-world healthcare.',
+    about_origins_li1_t: 'Pavia, Italy',
+    about_origins_li1_d: 'Where Bilobe was born and where it has its home.',
+    about_origins_li2_t: 'Biomedical Informatics Lab “Mario Stefanelli”',
+    about_origins_li2_d: 'Four decades of research in biomedical informatics.',
+    about_origins_li3_t: 'Research and practice',
+    about_origins_li3_d: 'Academic research, put to work in real clinical settings.',
+    about_mission_nav: 'Mission',
+    about_mission_kicker: 'Mission',
+    about_mission_name1: 'From data',
+    about_mission_name2: 'to care.',
+    about_mission_tagline: 'Complex data, turned into information people can act on.',
+    about_mission_desc: 'Our mission is to support healthcare practitioners, improve patient outcomes and help healthcare organisations work better, with technology that is transparent and trustworthy.',
+    about_mission_li1_t: 'Practitioners',
+    about_mission_li1_d: 'Support for clinical decisions and everyday work.',
+    about_mission_li2_t: 'Patients',
+    about_mission_li2_d: 'Better outcomes, with their data protected.',
+    about_mission_li3_t: 'Organisations',
+    about_mission_li3_d: 'Unstructured data, made usable for care and research.',
+    about_approach_nav: 'Approach',
+    about_approach_kicker: 'Approach',
+    about_approach_name1: 'Algorithms',
+    about_approach_name2: 'and medicine.',
+    about_approach_tagline: 'Advanced methods, guided by clinical knowledge.',
+    about_approach_desc: 'We combine advanced algorithms with deep medical domain expertise, so that healthcare becomes more efficient, more accessible and more personal.',
+    about_approach_li1_t: 'Advanced algorithms',
+    about_approach_li1_d: 'Methods from current research in AI and biomedical informatics.',
+    about_approach_li2_t: 'Medical expertise',
+    about_approach_li2_d: 'Knowledge of clinical practice built into how each tool works.',
+    people_label: 'Our team', people_h2_1: 'The people', people_h2_2: 'behind Bilobe.',
+    people_founders: 'Founders', people_board: 'Scientific consultants',
+    role_ceo: 'CEO, co-founder · Ph.D.', role_cto: 'CTO, co-founder · Ph.D.', role_cfo: 'CFO, co-founder · MEng',
+    role_sci_f: 'Scientific consultant, co-founder · Ph.D.', role_sci_m: 'Scientific consultant, co-founder · Ph.D.',
+    contact_label: 'Contact', contact_title_1: 'Let\'s get', contact_title_2: 'in touch.',
     contact_intro: 'Whether you\'re looking to integrate AI into your clinical workflow, explore a research collaboration, or simply learn more about what we do — we\'d love to hear from you.',
-    contact_service1: 'AI solutions for healthcare organizations', contact_service2: 'Regulatory-compliant deployments (EU MDR, GDPR, AI Act)',
+    contact_service1: 'AI solutions for healthcare organizations',
     contact_service3: 'Research collaborations and partnerships', contact_service4: 'Custom NLP and XAI for clinical data',
     trust_response: 'Response within 2 business days', trust_confidential: 'Confidential by default',
-    contact_card_label: 'Direct line', contact_compose: 'Compose email', contact_copy: 'Copy email',
-    cookie_text: 'We use essential cookies to keep the site running and analytics cookies to understand how visitors use it.',
-    cookie_policy_link: 'Cookie Policy', cookie_decline: 'Decline', cookie_accept: 'Accept all',
+    contact_topics: 'Write to us about', footer_privacy: 'Privacy & cookies', footer_cookie_settings: 'Cookie settings', contact_compose: 'Write to us', contact_copy: 'Copy address',
   },
   it: {
-    nav_features: 'Caratteristiche', nav_partners: 'Partner', nav_products: 'Prodotti',
+    nav_features: 'Caratteristiche', nav_products: 'Prodotti',
     nav_insights: 'Approfondimenti', nav_about: 'Chi Siamo', nav_people: 'Team',
     nav_contact: 'Contatti', nav_book_demo: 'Prenota una demo',
-    hero_title_1: 'Affidabile.', hero_title_2: 'per la Sanità.',
-    hero_sub: 'Costruiamo soluzioni AI conformi e spiegabili che potenziano i clinici, proteggono i pazienti e trasformano l\'erogazione delle cure.',
+    hero_title_1: 'Affidabile.', hero_title_2: 'Per la sanità.',
+    hero_sub: 'AI conforme e spiegabile per i clinici, la tutela dei pazienti e l\'erogazione delle cure.',
     hero_cta: 'Esplora i nostri prodotti',
-    hero_scroll: 'Scopri',
-    stat_research: 'Anni di ricerca', stat_founders: 'Fondatori esperti', stat_partners: 'Partner di ricerca',
-    features_label: 'Le Nostre Competenze', features_h2: 'Costruito per la complessità\ndei dati clinici.',
-    partners_label: 'Partner di Ricerca',
-    feat1_h3: 'Gestione dei Dati Non Strutturati',
-    feat1_p: 'I dati della tua struttura sanitaria sono prevalentemente non strutturati — testi, immagini, biosegnali — ma ricchi di informazioni preziose? Bilobe sfrutta l\'IA moderna per estrarre ciò che è nascosto nei dati clinici.',
-    feat2_h3: 'Affidabile, Conforme e Sicuro',
-    feat2_p: 'Le nostre soluzioni AI sono costruite con la fiducia al centro — conformi a EU MDR, GDPR e AI Act, con protezione dei dati e spiegabilità a ogni livello.',
-    feat3_h3: 'Interazione Centrata sull\'Uomo',
-    feat3_p: 'Pratiche di valutazione clinica e collaborazione umano-IA progettate per mantenere i professionisti in controllo — combinando il meglio dell\'expertise umana e della sinergia con l\'IA.',
-    products_label: 'I Nostri Prodotti', products_h2: 'Strumenti progettati\nper la pratica clinica.',
-    ingredients_label: 'Gli Ingredienti',
-    mangrove_tagline: 'La tua guida esperta attraverso la conoscenza medica',
-    mangrove_desc: 'Un sistema avanzato di supporto decisionale conversazionale basato su linee guida mediche. Implementabile in diversi scenari clinici — dal supporto al triage per i medici di base al monitoraggio dell\'aderenza terapeutica nei reparti ospedalieri.',
-    ing_europe_title: 'Europa Prima', ing_europe_desc: 'Modelli ospitati esclusivamente su server europei, con tre livelli di sovranità: cloud internazionale, cloud europeo, o completamente on-premise.',
-    ing_guideline_title: 'Basato su Linee Guida, Validato Umanamente', ing_guideline_desc: 'Conoscenza proveniente esclusivamente da linee guida e procedure accuratamente curate e approvate dal nostro team medico.',
-    ing_rag_title: 'Non Solo un RAG', ing_rag_desc: 'Grafi di conoscenza costruiti su ontologie mediche consolidate per un recupero guidato da relazioni reali tra entità cliniche — non solo dalla semantica.',
+    features_label: 'Le nostre competenze',
+    features_h2_1: 'Costruiti per la complessità', features_h2_2: 'dei dati clinici.',
+    cap1_label: 'Dati', cap1_title: 'Dati non strutturati, resi utilizzabili.',
+    cap1_body: 'Gran parte dell\'informazione clinica sta in testi liberi, immagini e biosegnali. Costruiamo AI che la legge e restituisce dati strutturati, che i vostri team possono cercare, contare e analizzare.',
+    cap1_detail: 'Note cliniche · Referti · Immagini · Biosegnali',
+    cap2_label: 'Fiducia', cap2_title: 'Affidabile per progetto.',
+    cap2_body: 'Progettiamo fin dall\'inizio per le regole europee: EU MDR, GDPR e AI Act. Protezione dei dati e spiegabilità fanno parte di ogni livello, non vengono aggiunte alla fine.',
+    cap2_detail: 'Output spiegabili · Protezione dei dati · Hosting europeo',
+    cap3_label: 'Persone', cap3_title: 'Il clinico resta al comando.',
+    cap3_body: 'I nostri strumenti supportano il giudizio clinico, non lo sostituiscono. Li valutiamo insieme ai clinici e progettiamo ogni interazione perché sia il professionista a prendere la decisione finale.',
+    cap3_detail: 'Valutazione clinica · Supervisione umana · Integrazione nei flussi di lavoro',
+    partners_label: 'Partner di ricerca',
+    products_label: 'I nostri prodotti',
+    products_h2_1: 'Strumenti progettati', products_h2_2: 'per la pratica clinica.',
+    products_note: 'Esempio illustrativo con dati sintetici. Provalo: ogni elemento risponde.',
+    kicker_mangrove: 'Supporto decisionale', kicker_fireweed: 'Disegno dello studio', kicker_moss: 'Protezione dei dati',
+    mangrove_tagline: 'La tua guida esperta nella conoscenza medica',
+    mangrove_desc: 'Un sistema conversazionale di supporto decisionale basato sulle linee guida mediche. Funziona in diversi scenari clinici, dal supporto al triage per i medici di medicina generale al monitoraggio dell\'aderenza terapeutica nei reparti ospedalieri.',
+    ing_europe_title: 'Prima l\'Europa', ing_europe_desc: 'Ospitato su server europei, con tre livelli di sovranità: cloud internazionale, cloud europeo o completamente on-premise.',
+    ing_guideline_title: 'Basato su linee guida, validato da persone', ing_guideline_desc: 'La conoscenza viene solo da linee guida e procedure selezionate e approvate dal nostro team medico.',
+    ing_rag_title: 'Non solo un RAG', ing_rag_desc: 'Grafi di conoscenza costruiti su ontologie mediche consolidate guidano il recupero attraverso relazioni reali tra entità cliniche, non solo per somiglianza testuale.',
     fireweed_tagline: 'Ti aiuta a scoprire e definire la struttura nelle tue note cliniche',
-    fireweed_desc: 'Un sistema di agenti AI che elicita un eCRF in modo data-driven — trasformando la descrizione ad alto livello di un clinico in un registro di variabili strutturato basato sul contenuto reale delle note cliniche.',
-    ing_human_title: 'Per l\'Uomo, Attraverso l\'Uomo', ing_human_desc: 'Parte dalla descrizione del clinico e da una breve conversazione, poi torna ad ogni passaggio per permettere all\'utente di modificare le variabili o aggiungere nuovi requisiti.',
-    ing_databased_title: 'Basato sui Dati, Non sull\'Eminenza', ing_databased_desc: 'I campi emergono direttamente dai dati reali, non dalla teoria astratta. L\'ambiguità rimane al decisore — non all\'addetto all\'inserimento dati.',
+    fireweed_desc: 'Un sistema di agenti AI che costruisce un eCRF a partire dai dati. Trasforma la descrizione di alto livello di un clinico in un registro strutturato di variabili, fondato su ciò che le note cliniche contengono davvero.',
+    ing_human_title: 'Per le persone, attraverso le persone', ing_human_desc: 'Parte dalla descrizione del clinico e da una breve conversazione, poi torna da lui a ogni passaggio perché le variabili possano essere modificate o aggiunte.',
+    ing_databased_title: 'Basato sui dati, non sull\'autorità', ing_databased_desc: 'I campi nascono dai dati reali, non da teorie astratte. L\'ambiguità resta a chi decide, non a chi inserisce i dati.',
     moss_tagline: 'Rende i dati biomedici pronti per il riuso secondario e la condivisione',
-    moss_desc: 'Un sistema di pseudonimizzazione altamente personalizzabile progettato per il contesto biomedico. Progettato per funzionare interamente on-premise, senza che i dati vengano mai trasmessi fuori dalla tua istituzione.',
-    ing_yourdata_title: 'I Tuoi Dati, Il Tuo Servizio', ing_yourdata_desc: 'Funziona completamente on-premise senza che alcun dato venga trasmesso fuori dalla tua infrastruttura.',
-    ing_plug_title: 'Plug & Play', ing_plug_desc: 'Trascina e rilascia i file direttamente nell\'interfaccia per una pseudonimizzazione istantanea — nessuna configurazione necessaria per un uso occasionale.',
-    ing_pipeline_title: 'Middleware Pronto per la Pipeline', ing_pipeline_desc: 'Collegalo direttamente ai flussi di dati esistenti come middleware trasparente — funziona silenziosamente in background.',
-    insights_label: 'Approfondimenti', insights_h2: 'Notizie, idee &\naggiornamenti dalla ricerca.', insights_view_all: 'Vedi tutti',
+    moss_desc: 'Un sistema di pseudonimizzazione altamente personalizzabile, pensato per i dati biomedici. Funziona interamente on-premise: nessun dato lascia mai la tua struttura.',
+    ing_yourdata_title: 'I tuoi dati, il tuo servizio', ing_yourdata_desc: 'Funziona completamente on-premise. Nulla viene trasmesso fuori dalla tua infrastruttura.',
+    ing_plug_title: 'Pronto all\'uso', ing_plug_desc: 'Trascina i file nell\'interfaccia per pseudonimizzarli subito. Per un uso occasionale non serve alcuna configurazione.',
+    ing_pipeline_title: 'Middleware pronto per la pipeline', ing_pipeline_desc: 'Collegalo ai flussi di dati esistenti come middleware trasparente, che lavora in background.',
+    insights_label: 'Approfondimenti', insights_h2_1: 'Notizie, idee', insights_h2_2: 'e aggiornamenti dalla ricerca.', insights_view_all: 'Tutti gli approfondimenti',
     tag_research: 'Ricerca', tag_policy: 'Normativa', tag_technology: 'Tecnologia',
-    insight1_h3: 'IA Spiegabile nel Supporto alle Decisioni Cliniche', insight1_p: 'Come le tecniche XAI stanno ridefinendo la fiducia dei clinici — e perché la trasparenza è la prossima frontiera per l\'adozione dell\'IA medica.',
-    insight2_h3: 'EU AI Act: Cosa Significa per le Startup HealthTech', insight2_p: 'Una guida pratica per navigare i nuovi requisiti dell\'EU AI Act per sistemi di IA medica ad alto rischio — dalla classificazione del rischio alla valutazione di conformità.',
-    insight3_h3: 'ViraLingo: Previsione delle Varianti Virali con LLM Pan-Virali', insight3_p: 'La nostra collaborazione con l\'Università della Florida su un modello di linguaggio addestrato su genomi di HIV, Epatite e Coronavirus per prevedere varianti pericolose.',
-    read_more: 'Leggi di più',
-    about_label: 'Chi Siamo', about_h2: 'Nati da 40 anni di ricerca in informatica biomedica.', about_location: 'Pavia, Italia',
-    about_p1: 'Nati a Pavia, Italia dalla tradizione quarantennale del Laboratorio di Informatica Biomedica "Mario Stefanelli", Bilobe è il punto di incontro tra la ricerca accademica all\'avanguardia e l\'implementazione pratica in sanità.',
-    about_p2: 'La nostra missione è supportare i professionisti sanitari, migliorare gli esiti dei pazienti e potenziare le organizzazioni sanitarie con tecnologia innovativa — trasformando dati complessi e non strutturati in informazioni utili attraverso soluzioni trasparenti e affidabili.',
-    about_p3: 'Combinando algoritmi avanzati con una profonda expertise nel dominio medico, rendiamo la sanità più efficiente, accessibile e personalizzata.',
-    people_label: 'Il Nostro Team', people_h2: 'Le persone dietro',
-    role_ceo: 'CEO, Co-Fondatore · Ph.D.', role_cto: 'CTO, Co-Fondatore · Ph.D.', role_cfo: 'CFO, Co-Fondatrice · MEng',
-    role_scientific: 'Consulente Scientifico & Co-Fondatore · Ph.D.',
-    contact_label: 'Contattaci', contact_title_1: 'Mettiamoci', contact_title_2: 'in contatto.',
+    date1: '10 marzo 2025', date2: '18 febbraio 2025', date3: '22 gennaio 2025',
+    insight1_h3: 'AI spiegabile nel supporto alle decisioni cliniche', insight1_p: 'Come le tecniche XAI stanno cambiando la fiducia dei clinici, e perché la trasparenza è la prossima frontiera per l\'adozione dell\'AI in medicina.',
+    insight2_h3: 'EU AI Act: cosa significa per le startup healthtech', insight2_p: 'Una guida pratica ai nuovi requisiti dell\'EU AI Act per i sistemi di AI medica ad alto rischio, dalla classificazione del rischio alla valutazione di conformità.',
+    insight3_h3: 'ViraLingo: prevedere le varianti virali con LLM pan-virali', insight3_p: 'La nostra collaborazione con la University of Florida su un modello di linguaggio addestrato su genomi di HIV, epatite e coronavirus per prevedere le varianti pericolose.',
+    insights_page_intro: 'Punti di vista su AI affidabile, tecnologia per la sanità e le nostre collaborazioni di ricerca più recenti.',
+    filter_all: 'Tutti', tag_news: 'Notizie', date4: '5 dicembre 2024', date5: '14 novembre 2024', date6: '8 ottobre 2024',
+    insight4_h3: 'NLP per le note cliniche: dare struttura al non strutturato', insight4_p: 'Una panoramica della nostra pipeline di NLP biomedico per le lettere di dimissione in italiano: riconoscimento di entità, estrazione di relazioni e ragionamento temporale in una lingua con poche risorse.',
+    insight5_h3: 'Bilobe entra nell\'ecosistema NVIDIA BioNeMo', insight5_p: 'La nostra collaborazione con NVIDIA BioNeMo e l\'accesso al supercomputer HiPerGator per accelerare la ricerca AI in medicina molecolare.',
+    insight6_h3: 'GDPR e AI: protezione dei dati by design nei sistemi medici', insight6_p: 'Come progettare AI per la sanità che tratti la conformità al GDPR come una caratteristica e non come un ripensamento: federated learning, privacy differenziale e audit trail.',
+    read_more: 'Leggi l\'articolo',
+    about_label: 'Chi siamo',
+    about_h2_1: 'Nati da 40 anni',
+    about_h2_2: 'di ricerca in informatica biomedica.',
+    about_intro: 'Un\'azienda di Pavia che porta la ricerca accademica nel lavoro clinico di ogni giorno.',
+    about_scroll: 'Scorri',
+    about_nav: 'Introduzione',
+    about_origins_nav: 'Origini',
+    about_origins_kicker: 'Origini',
+    about_origins_name1: 'Nati',
+    about_origins_name2: 'a Pavia.',
+    about_origins_tagline: 'Quarant\'anni di informatica biomedica alle spalle.',
+    about_origins_desc: 'Bilobe nasce dal Laboratorio di Informatica Biomedica “Mario Stefanelli” di Pavia e dalla sua tradizione di ricerca quarantennale. Portiamo quella ricerca nella sanità reale.',
+    about_origins_li1_t: 'Pavia, Italia',
+    about_origins_li1_d: 'Dove Bilobe è nata e dove ha sede.',
+    about_origins_li2_t: 'Laboratorio di Informatica Biomedica “Mario Stefanelli”',
+    about_origins_li2_d: 'Quattro decenni di ricerca in informatica biomedica.',
+    about_origins_li3_t: 'Ricerca e pratica',
+    about_origins_li3_d: 'Ricerca accademica messa al lavoro in contesti clinici reali.',
+    about_mission_nav: 'Missione',
+    about_mission_kicker: 'Missione',
+    about_mission_name1: 'Dai dati',
+    about_mission_name2: 'alla cura.',
+    about_mission_tagline: 'Dati complessi, trasformati in informazioni su cui agire.',
+    about_mission_desc: 'La nostra missione è supportare i professionisti sanitari, migliorare gli esiti dei pazienti e aiutare le organizzazioni sanitarie a funzionare meglio, con una tecnologia trasparente e affidabile.',
+    about_mission_li1_t: 'Professionisti',
+    about_mission_li1_d: 'Supporto alle decisioni cliniche e al lavoro di ogni giorno.',
+    about_mission_li2_t: 'Pazienti',
+    about_mission_li2_d: 'Esiti migliori, con i loro dati protetti.',
+    about_mission_li3_t: 'Organizzazioni',
+    about_mission_li3_d: 'Dati non strutturati resi utilizzabili per la cura e la ricerca.',
+    about_approach_nav: 'Approccio',
+    about_approach_kicker: 'Approccio',
+    about_approach_name1: 'Algoritmi',
+    about_approach_name2: 'e medicina.',
+    about_approach_tagline: 'Metodi avanzati, guidati dalla conoscenza clinica.',
+    about_approach_desc: 'Uniamo algoritmi avanzati a una profonda competenza nel dominio medico, perché la sanità diventi più efficiente, più accessibile e più personale.',
+    about_approach_li1_t: 'Algoritmi avanzati',
+    about_approach_li1_d: 'Metodi dalla ricerca attuale in AI e informatica biomedica.',
+    about_approach_li2_t: 'Competenza medica',
+    about_approach_li2_d: 'La conoscenza della pratica clinica integrata nel funzionamento di ogni strumento.',
+    people_label: 'Il nostro team', people_h2_1: 'Le persone', people_h2_2: 'dietro Bilobe.',
+    people_founders: 'Fondatori', people_board: 'Consulenti scientifici',
+    role_ceo: 'CEO, co-fondatore · Ph.D.', role_cto: 'CTO, co-fondatore · Ph.D.', role_cfo: 'CFO, co-fondatrice · MEng',
+    role_sci_f: 'Consulente scientifica, co-fondatrice · Ph.D.', role_sci_m: 'Consulente scientifico, co-fondatore · Ph.D.',
+    contact_label: 'Contatti', contact_title_1: 'Mettiamoci', contact_title_2: 'in contatto.',
     contact_intro: 'Che tu voglia integrare l\'IA nel tuo flusso di lavoro clinico, esplorare una collaborazione di ricerca, o semplicemente saperne di più su ciò che facciamo — ci farebbe piacere sentirti.',
-    contact_service1: 'Soluzioni AI per organizzazioni sanitarie', contact_service2: 'Implementazioni conformi alla normativa (EU MDR, GDPR, AI Act)',
+    contact_service1: 'Soluzioni AI per organizzazioni sanitarie',
     contact_service3: 'Collaborazioni e partnership di ricerca', contact_service4: 'NLP e XAI personalizzati per dati clinici',
-    trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservato per impostazione predefinita',
-    contact_card_label: 'Contatto diretto', contact_compose: 'Scrivi email', contact_copy: 'Copia email',
-    cookie_text: 'Utilizziamo cookie essenziali per mantenere il sito operativo e cookie analitici per capire come i visitatori lo utilizzano.',
-    cookie_policy_link: 'Informativa sui Cookie', cookie_decline: 'Rifiuta', cookie_accept: 'Accetta tutti',
+    trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservatezza come regola',
+    contact_topics: 'Scrivici per', footer_privacy: 'Privacy e cookie', footer_cookie_settings: 'Impostazioni cookie', contact_compose: 'Scrivici', contact_copy: 'Copia indirizzo',
   }
 };
 
 function detectDefaultLang() {
-  const saved = localStorage.getItem('bilobe-lang');
-  if (saved) return saved;
+  let saved = null;
+  try { saved = localStorage.getItem('bilobe-lang'); } catch (e) { /* storage blocked */ }
+  if (saved === 'en' || saved === 'it') return saved;
   const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
   return preferred.toLowerCase().startsWith('it') ? 'it' : 'en';
 }
@@ -230,136 +214,26 @@ let currentLang = detectDefaultLang();
 
 function applyLanguage(lang) {
   currentLang = lang;
-  localStorage.setItem('bilobe-lang', lang);
+  try { localStorage.setItem('bilobe-lang', lang); } catch (e) { /* storage blocked */ }
   document.documentElement.lang = lang;
   const t = TRANSLATIONS[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) el.textContent = t[key];
   });
-  document.querySelectorAll('.lang-option').forEach(opt => {
+  document.querySelectorAll('.lang-switch [data-lang]').forEach(opt => {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Scroll reveal ───────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Navbar: switch to light when leaving dark hero ──────
-  const navbar = document.getElementById('navbar');
-  const hero = document.getElementById('hero');
-
-  if (hero) {
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      navbar.classList.toggle('light', !entry.isIntersecting);
-    }, { threshold: 0.05 });
-    heroObserver.observe(hero);
-  }
-
   // ── Language toggle ─────────────────────────────────────
   applyLanguage(currentLang);
 
   document.getElementById('lang-toggle').addEventListener('click', e => {
-    const clicked = e.target.closest('.lang-option');
+    const clicked = e.target.closest('[data-lang]');
     if (clicked) applyLanguage(clicked.dataset.lang);
   });
-
-  // ── Products dropdown ────────────────────────────────────
-  const dropdownItem = document.querySelector('.nav-item-dropdown');
-  if (dropdownItem) {
-    dropdownItem.querySelectorAll('.nav-dropdown a').forEach(a => {
-      a.addEventListener('click', () => dropdownItem.classList.remove('open'));
-    });
-    document.addEventListener('click', e => {
-      if (!dropdownItem.contains(e.target)) dropdownItem.classList.remove('open');
-    });
-    dropdownItem.querySelector('.nav-dropdown-trigger').addEventListener('click', e => {
-      if (window.innerWidth <= 768) return;
-      e.preventDefault();
-      dropdownItem.classList.toggle('open');
-    });
-  }
-
-  // ── Mobile nav ──────────────────────────────────────────
-  const burger = document.querySelector('.nav-burger');
-  const navLinks = document.querySelector('.nav-links');
-
-  burger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    burger.setAttribute('aria-expanded', String(open));
-  });
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // ── Cookie consent ──────────────────────────────────────
-  const banner = document.getElementById('cookie-banner');
-  const modal = document.getElementById('cookie-modal');
-  const backdrop = document.getElementById('cookie-modal-backdrop');
-
-  if (banner && modal) {
-    function hideBanner() { banner.hidden = true; }
-    function showBanner() { banner.hidden = false; }
-    function hideModal() { modal.hidden = true; }
-    function showModal() { modal.hidden = false; }
-
-    if (!localStorage.getItem('cookie-consent')) showBanner();
-
-    document.getElementById('cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      hideBanner();
-    });
-
-    document.getElementById('cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'declined');
-      hideBanner();
-    });
-
-    document.getElementById('open-cookie-policy').addEventListener('click', showModal);
-    document.getElementById('close-cookie-modal').addEventListener('click', hideModal);
-    backdrop.addEventListener('click', hideModal);
-
-    document.getElementById('modal-cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      hideModal(); hideBanner();
-    });
-
-    document.getElementById('modal-cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'declined');
-      hideModal(); hideBanner();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !modal.hidden) hideModal();
-    });
-  }
-
-  // ── Copy email button ────────────────────────────────────
-  const copyBtn = document.getElementById('copy-email-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('info@bilobe.eu').then(() => {
-        copyBtn.innerHTML = '<span class="material-symbols-outlined">check</span> ' + (currentLang === 'it' ? 'Copiato!' : 'Copied!');
-        setTimeout(() => {
-          copyBtn.innerHTML = '<span class="material-symbols-outlined">content_copy</span><span data-i18n="contact_copy">' + (currentLang === 'it' ? 'Copia email' : 'Copy email') + '</span>';
-        }, 2000);
-      });
-    });
-  }
 
 });
