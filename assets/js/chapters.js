@@ -31,6 +31,8 @@
 
     let isStatic = false;
     const stickyTop = () => parseFloat(getComputedStyle(pin).top) || 0;
+    // Space above the pinned story (section padding): it scrolls by before the story starts.
+    const padTop = () => parseFloat(getComputedStyle(section).paddingTop) || 0;
 
     function position(u) {
       for (let i = 0; i < N; i++) {
@@ -56,16 +58,21 @@
         return;
       }
       const pinH = pin.offsetHeight;
-      section.style.height = `${pinH + UNITS * pinH * SCREEN_PER_UNIT}px`;
+      section.style.height = `${padTop() + pinH + UNITS * pinH * SCREEN_PER_UNIT}px`;
       update();
     }
 
     function update() {
       if (isStatic) return;
-      const total = section.offsetHeight - pin.offsetHeight;
-      const scrolled = stickyTop() - section.getBoundingClientRect().top;
+      const total = section.offsetHeight - padTop() - pin.offsetHeight;
+      // During an anchor scroll (chrome.js) show the panel of the arrival position, so the page
+      // does not run horizontally through the story on its way to another section.
+      const root = document.documentElement;
+      const anchorY = root.classList.contains('is-anchoring') ? parseFloat(root.dataset.anchorY) : NaN;
+      const sectionTop = section.getBoundingClientRect().top + padTop();
+      const scrolled = stickyTop() - (Number.isNaN(anchorY) ? sectionTop : sectionTop + window.scrollY - anchorY);
       const u = clamp01(scrolled / total) * UNITS;
-      const pos = position(u);
+      const pos = Number.isNaN(anchorY) ? position(u) : Math.round(position(u));
       track.style.transform = `translate3d(${-pos * 100}%, 0, 0)`;
       panels.forEach((pn, k) => {
         const start = k * (HOLD + MOVE);
@@ -86,9 +93,9 @@
     steps.forEach(b => b.addEventListener('click', () => {
       const i = +b.dataset.i;
       if (isStatic) { panels[i].scrollIntoView({ behavior: 'smooth' }); return; }
-      const total = section.offsetHeight - pin.offsetHeight;
+      const total = section.offsetHeight - padTop() - pin.offsetHeight;
       const u = i * (HOLD + MOVE) + HOLD * 0.35;
-      const y = window.scrollY + section.getBoundingClientRect().top - stickyTop() + (u / UNITS) * total;
+      const y = window.scrollY + section.getBoundingClientRect().top + padTop() - stickyTop() + (u / UNITS) * total;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }));
 

@@ -199,25 +199,45 @@
     </div>
   </section>
 
-  <!-- PARTNERS (interim styling: to be redesigned once the updated list and logo files arrive) -->
+  <!-- PARTNERS: an endless row of logos in one brand colour; their own colours on hover.
+       sections.js repeats the set until it fills the widest screen. -->
   <section id="partners" class="partners" aria-labelledby="partners-label">
     <div class="wrap">
-      <p class="t-eyebrow partners__label" id="partners-label" data-i18n="partners_label">Research Partners</p>
-      <div class="partners__carousel">
-        <ul class="partners__track">
-            <li class="partners__logo"><img src="assets/images/partners/university-of-pavia.webp" alt="University of Pavia" loading="lazy"></li>
-            <li class="partners__logo"><img src="assets/images/partners/ics-maugeri.webp" alt="ICS Maugeri" loading="lazy"></li>
-            <li class="partners__logo"><img src="assets/images/partners/university-of-florida.webp" alt="University of Florida" loading="lazy"></li>
-            <li class="partners__logo"><img src="assets/images/partners/biomeris.webp" alt="Biomeris" loading="lazy"></li>
-            <li class="partners__logo"><img src="assets/images/partners/bmi.webp" alt="BMI" loading="lazy"></li>
-            <!-- duplicate set for a seamless loop -->
-            <li class="partners__logo" aria-hidden="true"><img src="assets/images/partners/university-of-pavia.webp" alt="" loading="lazy"></li>
-            <li class="partners__logo" aria-hidden="true"><img src="assets/images/partners/ics-maugeri.webp" alt="" loading="lazy"></li>
-            <li class="partners__logo" aria-hidden="true"><img src="assets/images/partners/university-of-florida.webp" alt="" loading="lazy"></li>
-            <li class="partners__logo" aria-hidden="true"><img src="assets/images/partners/biomeris.webp" alt="" loading="lazy"></li>
-            <li class="partners__logo" aria-hidden="true"><img src="assets/images/partners/bmi.webp" alt="" loading="lazy"></li>
-        </ul>
-      </div>
+      <p class="t-eyebrow partners__label" id="partners-label" data-i18n="partners_label">Research partners</p>
+    </div>
+    <div class="partners__marquee">
+      <ul class="partners__track">
+          <li class="partner">
+            <span class="partner__logo" style="--w:65px; --h:86px">
+              <img class="partner__mono" src="assets/images/partners/university-of-pavia-mono.webp" alt="University of Pavia" width="65" height="86" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/university-of-pavia.webp" alt="" width="65" height="86" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:106px; --h:53px">
+              <img class="partner__mono" src="assets/images/partners/ics-maugeri-mono.webp" alt="ICS Maugeri" width="106" height="53" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/ics-maugeri.webp" alt="" width="106" height="53" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:75px; --h:75px">
+              <img class="partner__mono" src="assets/images/partners/university-of-florida-mono.webp" alt="University of Florida" width="75" height="75" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/university-of-florida.webp" alt="" width="75" height="75" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:168px; --h:27px">
+              <img class="partner__mono" src="assets/images/partners/biomeris-mono.webp" alt="Biomeris" width="168" height="27" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/biomeris.webp" alt="" width="168" height="27" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+          <li class="partner">
+            <span class="partner__logo" style="--w:117px; --h:48px">
+              <img class="partner__mono" src="assets/images/partners/bmi-mono.webp" alt="BMI" width="117" height="48" decoding="async">
+              <img class="partner__colour" src="assets/images/partners/bmi.webp" alt="" width="117" height="48" decoding="async" aria-hidden="true">
+            </span>
+          </li>
+      </ul>
     </div>
   </section>
 
@@ -319,19 +339,19 @@
         <ul class="people__list people__list--lead">
           <li class="person">
             <div class="person__photo"><img src="images/team/enea-parimbelli.png" alt="Enea Parimbelli" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Enea Parimbelli</h3>
+            <h3 class="person__name"><span class="person__first">Enea</span> <span class="person__last">Parimbelli</span></h3>
             <p class="person__role" data-i18n="role_ceo">CEO, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener" aria-label="Enea Parimbelli on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
           <li class="person">
             <div class="person__photo"><img src="images/team/tommaso-buonocore.png" alt="Tommaso Buonocore" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Tommaso Buonocore</h3>
+            <h3 class="person__name"><span class="person__first">Tommaso</span> <span class="person__last">Buonocore</span></h3>
             <p class="person__role" data-i18n="role_cto">CTO, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" aria-label="Tommaso Buonocore on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
           <li class="person">
             <div class="person__photo person__photo--zoom"><img src="images/team/placeholder-woman.png" alt="Lorenza Rossi" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Lorenza Rossi</h3>
+            <h3 class="person__name"><span class="person__first">Lorenza</span> <span class="person__last">Rossi</span></h3>
             <p class="person__role" data-i18n="role_cfo">CFO, co-founder · MEng</p>
             <a class="person__link" href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener" aria-label="Lorenza Rossi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
@@ -343,25 +363,25 @@
         <ul class="people__list people__list--board">
           <li class="person">
             <div class="person__photo"><img src="images/team/giovanna-nicora.png" alt="Giovanna Nicora" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Giovanna Nicora</h3>
+            <h3 class="person__name"><span class="person__first">Giovanna</span> <span class="person__last">Nicora</span></h3>
             <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener" aria-label="Giovanna Nicora on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
           <li class="person">
             <div class="person__photo"><img src="images/team/lucia-sacchi.png" alt="Lucia Sacchi" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Lucia Sacchi</h3>
+            <h3 class="person__name"><span class="person__first">Lucia</span> <span class="person__last">Sacchi</span></h3>
             <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" aria-label="Lucia Sacchi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
           <li class="person">
             <div class="person__photo"><img src="images/team/arianna-dagliati.png" alt="Arianna Dagliati" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Arianna Dagliati</h3>
+            <h3 class="person__name"><span class="person__first">Arianna</span> <span class="person__last">Dagliati</span></h3>
             <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener" aria-label="Arianna Dagliati on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>
           <li class="person">
             <div class="person__photo"><img src="images/team/riccardo-bellazzi.webp" alt="Riccardo Bellazzi" loading="lazy" decoding="async"></div>
-            <h3 class="person__name">Riccardo Bellazzi</h3>
+            <h3 class="person__name"><span class="person__first">Riccardo</span> <span class="person__last">Bellazzi</span></h3>
             <p class="person__role" data-i18n="role_sci_m">Scientific consultant, co-founder · Ph.D.</p>
             <a class="person__link" href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener" aria-label="Riccardo Bellazzi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </li>

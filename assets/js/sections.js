@@ -97,6 +97,23 @@
     }, { threshold: 0.15 }).observe(products);
   }
 
+  // ---------- People: all names on one line, or all of them on two ----------
+  const people = document.querySelector('.people');
+  const names = people ? Array.from(people.querySelectorAll('.person__name')) : [];
+  if (names.length) {
+    const fit = () => {
+      people.classList.remove('people--names-split');
+      // With the names on one line (nowrap per part), a name wider than its column means a wrap.
+      const tooLong = names.some(n => n.scrollWidth > n.clientWidth + 1 || n.getClientRects().length > 1 ||
+        n.querySelector('.person__last').offsetTop > n.querySelector('.person__first').offsetTop);
+      people.classList.toggle('people--names-split', tooLong);
+    };
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(people.querySelector('.people__groups') || people);
+    else window.addEventListener('resize', fit);
+  }
+
   // ---------- People: entrance, and natural colour at the centre of the screen on touch ----------
   const peopleLists = Array.from(document.querySelectorAll('.people__list'));
   if (peopleLists.length && 'IntersectionObserver' in window) {
@@ -106,7 +123,7 @@
         entry.target.classList.add('is-in');
         enter.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -15% 0px' });
+    }, { rootMargin: '0px 0px -2% 0px' });
     peopleLists.forEach(list => enter.observe(list));
 
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
@@ -141,5 +158,39 @@
       }, { rootMargin: '0px 0px -30% 0px' });
       io.observe(contact);
     }
+  }
+
+  // ---------- Partners: endless row ----------
+  const track = document.querySelector('.partners__track');
+  if (track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const original = Array.from(track.children);
+    const SPEED = 36;   // px per second
+    const build = () => {
+      track.classList.remove('is-rolling');
+      Array.from(track.children).forEach(li => { if (!original.includes(li)) li.remove(); });
+      const setWidth = track.scrollWidth;
+      if (!setWidth) return;
+      // Half of the track must be at least as wide as the screen: repeat the set, then double it.
+      const copies = Math.max(1, Math.ceil(window.innerWidth / setWidth));
+      const half = [];
+      for (let k = 0; k < copies; k++) half.push(...original.map(li => (k === 0 ? li : li.cloneNode(true))));
+      half.slice(original.length).forEach(li => track.appendChild(li));
+      half.forEach(li => {
+        const clone = li.cloneNode(true);
+        track.appendChild(clone);
+      });
+      // Only the first set is announced; the repeats are decoration.
+      Array.from(track.children).slice(original.length).forEach(li => {
+        li.setAttribute('aria-hidden', 'true');
+        li.querySelectorAll('img').forEach(img => { img.alt = ''; });
+      });
+      track.style.setProperty('--roll', `${(setWidth * copies) / SPEED}s`);
+      track.classList.add('is-rolling');
+    };
+    let lastW = window.innerWidth;
+    const imgs = original.flatMap(li => Array.from(li.querySelectorAll('img')));
+    imgs.forEach(img => { img.loading = 'eager'; });
+    build();
+    window.addEventListener('resize', () => { if (Math.abs(window.innerWidth - lastW) > 40) { lastW = window.innerWidth; build(); } });
   }
 })();

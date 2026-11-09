@@ -369,7 +369,7 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 
 .capabilities__sticky {
   position: sticky;
-  top: calc(var(--header-h) + var(--space-16));
+  top: calc(var(--header-h) + var(--space-12));
 }
 
 .capabilities__eyebrow {
@@ -516,9 +516,9 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 
 .people__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
 .people__intro { grid-column: 1 / span 4; }
-.people__sticky { position: sticky; top: calc(var(--header-h) + var(--space-16)); }
+.people__sticky { position: sticky; top: calc(var(--header-h) + var(--space-12)); }
 .people__groups { grid-column: 5 / span 8; }
-.people__group + .people__group { margin-top: var(--space-16); }
+.people__group + .people__group { margin-top: var(--space-12); }
 .people__group-label {
   margin: 0 0 var(--space-6);
   padding-bottom: var(--space-3);
@@ -536,8 +536,9 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   padding: 0;
   list-style: none;
 }
-.people__list--lead { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* Founders and consultants share one four-column grid and one portrait size, so the team reads as
+   a whole and the second row is already in view under the first. */
+.people__list--lead, .people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .person { position: relative; transition: opacity 0.5s ease; }
 
@@ -602,7 +603,11 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   line-height: 34px;
   color: var(--ink);
 }
-.people__list--board .person__name { font-size: 24px; line-height: 30px; }
+.people__list .person__name { font-size: 24px; line-height: 30px; }
+/* Names stay on one line, all of them; when the longest one does not fit its column, every name
+   breaks between first name and surname (sections.js sets .people--names-split). */
+.person__first, .person__last { white-space: nowrap; }
+.people--names-split .person__first, .people--names-split .person__last { display: block; }
 .person__role { margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
 .person__link {
   display: inline-flex;
@@ -628,14 +633,17 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   .people__intro, .people__groups { grid-column: 1 / -1; }
   .people__sticky { position: static; }
   .people__groups { margin-top: var(--space-12); }
-  .people__list--lead { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .people__list--lead, .people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (max-width: 640px) {
   .people__list--lead, .people__list--board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-4); }
   .person__photo { max-width: 200px; }
-  .person__name, .people__list--board .person__name { font-size: 24px; line-height: 30px; }
+  .person__name, .people__list .person__name { font-size: 24px; line-height: 30px; }
+/* Names stay on one line, all of them; when the longest one does not fit its column, every name
+   breaks between first name and surname (sections.js sets .people--names-split). */
+.person__first, .person__last { white-space: nowrap; }
+.people--names-split .person__first, .people--names-split .person__last { display: block; }
   .person__role { font-size: 14px; line-height: 20px; }
 }
 
@@ -892,21 +900,43 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   .consent { transition: none; }
 }
 
-/* ---------- Partners (interim, until the redesign with the updated list and logos) ---------- */
-.partners { padding: var(--space-16) 0; background: var(--surface); }
+/* ---------- Partners ----------
+   An endless row. Each logo has a single-colour version in ink (assets/images/partners/*-mono.webp,
+   made from the original) and is sized by area, so wide and tall marks weigh the same;
+   hovering a logo shows its own colours and pauses the row. sections.js repeats the set until it
+   is wider than the screen, then doubles it for a seamless loop at a constant speed. */
+
+/* A mint band between two white sections. The logos sit in 112px rows, so the bottom padding is
+   smaller than the top one to make the space above the label and below the logos look equal. */
+.partners { padding: 72px 0 52px; background: var(--surface-raised); }
 .partners__label { margin: 0 0 var(--space-8); text-align: center; color: var(--ink-muted); }
-.partners__carousel {
+.partners__marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
 }
-.partners__track { display: flex; align-items: center; gap: clamp(40px, 5vw, 72px); width: max-content; margin: 0; padding: 0; list-style: none; animation: partners-scroll 28s linear infinite; }
-.partners__track:hover { animation-play-state: paused; }
-@keyframes partners-scroll { to { transform: translateX(calc(-50% - clamp(40px, 5vw, 72px) / 2)); } }
-.partners__logo { flex: none; display: flex; align-items: center; justify-content: center; height: 80px; }
-.partners__logo img { width: auto; max-width: 160px; max-height: 64px; object-fit: contain; filter: grayscale(1); opacity: 0.5; transition: filter 0.35s, opacity 0.35s; }
-.partners__logo img:hover { filter: none; opacity: 1; }
+.partners__track { display: flex; align-items: center; width: max-content; margin: 0; padding: 0; list-style: none; }
+.partners__track.is-rolling { animation: partners-roll var(--roll, 40s) linear infinite; }
+.partners__marquee:hover .partners__track { animation-play-state: paused; }
+@keyframes partners-roll { to { transform: translate3d(-50%, 0, 0); } }
+
+.partner { flex: none; display: grid; place-items: center; height: 112px; padding: 0 clamp(28px, 3.2vw, 52px); }
+.partner__logo { position: relative; display: block; width: var(--w); height: var(--h); }
+.partner__mono, .partner__colour { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity 0.4s ease; }
+.partner__mono { opacity: 0.75; }
+.partner__colour { opacity: 0; }
+[data-theme="dark"] .partner__mono { filter: brightness(0) invert(0.93); }
+@media (hover: hover) {
+  .partner:hover .partner__mono { opacity: 0; }
+  .partner:hover .partner__colour { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .partner { height: 96px; padding: 0 24px; }
+  .partner__logo { width: calc(var(--w) * 0.85); height: calc(var(--h) * 0.85); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .partners__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
-  .partners__logo[aria-hidden="true"] { display: none; }
+  .partners__marquee { -webkit-mask-image: none; mask-image: none; }
+  .partners__track { flex-wrap: wrap; justify-content: center; width: auto; animation: none !important; }
+  .partner__mono, .partner__colour { transition: none; }
 }
