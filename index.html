@@ -23,15 +23,13 @@
   <link rel="apple-touch-icon" href="images/logo/logo-touch-icon.png">
   <link rel="preload" href="assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- Legacy fonts: still used by sections not yet converted to the new identity. -->
+  <!-- Material Symbols: icons of the sections not yet redesigned. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Funnel+Display:wght@700;800&display=swap"
-    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/legacy-bridge.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -51,8 +49,8 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="site-nav__links">
-          <li><a href="#features" data-i18n="nav_features">Features</a></li>
           <li><a href="#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="#capabilities" data-i18n="nav_features">Features</a></li>
           <li><a href="#about" data-i18n="nav_about">About</a></li>
           <li><a href="#contact" data-i18n="nav_people">People</a></li>
           <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
@@ -87,112 +85,6 @@
           <a href="#get-in-touch" class="btn btn--outline-white" data-i18n="nav_book_demo">Book a demo</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="features_label">Our Capabilities</p>
-        <h2 data-i18n="features_h2">Built for the complexity<br>of clinical data.</h2>
-      </div>
-      <div class="features-grid">
-
-        <div class="feature-card reveal delay-1">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85&auto=format&fit=crop"
-              alt="Medical data analytics" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">error_med</span>
-              <span class="feature-num">01</span>
-            </div>
-            <h3 data-i18n="feat1_h3">Handling Unstructured Data</h3>
-            <p data-i18n="feat1_p">Is your health institution data mostly unstructured — text, images, biosignals — but
-              filled with valuable
-              insights? Bilobe leverages modern AI to unlock what's hidden in clinical data.</p>
-          </div>
-        </div>
-
-        <div class="feature-card reveal delay-2">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85&auto=format&fit=crop"
-              alt="Secure technology infrastructure" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">health_and_safety</span>
-              <span class="feature-num">02</span>
-            </div>
-            <h3 data-i18n="feat2_h3">Trustworthy, Compliant &amp; Secure</h3>
-            <p data-i18n="feat2_p">Our AI solutions are built with trustworthiness at their core — compliant with EU
-              MDR, GDPR, and the AI
-              Act, with data protection and explainability at every layer.</p>
-          </div>
-        </div>
-
-        <div class="feature-card reveal delay-3">
-          <div class="feature-img-wrap">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=85&auto=format&fit=crop"
-              alt="Doctor using digital tools" loading="lazy">
-          </div>
-          <div class="feature-overlay"></div>
-          <div class="feature-content">
-            <div class="feature-header">
-              <span class="material-symbols-outlined feature-icon">diagnosis</span>
-              <span class="feature-num">03</span>
-            </div>
-            <h3 data-i18n="feat3_h3">Human-Centered Interaction</h3>
-            <p data-i18n="feat3_p">Clinical evaluation practices and human-AI collaboration designed to keep
-              practitioners in control —
-              achieving the best of both human expertise and AI synergy.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="partners-strip reveal">
-        <p class="partners-strip-label" data-i18n="partners_label">Research Partners</p>
-        <div class="partners-carousel" aria-label="Research partners">
-          <div class="partners-track">
-            <!-- set 1 -->
-            <div class="partner-logo-item"><img
-                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-                alt="Nvidia" loading="lazy"></div>
-            <div class="partner-logo-item"><img
-                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-                alt="University of Pavia" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri" loading="lazy">
-            </div>
-            <div class="partner-logo-item"><img
-                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
-                alt="University of Florida" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png"
-                alt="Biomeris" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-            <!-- set 2 (duplicate for seamless loop) -->
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri"
-                loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
-                alt="" loading="lazy"></div>
-            <div class="partner-logo-item" aria-hidden="true"><img
-                src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png" alt="" loading="lazy"></div>
-            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -340,6 +232,89 @@
 
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
+    <div class="wrap capabilities__grid">
+      <div class="capabilities__intro">
+        <div class="capabilities__sticky">
+          <p class="t-eyebrow capabilities__eyebrow" data-i18n="features_label">Our capabilities</p>
+          <h2 class="capabilities__title" id="capabilities-title">
+            <span data-i18n="features_h2_1">Built for the complexity</span>
+            <span class="capabilities__title-accent" data-i18n="features_h2_2">of clinical data.</span>
+          </h2>
+          <ol class="capabilities__index">
+            <li><a href="#cap-data" data-i18n="cap1_label">Data</a></li>
+            <li><a href="#cap-trust" data-i18n="cap2_label">Trust</a></li>
+            <li><a href="#cap-people" data-i18n="cap3_label">People</a></li>
+          </ol>
+        </div>
+      </div>
+      <div class="capabilities__list">
+        <article class="capability" id="cap-data">
+          <p class="t-eyebrow capability__label" data-i18n="cap1_label">Data</p>
+          <h3 class="capability__title" data-i18n="cap1_title">Unstructured data, made usable.</h3>
+          <p class="capability__body" data-i18n="cap1_body">Most clinical information lives in free text, images and biosignals. We build AI that reads it and returns structured data your teams can search, count and analyse.</p>
+          <p class="capability__detail" data-i18n="cap1_detail">Clinical notes · Reports · Images · Biosignals</p>
+        </article>
+        <article class="capability" id="cap-trust">
+          <p class="t-eyebrow capability__label" data-i18n="cap2_label">Trust</p>
+          <h3 class="capability__title" data-i18n="cap2_title">Trustworthy by design.</h3>
+          <p class="capability__body" data-i18n="cap2_body">We design for the European rules from the start: the EU MDR, the GDPR and the AI Act. Data protection and explainability are part of every layer, not added at the end.</p>
+          <p class="capability__detail" data-i18n="cap2_detail">Explainable outputs · Data protection · European hosting</p>
+        </article>
+        <article class="capability" id="cap-people">
+          <p class="t-eyebrow capability__label" data-i18n="cap3_label">People</p>
+          <h3 class="capability__title" data-i18n="cap3_title">Clinicians stay in control.</h3>
+          <p class="capability__body" data-i18n="cap3_body">Our tools support clinical judgement; they do not replace it. We evaluate them with clinicians and design each interaction so that the practitioner makes the final decision.</p>
+          <p class="capability__detail" data-i18n="cap3_detail">Clinical evaluation · Human oversight · Fits existing workflows</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS (old styling: to be redesigned) -->
+  <section id="partners" class="legacy-partners">
+    <div class="container">
+      <div class="partners-strip reveal">
+        <p class="partners-strip-label" data-i18n="partners_label">Research Partners</p>
+        <div class="partners-carousel" aria-label="Research partners">
+          <div class="partners-track">
+            <!-- set 1 -->
+            <div class="partner-logo-item"><img
+                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
+                alt="Nvidia" loading="lazy"></div>
+            <div class="partner-logo-item"><img
+                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
+                alt="University of Pavia" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri" loading="lazy">
+            </div>
+            <div class="partner-logo-item"><img
+                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
+                alt="University of Florida" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png"
+                alt="Biomeris" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
+            <!-- set 2 (duplicate for seamless loop) -->
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://www.nvidia.com/content/nvidiaGDC/it/it_IT/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.100.1290.png/1722330970194/nvidia-logo-vert.png"
+                alt="" loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://cralateneopv.unipv.it/wp-content/uploads/2019/01/MAIN_LOGO_scrittasotto_1000x1000-Nero-su-bianco-796x1024.png"
+                alt="" loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img src="./images/sponsor/maugeri.png" alt="ICS Maugeri"
+                loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://static.studyusa.com/school/aws_D5Mhl-qAiYO-oOys2hJbtkfVGIITMoSV_lg_1x.png?format=webp"
+                alt="" loading="lazy"></div>
+            <div class="partner-logo-item" aria-hidden="true"><img
+                src="https://www.ehden.eu/wp-content/uploads/2019/12/Biomeris-logo.png" alt="" loading="lazy"></div>
+            <div class="partner-logo-item"><img src="./images/sponsor/bmi.png" alt="BMI" loading="lazy"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -747,6 +722,7 @@
 
   <script src="script.js"></script>
   <script src="assets/js/hero-graphic.js" defer></script>
+  <script src="assets/js/sections.js" defer></script>
 </body>
 
 </html>
