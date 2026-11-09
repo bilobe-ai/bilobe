@@ -206,6 +206,7 @@ li:not(.is-in) .field__freq i::after { transform: scaleX(0); }
 .mg__source.is-open { opacity: 1; transform: none; }
 .mg__source-label { display: inline-flex; align-items: center; gap: 6px; font: 600 11px/14px var(--font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal); }
 .mg__source-title { margin: 10px 0 6px; font-weight: 600; font-size: 13px; line-height: 18px; }
+.mg__source-orig { margin: 0 0 4px; font-size: 11px; line-height: 16px; letter-spacing: 0.06em; text-transform: uppercase; color: #5b7178; }
 .mg__source-text { margin: 0; font-size: 13px; line-height: 20px; color: #4a6168; }
 .mg__source mark { color: var(--deep); background: linear-gradient(rgba(31, 111, 191, 0.16), rgba(31, 111, 191, 0.16)) no-repeat 0 0 / 0% 100%; transition: background-size 1.2s 0.3s ease; }
 .mg__source.is-open mark { background-size: 100% 100%; }
