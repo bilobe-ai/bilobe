@@ -116,4 +116,30 @@
       document.querySelectorAll('.person').forEach(p => lit.observe(p));
     }
   }
+
+  // ---------- Contact: the canopy glow grows out of the corner as the section arrives ----------
+  const contact = document.querySelector('.contact');
+  if (contact && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+    const rise = () => {
+      ticking = false;
+      const r = contact.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.85)));
+      contact.style.setProperty('--rise', (1 - Math.pow(1 - p, 3)).toFixed(4));
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(rise); } }, { passive: true });
+    window.addEventListener('resize', rise);
+    rise();
+
+    if ('IntersectionObserver' in window && contact.getBoundingClientRect().top > window.innerHeight) {
+      contact.classList.add('is-pending');
+      const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        contact.classList.remove('is-pending');
+        io.disconnect();
+      }, { rootMargin: '0px 0px -30% 0px' });
+      io.observe(contact);
+    }
+  }
 })();

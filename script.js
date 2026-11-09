@@ -208,12 +208,12 @@ const TRANSLATIONS = {
     people_founders: 'Founders', people_board: 'Scientific consultants',
     role_ceo: 'CEO, co-founder · Ph.D.', role_cto: 'CTO, co-founder · Ph.D.', role_cfo: 'CFO, co-founder · MEng',
     role_sci_f: 'Scientific consultant, co-founder · Ph.D.', role_sci_m: 'Scientific consultant, co-founder · Ph.D.',
-    contact_label: 'Contact Us', contact_title_1: 'Let\'s get', contact_title_2: 'in touch.',
+    contact_label: 'Contact', contact_title_1: 'Let\'s get', contact_title_2: 'in touch.',
     contact_intro: 'Whether you\'re looking to integrate AI into your clinical workflow, explore a research collaboration, or simply learn more about what we do — we\'d love to hear from you.',
     contact_service1: 'AI solutions for healthcare organizations', contact_service2: 'Regulatory-compliant deployments (EU MDR, GDPR, AI Act)',
     contact_service3: 'Research collaborations and partnerships', contact_service4: 'Custom NLP and XAI for clinical data',
     trust_response: 'Response within 2 business days', trust_confidential: 'Confidential by default',
-    contact_card_label: 'Direct line', contact_compose: 'Compose email', contact_copy: 'Copy email',
+    contact_topics: 'Write to us about', contact_compose: 'Write to us', contact_copy: 'Copy address',
     cookie_text: 'We use essential cookies to keep the site running and analytics cookies to understand how visitors use it.',
     cookie_policy_link: 'Cookie Policy', cookie_decline: 'Decline', cookie_accept: 'Accept all',
   },
@@ -318,12 +318,12 @@ const TRANSLATIONS = {
     people_founders: 'Fondatori', people_board: 'Consulenti scientifici',
     role_ceo: 'CEO, co-fondatore · Ph.D.', role_cto: 'CTO, co-fondatore · Ph.D.', role_cfo: 'CFO, co-fondatrice · MEng',
     role_sci_f: 'Consulente scientifica, co-fondatrice · Ph.D.', role_sci_m: 'Consulente scientifico, co-fondatore · Ph.D.',
-    contact_label: 'Contattaci', contact_title_1: 'Mettiamoci', contact_title_2: 'in contatto.',
+    contact_label: 'Contatti', contact_title_1: 'Mettiamoci', contact_title_2: 'in contatto.',
     contact_intro: 'Che tu voglia integrare l\'IA nel tuo flusso di lavoro clinico, esplorare una collaborazione di ricerca, o semplicemente saperne di più su ciò che facciamo — ci farebbe piacere sentirti.',
     contact_service1: 'Soluzioni AI per organizzazioni sanitarie', contact_service2: 'Implementazioni conformi alla normativa (EU MDR, GDPR, AI Act)',
     contact_service3: 'Collaborazioni e partnership di ricerca', contact_service4: 'NLP e XAI personalizzati per dati clinici',
-    trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservato per impostazione predefinita',
-    contact_card_label: 'Contatto diretto', contact_compose: 'Scrivi email', contact_copy: 'Copia email',
+    trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservatezza come regola',
+    contact_topics: 'Scrivici per', contact_compose: 'Scrivici', contact_copy: 'Copia indirizzo',
     cookie_text: 'Utilizziamo cookie essenziali per mantenere il sito operativo e cookie analitici per capire come i visitatori lo utilizzano.',
     cookie_policy_link: 'Informativa sui Cookie', cookie_decline: 'Rifiuta', cookie_accept: 'Accetta tutti',
   }
@@ -429,19 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !modal.hidden) hideModal();
-    });
-  }
-
-  // ── Copy email button ────────────────────────────────────
-  const copyBtn = document.getElementById('copy-email-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('info@bilobe.eu').then(() => {
-        copyBtn.innerHTML = '<span class="material-symbols-outlined">check</span> ' + (currentLang === 'it' ? 'Copiato!' : 'Copied!');
-        setTimeout(() => {
-          copyBtn.innerHTML = '<span class="material-symbols-outlined">content_copy</span><span data-i18n="contact_copy">' + (currentLang === 'it' ? 'Copia email' : 'Copy email') + '</span>';
-        }, 2000);
-      });
     });
   }
 

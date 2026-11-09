@@ -442,53 +442,34 @@
     </div>
   </section>
 
-  <!-- CONTACT US -->
-  <section id="get-in-touch">
-    <div class="container">
-      <div class="contact-layout">
-
-        <div class="contact-left reveal">
-          <p class="label" data-i18n="contact_label">Contact Us</p>
-          <h2 class="contact-title"><span data-i18n="contact_title_1">Let's get</span><br><span class="accent-text"
-              data-i18n="contact_title_2">in touch.</span></h2>
-          <p class="contact-intro" data-i18n="contact_intro">Whether you're looking to integrate AI into your clinical
-            workflow, explore a
-            research collaboration, or simply learn more about what we do — we'd love to hear from you.</p>
-          <ul class="contact-services">
-            <li data-i18n="contact_service1">AI solutions for healthcare organizations</li>
-            <li data-i18n="contact_service2">Regulatory-compliant deployments (EU MDR, GDPR, AI Act)</li>
-            <li data-i18n="contact_service3">Research collaborations and partnerships</li>
-            <li data-i18n="contact_service4">Custom NLP and XAI for clinical data</li>
-          </ul>
-          <div class="contact-trust">
-            <div class="trust-item">
-              <span class="material-symbols-outlined">schedule</span>
-              <span data-i18n="trust_response">Response within 2 business days</span>
-            </div>
-            <div class="trust-item">
-              <span class="material-symbols-outlined">lock</span>
-              <span data-i18n="trust_confidential">Confidential by default</span>
-            </div>
-          </div>
+  <!-- CONTACT: the closing of the page on the canopy gradient, lime top right to deep bottom left.
+       All text stays on the teal and deep end. -->
+  <section id="get-in-touch" class="contact" aria-labelledby="contact-title">
+    <div class="contact__glow" aria-hidden="true"></div>
+    <div class="wrap contact__grid">
+      <div class="contact__head">
+        <p class="t-eyebrow contact__eyebrow" data-i18n="contact_label">Contact</p>
+        <h2 class="contact__title" id="contact-title">
+          <span data-i18n="contact_title_1">Let's get</span>
+          <span class="contact__title-accent" data-i18n="contact_title_2">in touch.</span>
+        </h2>
+      </div>
+      <div class="contact__main">
+        <p class="contact__intro" data-i18n="contact_intro">Whether you're looking to integrate AI into your clinical workflow, explore a research collaboration, or simply learn more about what we do — we'd love to hear from you.</p>
+        <a class="contact__email" href="mailto:info@bilobe.eu">info@bilobe.eu</a>
+        <div class="contact__actions">
+          <a class="btn btn--lime btn--pill" href="mailto:info@bilobe.eu"><span data-i18n="contact_compose">Write to us</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="btn btn--outline-white btn--pill contact__copy" type="button" data-copy-text="info@bilobe.eu" data-copied="Address copied" data-copied-it="Indirizzo copiato"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span data-i18n="contact_copy">Copy address</span></button>
         </div>
-
-        <div class="contact-right reveal delay-2">
-          <div class="contact-card">
-            <p class="contact-card-label" data-i18n="contact_card_label">Direct line</p>
-            <a href="mailto:info@bilobe.eu" class="contact-email">info@bilobe.eu</a>
-            <div class="contact-actions">
-              <a href="mailto:info@bilobe.eu" class="btn-primary">
-                <span class="material-symbols-outlined">mail</span>
-                <span data-i18n="contact_compose">Compose email</span>
-              </a>
-              <button class="btn-copy" id="copy-email-btn">
-                <span class="material-symbols-outlined">content_copy</span>
-                <span data-i18n="contact_copy">Copy email</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
+        <p class="contact__note"><span data-i18n="trust_response">Response within 2 business days</span><span data-i18n="trust_confidential">Confidential by default</span></p>
+      </div>
+      <div class="contact__side">
+        <p class="contact__side-label" data-i18n="contact_topics">Write to us about</p>
+        <ol class="contact__topics">
+          <li data-i18n="contact_service1">AI solutions for healthcare organizations</li>
+          <li data-i18n="contact_service3">Research collaborations and partnerships</li>
+          <li data-i18n="contact_service4">Custom NLP and XAI for clinical data</li>
+        </ol>
       </div>
     </div>
   </section>

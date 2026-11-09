@@ -717,3 +717,109 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   .journal__item::before, .journal__title, .journal__all .icon, .journal__more .icon { transition: none !important; }
   .js .people__list .person__photo { clip-path: none; }
 }
+
+/* ---------- Contact: the closing, on the canopy gradient ----------
+   Like the closing slide: lime in the top right corner, deep bottom left, all text on the teal and
+   deep end. The glow grows out of the corner as the section arrives (--rise, assets/js/sections.js)
+   and runs into the deep footer below. */
+
+.contact {
+  --rise: 1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(104px, 10vw, 152px) 0 clamp(80px, 8vw, 120px);
+  background: var(--deep);
+  color: var(--white);
+}
+.contact__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(min(1300px, 90vw) min(720px, 50vw) at 100% 0%, #8cd687 0%, #30b092 24%, #208f93 44%, #013b48 82%);
+  transform-origin: 100% 0;
+  transform: scale(calc(0.45 + 0.55 * var(--rise)));
+  will-change: transform;
+}
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--space-6);
+  align-items: start;
+}
+.contact__head { grid-column: 1 / -1; }
+.contact__main { grid-column: 1 / span 7; }
+/* The topics start level with the introduction, beside the copy rather than under the glow. */
+.contact__side { grid-column: 9 / span 4; margin-top: var(--space-8); }
+
+.contact__eyebrow { margin: 0 0 var(--space-6); color: var(--lime); }
+.contact__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(48px, 6.2vw, 88px); line-height: 1.02; letter-spacing: -0.01em; color: var(--white); }
+.contact__title span { display: block; }
+.contact__title-accent { color: var(--lime); }
+.contact__intro { max-width: 34em; margin-top: var(--space-8); font: 400 18px/28px var(--font-sans); color: rgba(255, 255, 255, 0.92); }
+
+.contact__email {
+  display: inline-block;
+  margin-top: var(--space-12);
+  padding-bottom: 6px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.15;
+  color: var(--white);
+  text-decoration: none;
+  background: linear-gradient(var(--lime), var(--lime)) 0 100% / 100% 2px no-repeat;
+  background-size: 0 2px;
+  transition: background-size 0.6s cubic-bezier(.16, 1, .3, 1);
+}
+.contact__email:hover, .contact__email:focus-visible { background-size: 100% 2px; }
+.contact__email:focus-visible { outline: 2px solid var(--lime); outline-offset: 6px; }
+
+.contact__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+.contact__copy { background: transparent; }
+.contact__copy .icon { width: 18px; height: 18px; }
+.contact__copy.is-done { border-color: var(--lime); }
+.contact .btn:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
+.contact__note { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin-top: var(--space-8); font: 400 14px/20px var(--font-sans); color: rgba(255, 255, 255, 0.72); }
+
+.contact__side-label { margin: 0 0 var(--space-4); font: 600 12px/16px var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255, 255, 255, 0.84); }
+.contact__topics { margin: 0; padding: 0; list-style: none; counter-reset: topic; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.contact__topics li {
+  counter-increment: topic;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font: 400 16px/24px var(--font-sans);
+  color: var(--white);
+}
+.contact__topics li::before { content: counter(topic, decimal-leading-zero); font: 600 12px/24px var(--font-sans); letter-spacing: 0.08em; color: var(--lime); }
+
+/* Arrival: the copy rises in after the glow has started to grow. */
+.contact.is-pending .contact__head > *, .contact.is-pending .contact__main > *, .contact.is-pending .contact__side { opacity: 0; transform: translateY(16px); }
+.contact__head > *, .contact__main > *, .contact__side { transition: opacity 0.8s ease, transform 0.9s cubic-bezier(.16, 1, .3, 1); }
+.contact__head > :nth-child(2) { transition-delay: 0.06s; }
+.contact__main > * { transition-delay: 0.12s; }
+.contact__main > :nth-child(n+2) { transition-delay: 0.18s; }
+.contact__side { transition-delay: 0.26s; }
+
+/* The footer continues the deep end of the gradient without a seam. */
+.contact ~ .site-footer { background: var(--deep); }
+
+@media (max-width: 1024px) {
+  .contact__glow { background: radial-gradient(980px 640px at 100% 0%, #8cd687 0%, #30b092 24%, #208f93 44%, #013b48 82%); }
+  .contact__main { grid-column: 1 / span 9; }
+  .contact__side { grid-column: 1 / span 8; margin-top: var(--space-16); }
+}
+@media (max-width: 640px) {
+  .contact { padding-top: 168px; }
+  .contact__glow { background: radial-gradient(min(560px, 144vw) min(380px, 97vw) at 100% 0%, #8cd687 0%, #30b092 24%, #208f93 44%, #013b48 82%); }
+  .contact__main, .contact__side { grid-column: 1 / -1; }
+  .contact__intro { margin-top: var(--space-6); font-size: 17px; line-height: 27px; }
+  .contact__email { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact__glow { transform: none; }
+  .contact__head > *, .contact__main > *, .contact__side, .contact__email { transition: none !important; }
+}

@@ -42,7 +42,21 @@
     update();
   }
 
-  // ---------- Copy link buttons ----------
+  // ---------- Copy buttons: [data-copy-link] copies the page address, [data-copy-text] its own text ----------
+  document.querySelectorAll('[data-copy-text]').forEach(btn => {
+    const label = btn.querySelector('span');
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(btn.dataset.copyText); } catch (e) { return; }
+      if (!label) return;
+      const original = label.textContent;
+      const it = document.documentElement.lang === 'it';
+      label.textContent = (it && btn.dataset.copiedIt) || btn.dataset.copied || 'Copied';
+      btn.classList.add('is-done');
+      setTimeout(() => { label.textContent = original; btn.classList.remove('is-done'); }, 2000);
+    });
+  });
+
+  // ---------- Copy link ----------
   document.querySelectorAll('[data-copy-link]').forEach(btn => {
     const label = btn.querySelector('span');
     const original = label ? label.textContent : '';
