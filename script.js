@@ -158,6 +158,11 @@ const TRANSLATIONS = {
     insight1_h3: 'Explainable AI in clinical decision support', insight1_p: 'How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.',
     insight2_h3: 'EU AI Act: what it means for healthtech startups', insight2_p: 'A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.',
     insight3_h3: 'ViraLingo: predicting viral variants with pan-viral LLMs', insight3_p: 'Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.',
+    insights_page_intro: 'Perspectives on trustworthy AI, healthcare technology and our latest research collaborations.',
+    filter_all: 'All', tag_news: 'News', date4: '5 December 2024', date5: '14 November 2024', date6: '8 October 2024',
+    insight4_h3: 'NLP for clinical notes: extracting structure from the unstructured', insight4_p: 'An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.',
+    insight5_h3: 'Bilobe joins the NVIDIA BioNeMo ecosystem', insight5_p: 'Our collaboration with NVIDIA BioNeMo and access to the HiPerGator supercomputer to accelerate AI research in molecular medicine.',
+    insight6_h3: 'GDPR meets AI: data protection by design in medical systems', insight6_p: 'How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.',
     read_more: 'Read article',
     about_label: 'About us',
     about_h2_1: 'Born from 40 years',
@@ -263,6 +268,11 @@ const TRANSLATIONS = {
     insight1_h3: 'AI spiegabile nel supporto alle decisioni cliniche', insight1_p: 'Come le tecniche XAI stanno cambiando la fiducia dei clinici, e perché la trasparenza è la prossima frontiera per l\'adozione dell\'AI in medicina.',
     insight2_h3: 'EU AI Act: cosa significa per le startup healthtech', insight2_p: 'Una guida pratica ai nuovi requisiti dell\'EU AI Act per i sistemi di AI medica ad alto rischio, dalla classificazione del rischio alla valutazione di conformità.',
     insight3_h3: 'ViraLingo: prevedere le varianti virali con LLM pan-virali', insight3_p: 'La nostra collaborazione con la University of Florida su un modello di linguaggio addestrato su genomi di HIV, epatite e coronavirus per prevedere le varianti pericolose.',
+    insights_page_intro: 'Punti di vista su AI affidabile, tecnologia per la sanità e le nostre collaborazioni di ricerca più recenti.',
+    filter_all: 'Tutti', tag_news: 'Notizie', date4: '5 dicembre 2024', date5: '14 novembre 2024', date6: '8 ottobre 2024',
+    insight4_h3: 'NLP per le note cliniche: dare struttura al non strutturato', insight4_p: 'Una panoramica della nostra pipeline di NLP biomedico per le lettere di dimissione in italiano: riconoscimento di entità, estrazione di relazioni e ragionamento temporale in una lingua con poche risorse.',
+    insight5_h3: 'Bilobe entra nell\'ecosistema NVIDIA BioNeMo', insight5_p: 'La nostra collaborazione con NVIDIA BioNeMo e l\'accesso al supercomputer HiPerGator per accelerare la ricerca AI in medicina molecolare.',
+    insight6_h3: 'GDPR e AI: protezione dei dati by design nei sistemi medici', insight6_p: 'Come progettare AI per la sanità che tratti la conformità al GDPR come una caratteristica e non come un ripensamento: federated learning, privacy differenziale e audit trail.',
     read_more: 'Leggi l\'articolo',
     about_label: 'Chi siamo',
     about_h2_1: 'Nati da 40 anni',
@@ -356,14 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Header: hairline once the page scrolls ─────────────
-  const header = document.getElementById('site-header');
-  if (header) {
-    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 4);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
   // ── Language toggle ─────────────────────────────────────
   applyLanguage(currentLang);
 
@@ -386,21 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       dropdownItem.classList.toggle('open');
     });
-  }
-
-  // ── Mobile nav ──────────────────────────────────────────
-  const burger = document.querySelector('.site-nav__burger');
-  const siteNav = document.getElementById('site-nav');
-
-  if (burger && siteNav) {
-    const setOpen = open => {
-      siteNav.classList.toggle('open', open);
-      burger.setAttribute('aria-expanded', String(open));
-      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    };
-    burger.addEventListener('click', () => setOpen(!siteNav.classList.contains('open')));
-    siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
   }
 
   // ── Cookie consent ──────────────────────────────────────

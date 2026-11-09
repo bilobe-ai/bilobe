@@ -1,88 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EU AI Act: What It Means for HealthTech Startups — Bilobe AI</title>
-  <meta name="description" content="A practical guide to navigating EU AI Act requirements for high-risk medical AI systems — from risk classification to conformity assessment.">
-  <link rel="icon" href="../images/logo/logo.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
+  <title>EU AI Act: what it means for healthtech startups — Bilobe</title>
+  <meta name="description" content="A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/articles/eu-ai-act.html">
+  <meta property="og:title" content="EU AI Act: what it means for healthtech startups — Bilobe">
+  <meta property="og:description" content="A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/logo/logo.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../images/logo/logo-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../article.css">
-  <link rel="stylesheet" href="../assets/css/legacy-bridge.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
 </head>
+
 <body>
 
-  <nav id="navbar" class="light">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-brand">
-        <img src="../images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="../assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="../assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="../index.html#capabilities">Features</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#partners">Partners</a></li>
-        <li><a href="../index.html#people">People</a></li>
-        <li><a href="../insights.html">Insights</a></li>
-        <li><a href="../index.html#get-in-touch">Contact</a></li>
-      </ul>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+        </ul>
+        <a href="../index.html#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
+  <div class="read-progress" aria-hidden="true"></div>
 
-  <div class="article-hero">
-    <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=1600&q=85&auto=format&fit=crop" alt="EU AI Act compliance for healthcare">
-    <div class="article-hero-overlay"></div>
-    <div class="article-hero-meta">
-      <div class="container">
-        <nav class="article-breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="sep">›</span>
-          <a href="../insights.html">Insights</a>
-          <span class="sep">›</span>
-          <span>EU AI Act for HealthTech</span>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <main>
-    <div class="container">
-      <header class="article-header">
-        <span class="insight-tag policy">Policy</span>
-        <h1>EU AI Act: What It Means for HealthTech Startups</h1>
-        <div class="article-byline">
-          <div class="byline-author">
-            <img src="../images/team/placeholder-woman.png" alt="Lorenza Rossi" class="byline-avatar">
-            <div>
-              <div class="byline-name">Lorenza Rossi</div>
-              <div class="byline-role">CFO &amp; Co-Founder</div>
-            </div>
-          </div>
-          <div class="byline-divider" aria-hidden="true"></div>
-          <div class="byline-meta">
-            <span><span class="material-symbols-outlined">calendar_today</span> February 18, 2025</span>
-            <span><span class="material-symbols-outlined">schedule</span> 8 min read</span>
+  <main class="page">
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../insights.html">Insights</a>
+          </nav>
+          <p class="post-head__meta"><span>Policy</span><time datetime="2025-02-18">18 February 2025</time><span>8 min read</span></p>
+          <h1 class="post-head__title">EU AI Act: what it means for healthtech startups</h1>
+          <p class="post-head__lead">The EU AI Act entered into force in August 2024. For HealthTech startups building AI for clinical use, it is not an abstract regulatory development — it is a concrete set of obligations that will determine whether your product can reach the European market.</p>
+          <div class="byline">
+            <div class="byline__photo person__photo person__photo--zoom"><img src="../images/team/placeholder-woman.png" alt="" width="56" height="56"></div>
+            <div><p class="byline__name">Lorenza Rossi</p><p class="byline__role">CFO, co-founder</p></div>
           </div>
         </div>
       </header>
 
-      <div class="article-layout">
-        <article class="article-prose">
-          <p class="lead">The EU AI Act entered into force in August 2024. For HealthTech startups building AI for clinical use, it is not an abstract regulatory development — it is a concrete set of obligations that will determine whether your product can reach the European market.</p>
-
-          <h2>What Changed with the EU AI Act</h2>
+      <div class="wrap post-body">
+        <div class="prose">
+          <h2>What changed with the EU AI Act</h2>
           <p>The EU AI Act is the world's first comprehensive legal framework specifically governing artificial intelligence. Unlike GDPR, which focused on data, the AI Act focuses on the systems themselves — their design, validation, deployment, and monitoring. It introduces a risk-based tier system and applies some of its most demanding requirements to AI used in healthcare.</p>
           <p>The Act became enforceable in stages: provisions relating to prohibited AI systems from February 2025, high-risk AI obligations from August 2026. For startups building now, the clock is already running — CE mark equivalents for AI take time, and investors and hospital procurement officers are already asking about AI Act readiness.</p>
 
-          <h2>Risk Classification for Medical AI</h2>
+          <h2>Risk classification for medical AI</h2>
           <p>The AI Act categorises AI systems into four risk tiers: unacceptable (banned), high-risk, limited risk, and minimal risk. Most clinical AI falls into the high-risk category by default. Annex III of the Act explicitly includes AI systems used for:</p>
           <ul>
             <li>Triage and clinical decision support that influences patient management decisions</li>
@@ -96,7 +90,7 @@
             <cite>— Lorenza Rossi, CFO Bilobe</cite>
           </blockquote>
 
-          <h2>High-Risk AI Obligations</h2>
+          <h2>High-risk AI obligations</h2>
           <p>Being classified as high-risk triggers a substantial set of requirements. The key ones for healthcare AI are:</p>
           <ul>
             <li><strong>Risk management system:</strong> A documented, iterative process covering the entire lifecycle — design, development, deployment, and post-market monitoring.</li>
@@ -107,21 +101,16 @@
             <li><strong>Accuracy, robustness and cybersecurity:</strong> Systems must achieve appropriate levels of accuracy across the intended population, be robust to adversarial inputs, and meet cybersecurity standards.</li>
           </ul>
 
-          <h2>Technical Documentation Requirements</h2>
+          <h2>Technical documentation requirements</h2>
           <p>One of the most demanding obligations is maintaining a technical file equivalent to what MDR already requires, but extended to cover AI-specific aspects. For a clinical decision support system, this means documenting not just what the software does, but how the model was trained, on what data, with what evaluation methodology, and with what performance guarantees across relevant subgroups.</p>
           <p>This is where many startups are caught underprepared. If your model was trained on a public dataset and fine-tuned internally without proper documentation of the data governance process, you will struggle to produce a compliant technical file. Starting this documentation from the first day of development is far less painful than reconstructing it post-hoc.</p>
 
-          <figure>
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80&auto=format&fit=crop" alt="Regulatory documentation and compliance">
-            <figcaption>Compliance documentation must be maintained continuously and updated whenever the AI system is substantially modified.</figcaption>
-          </figure>
-
-          <h2>Conformity Assessment Pathways</h2>
+          <h2>Conformity assessment pathways</h2>
           <p>High-risk AI systems must undergo a conformity assessment before being placed on the market. For most healthcare AI that is already subject to MDR, this assessment will be conducted by a notified body — the same body that reviews your MDR technical file. For standalone clinical AI that falls below the MDR device threshold, a self-assessment pathway exists, but only if you can demonstrate full compliance with all Annex IV documentation requirements.</p>
           <p>After conformity assessment, you must affix the CE marking and register in the EU AI database, which will be publicly accessible. This introduces a degree of regulatory transparency that the sector is not yet accustomed to.</p>
 
           <div class="key-highlights">
-            <h4>Key Takeaways</h4>
+            <h4>Key takeaways</h4>
             <ul>
               <li>Most clinical AI is automatically classified as high-risk under the EU AI Act</li>
               <li>High-risk obligations include risk management, data governance, technical documentation, and human oversight</li>
@@ -132,88 +121,91 @@
             </ul>
           </div>
 
-          <h2>What This Means for Startups</h2>
+          <h2>What this means for startups</h2>
           <p>The AI Act raises the compliance bar significantly, but it also creates competitive advantage for startups that take it seriously early. A hospital procurement committee in 2026 will ask for AI Act compliance evidence alongside MDR certification. Startups with well-documented, auditable development processes will have a credible answer. Those who built fast and hoped to patch compliance later will face difficult conversations.</p>
           <p>At Bilobe, we have made compliance-by-design a core part of our development methodology. Our technical documentation practices, bias evaluation pipelines, and human oversight mechanisms were designed with both MDR and the AI Act in mind. We believe this is not just a regulatory necessity — it is the right way to build AI that actually works in healthcare.</p>
-        </article>
+        </div>
 
-        <aside class="article-sidebar">
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Share</p>
-            <div class="share-btns">
-              <a href="mailto:?subject=EU AI Act for HealthTech&body=https://bilobe.ai/articles/eu-ai-act.html" class="share-btn">
-                <span class="material-symbols-outlined">mail</span> Share via email
-              </a>
-              <button class="share-btn" onclick="navigator.clipboard.writeText(location.href); this.textContent='Copied!'; setTimeout(()=>this.innerHTML='<span class=\'material-symbols-outlined\'>link</span> Copy link', 2000)">
-                <span class="material-symbols-outlined">link</span> Copy link
-              </button>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Article details</p>
-            <div class="sidebar-meta-list">
-              <div class="sidebar-meta-item"><span class="meta-key">Published</span><span class="meta-val">Feb 18, 2025</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Reading time</span><span class="meta-val">8 min</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Category</span><span class="meta-val">Policy</span></div>
-              <div class="sidebar-meta-item"><span class="meta-key">Author</span><span class="meta-val">Lorenza Rossi</span></div>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <p class="sidebar-card-label">Related</p>
-            <div class="sidebar-related-list">
-              <a href="gdpr-ai.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info"><time>October 2024</time><p>GDPR Meets AI: Data Protection by Design in Medical Systems</p></div>
-              </a>
-              <a href="xai-clinical.html" class="sidebar-related-item">
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&q=70&auto=format&fit=crop" alt="" class="sidebar-related-thumb">
-                <div class="sidebar-related-info"><time>March 2025</time><p>Explainable AI in Clinical Decision Support</p></div>
-              </a>
+        <aside class="post-aside" aria-label="Article details">
+          <div class="post-aside__inner">
+            <p class="post-aside__label">Details</p>
+            <dl class="post-aside__meta">
+              <div><dt>Published</dt><dd><time datetime="2025-02-18">18 February 2025</time></dd></div>
+              <div><dt>Reading time</dt><dd>8 min</dd></div>
+              <div><dt>Category</dt><dd>Policy</dd></div>
+              <div><dt>Author</dt><dd>Lorenza Rossi</dd></div>
+            </dl>
+            <p class="post-aside__label">Share</p>
+            <div class="post-aside__share">
+              <a href="mailto:?subject=EU AI Act: what it means for healthtech startups&amp;body=https://bilobe.eu/articles/eu-ai-act.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
+              <button type="button" data-copy-link data-copied="Link copied"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Copy link</span></button>
             </div>
           </div>
         </aside>
       </div>
-    </div>
+    </article>
 
-    <section class="article-related">
-      <div class="container">
-        <div class="article-related-header">
-          <h2>More from Bilobe</h2>
-          <a href="../insights.html" class="insights-view-all">All insights <span class="material-symbols-outlined">arrow_forward</span></a>
+    <section class="journal journal--related" aria-labelledby="related-title">
+      <div class="wrap">
+        <div class="journal__head">
+          <h2 class="journal__heading" id="related-title"><span>More from Bilobe</span></h2>
+          <a class="journal__all" href="../insights.html"><span>All insights</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="insights-grid">
-          <article class="insight-card">
-            <a href="gdpr-ai.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=700&q=80&auto=format&fit=crop" alt="GDPR AI" loading="lazy"><span class="insight-tag policy">Policy</span></div>
-              <div class="insight-body"><time class="insight-date" datetime="2024-10-08">October 2024</time><h3>GDPR Meets AI: Data Protection by Design</h3><p>How to architect AI healthcare solutions that treat GDPR compliance as a feature, not an afterthought.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="xai-clinical.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80&auto=format&fit=crop" alt="XAI clinical" loading="lazy"><span class="insight-tag research">Research</span></div>
-              <div class="insight-body"><time class="insight-date" datetime="2025-03-10">March 2025</time><h3>Explainable AI in Clinical Decision Support</h3><p>How XAI techniques are reshaping clinician trust in AI-assisted diagnosis.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
-          <article class="insight-card">
-            <a href="nvidia-partnership.html" class="insight-card-link">
-              <div class="insight-img-wrap"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80&auto=format&fit=crop" alt="Nvidia partnership" loading="lazy"><span class="insight-tag news">News</span></div>
-              <div class="insight-body"><time class="insight-date" datetime="2024-11-14">November 2024</time><h3>Bilobe Joins the Nvidia BioNemo Ecosystem</h3><p>Our collaboration with Nvidia BioNemo and the HiPerGator supercomputer.</p><span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span></div>
-            </a>
-          </article>
+        <div class="journal__list">
+        <article class="journal__item">
+          <a class="journal__link" href="gdpr-ai.html">
+            <p class="journal__meta"><span>Policy</span><time datetime="2024-10-08">8 October 2024</time></p>
+            <h3 class="journal__title">GDPR meets AI: data protection by design in medical systems</h3>
+            <p class="journal__excerpt">How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="xai-clinical.html">
+            <p class="journal__meta"><span>Research</span><time datetime="2025-03-10">10 March 2025</time></p>
+            <h3 class="journal__title">Explainable AI in clinical decision support</h3>
+            <p class="journal__excerpt">How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
+        <article class="journal__item">
+          <a class="journal__link" href="nvidia-partnership.html">
+            <p class="journal__meta"><span>News</span><time datetime="2024-11-14">14 November 2024</time></p>
+            <h3 class="journal__title">Bilobe joins the NVIDIA BioNeMo ecosystem</h3>
+            <p class="journal__excerpt">Our collaboration with NVIDIA BioNeMo and access to the HiPerGator supercomputer to accelerate AI research in molecular medicine.</p>
+            <span class="journal__more"><span>Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer">
-    <div class="container footer-inner">
-      <a href="../index.html" class="footer-brand">Bilobe<sup>AI</sup></a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · Cap.Soc. € 10.000 i.v.</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a href="../index.html" class="site-footer__brand" aria-label="Bilobe, home">
+          <img src="../assets/logos/bilobe-logo-completo-reversed.svg" alt="Bilobe. Trustworthy. For healthcare. European." width="260" height="83">
+        </a>
+        <nav aria-label="Footer">
+          <ul class="site-footer__nav">
+          <li><a href="../index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="../index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="../index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="../index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="../insights.html" data-i18n="nav_insights">Insights</a></li>
+          <li><a href="../index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
+        <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
+      <p class="site-footer__copy">© 2026 Bilobe SRL</p>
     </div>
   </footer>
-  <script>
-    const burger = document.querySelector('.nav-burger'); const navLinks = document.querySelector('.nav-links');
-    burger.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); });
-  </script>
+
+  <script src="../assets/js/chrome.js" defer></script>
 </body>
+
 </html>

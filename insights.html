@@ -4,348 +4,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights — Bilobe AI</title>
-  <meta name="description"
-    content="News, research updates, and ideas from Bilobe — trustworthy AI for healthcare.">
-  <link rel="icon" href="images/logo/logo.ico" type="image/x-icon">
-  <link rel="icon" href="images/logo/logo-32x32.png" sizes="32x32" type="image/png">
+  <script>document.documentElement.classList.add('js')</script>
+  <title>Insights — Bilobe</title>
+  <meta name="description" content="Perspectives on trustworthy AI, healthcare technology and our latest research collaborations.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/insights.html">
+  <meta property="og:title" content="Insights — Bilobe">
+  <meta property="og:description" content="Perspectives on trustworthy AI, healthcare technology and our latest research collaborations.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/logo/logo.ico" sizes="any">
   <link rel="apple-touch-icon" href="images/logo/logo-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    rel="stylesheet">
+  <link rel="preload" href="assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/css/legacy-bridge.css">
-  <style>
-    /* ── Insights page–specific styles ── */
-    #insights-page {
-      padding-top: calc(var(--nav-h) + 4rem);
-      min-height: 100vh;
-      background: var(--bg);
-    }
-
-    .insights-page-header {
-      margin-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-
-    .insights-page-header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--text);
-      margin-top: 0.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .insights-page-header p {
-      font-size: 1rem;
-      color: var(--text-2);
-      max-width: 520px;
-      line-height: 1.75;
-    }
-
-    /* Filter tabs */
-    .insights-filters {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: clamp(2rem, 4vw, 3rem);
-    }
-
-    .filter-btn {
-      padding: 0.5rem 1.1rem;
-      font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text-2);
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .filter-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    /* Full grid — 3 col */
-    .insights-full-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gap);
-    }
-
-    /* Featured card — spans 2 cols */
-    .insight-card.featured {
-      grid-column: span 2;
-    }
-
-    .insight-card.featured .insight-img-wrap {
-      aspect-ratio: 21/9;
-    }
-
-    .insight-card.featured .insight-body h3 {
-      font-size: 1.25rem;
-    }
-
-    /* Hidden by filter */
-    .insight-card[hidden] {
-      display: none;
-    }
-
-    /* Back link */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-2);
-      margin-bottom: 2rem;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover {
-      color: var(--accent);
-    }
-
-    .back-link .material-symbols-outlined {
-      font-size: 1rem;
-    }
-
-    @media (max-width: 1024px) {
-      .insights-full-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .insight-card.featured {
-        grid-column: span 2;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .insights-full-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .insight-card.featured {
-        grid-column: span 1;
-      }
-
-      .insight-card.featured .insight-img-wrap {
-        aspect-ratio: 16/9;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav id="navbar" class="light">
-    <div class="nav-inner">
-      <a href="index.html#hero" class="nav-brand">
-        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>&nbsp;&nbsp;AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="index.html" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="index.html#capabilities" data-i18n="nav_features">Features</a></li>
-        <li class="nav-item-dropdown">
-          <a href="index.html#products" class="nav-dropdown-trigger">
-            <span data-i18n="nav_products">Products</span>
-            <span class="nav-chevron material-symbols-outlined">expand_more</span>
-          </a>
-          <ul class="nav-dropdown">
-            <li><a href="index.html#laurel-navigator">Laurel Navigator</a></li>
-            <li><a href="index.html#fireweed-elicitation">Fireweed Elicitation</a></li>
-            <li><a href="index.html#moss-anonymizer">Moss Anonymizer</a></li>
-          </ul>
-        </li>
-        <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
-        <li><a href="index.html#people" data-i18n="nav_people">People</a></li>
-        <li><a href="insights.html" aria-current="page" data-i18n="nav_insights">Insights</a></li>
-        <li><a href="index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-          <span class="lang-option active" data-lang="en">EN</span>
-          <span class="lang-sep">/</span>
-          <span class="lang-option" data-lang="it">IT</span>
-        </button>
-        <a href="index.html#get-in-touch" class="nav-demo-btn" data-i18n="nav_book_demo">Book a demo</a>
-      </div>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="insights.html" data-i18n="nav_insights" aria-current="page">Insights</a></li>
+        </ul>
+        <button class="lang-switch" id="lang-toggle" type="button" aria-label="Switch language / Cambia lingua">
+          <span class="lang-switch__option active" data-lang="en">EN</span>
+          <span aria-hidden="true">/</span>
+          <span class="lang-switch__option" data-lang="it">IT</span>
+        </button>
+        <a href="index.html#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- INSIGHTS PAGE -->
-  <section id="insights-page">
-    <div class="container">
-
-      <a href="index.html" class="back-link">
-        <span class="material-symbols-outlined">arrow_back</span>
-        Back to home
-      </a>
-
-      <div class="insights-page-header reveal">
-        <p class="label">Insights</p>
-        <h1>News, ideas &amp;<br>research updates.</h1>
-        <p>Perspectives on trustworthy AI, healthcare technology, and our latest research collaborations.</p>
+  <main class="page">
+    <section class="page-head" aria-labelledby="page-title">
+      <div class="wrap">
+        <p class="t-eyebrow page-head__eyebrow" data-i18n="insights_label">Insights</p>
+        <h1 class="page-head__title" id="page-title">
+          <span data-i18n="insights_h2_1">News, ideas</span>
+          <span class="page-head__accent" data-i18n="insights_h2_2">and research updates.</span>
+        </h1>
+        <p class="page-head__lead" data-i18n="insights_page_intro">Perspectives on trustworthy AI, healthcare technology and our latest research collaborations.</p>
       </div>
+    </section>
 
-      <!-- Category filters -->
-      <div class="insights-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="research">Research</button>
-        <button class="filter-btn" data-filter="policy">Policy</button>
-        <button class="filter-btn" data-filter="technology">Technology</button>
-        <button class="filter-btn" data-filter="news">News</button>
+    <section class="wrap index" aria-label="Articles">
+      <div class="filters" role="group" aria-label="Filter by category">
+          <button type="button" class="filter-chip" data-filter="all" aria-pressed="true" data-i18n="filter_all">All</button>
+          <button type="button" class="filter-chip" data-filter="research" aria-pressed="false" data-i18n="tag_research">Research</button>
+          <button type="button" class="filter-chip" data-filter="policy" aria-pressed="false" data-i18n="tag_policy">Policy</button>
+          <button type="button" class="filter-chip" data-filter="technology" aria-pressed="false" data-i18n="tag_technology">Technology</button>
+          <button type="button" class="filter-chip" data-filter="news" aria-pressed="false" data-i18n="tag_news">News</button>
       </div>
-
-      <!-- Full grid -->
-      <div class="insights-full-grid">
-
-        <!-- Featured -->
-        <article class="insight-card featured reveal" data-category="research" id="xai-clinical">
-          <a href="articles/xai-clinical.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop"
-                alt="Explainable AI in clinical settings" loading="eager">
-              <span class="insight-tag research">Research</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-03-10">March 2025</time>
-              <h3>Explainable AI in Clinical Decision Support</h3>
-              <p>How XAI techniques are reshaping clinician trust — and why transparency is the next frontier for medical AI adoption. We discuss our recent findings on attention-based explanations for diagnostic models and their reception among clinical staff at ICS Maugeri.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+      <ol class="index-list">
+        <li class="index-row" data-category="research">
+          <a class="index-row__link" href="articles/xai-clinical.html">
+            <span class="index-row__meta"><span data-i18n="tag_research">Research</span><time datetime="2025-03-10" data-i18n="date1">10 March 2025</time></span>
+            <span class="index-row__title" data-i18n="insight1_h3">Explainable AI in clinical decision support</span>
+            <span class="index-row__excerpt" data-i18n="insight1_p">How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-        <article class="insight-card reveal delay-1" data-category="policy" id="eu-ai-act">
-          <a href="articles/eu-ai-act.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=700&q=80&auto=format&fit=crop"
-                alt="EU AI Act compliance" loading="lazy">
-              <span class="insight-tag policy">Policy</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-02-18">February 2025</time>
-              <h3>EU AI Act: What It Means for HealthTech Startups</h3>
-              <p>A practical guide to navigating the new EU AI Act requirements for high-risk medical AI systems — from risk classification to conformity assessment.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        </li>
+        <li class="index-row" data-category="policy">
+          <a class="index-row__link" href="articles/eu-ai-act.html">
+            <span class="index-row__meta"><span data-i18n="tag_policy">Policy</span><time datetime="2025-02-18" data-i18n="date2">18 February 2025</time></span>
+            <span class="index-row__title" data-i18n="insight2_h3">EU AI Act: what it means for healthtech startups</span>
+            <span class="index-row__excerpt" data-i18n="insight2_p">A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-        <article class="insight-card reveal delay-2" data-category="technology" id="viralingo">
-          <a href="articles/viralingo.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&auto=format&fit=crop"
-                alt="ViraLingo pan-viral LLM" loading="lazy">
-              <span class="insight-tag technology">Technology</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-01-22">January 2025</time>
-              <h3>ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3>
-              <p>Our collaboration with the University of Florida on a large language model trained across HIV, Hepatitis, and Coronavirus genomes to predict dangerous variants early.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        </li>
+        <li class="index-row" data-category="technology">
+          <a class="index-row__link" href="articles/viralingo.html">
+            <span class="index-row__meta"><span data-i18n="tag_technology">Technology</span><time datetime="2025-01-22" data-i18n="date3">22 January 2025</time></span>
+            <span class="index-row__title" data-i18n="insight3_h3">ViraLingo: predicting viral variants with pan-viral LLMs</span>
+            <span class="index-row__excerpt" data-i18n="insight3_p">Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-        <article class="insight-card reveal delay-1" data-category="research" id="nlp-clinical-notes">
-          <a href="articles/nlp-clinical-notes.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=700&q=80&auto=format&fit=crop"
-                alt="NLP for clinical notes" loading="lazy">
-              <span class="insight-tag research">Research</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2024-12-05">December 2024</time>
-              <h3>NLP for Clinical Notes: Extracting Structure from the Unstructured</h3>
-              <p>An overview of our biomedical NLP pipeline for Italian clinical discharge letters — entity recognition, relation extraction, and temporal reasoning in a low-resource language.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        </li>
+        <li class="index-row" data-category="research">
+          <a class="index-row__link" href="articles/nlp-clinical-notes.html">
+            <span class="index-row__meta"><span data-i18n="tag_research">Research</span><time datetime="2024-12-05" data-i18n="date4">5 December 2024</time></span>
+            <span class="index-row__title" data-i18n="insight4_h3">NLP for clinical notes: extracting structure from the unstructured</span>
+            <span class="index-row__excerpt" data-i18n="insight4_p">An overview of our biomedical NLP pipeline for Italian discharge letters: entity recognition, relation extraction and temporal reasoning in a low-resource language.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-        <article class="insight-card reveal delay-2" data-category="news" id="nvidia-partnership">
-          <a href="articles/nvidia-partnership.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80&auto=format&fit=crop"
-                alt="Nvidia BioNemo partnership" loading="lazy">
-              <span class="insight-tag news">News</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2024-11-14">November 2024</time>
-              <h3>Bilobe Joins the Nvidia BioNemo Ecosystem</h3>
-              <p>We are excited to announce our collaboration with Nvidia BioNemo and access to the HiPerGator supercomputer for accelerating molecular medicine AI research.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        </li>
+        <li class="index-row" data-category="news">
+          <a class="index-row__link" href="articles/nvidia-partnership.html">
+            <span class="index-row__meta"><span data-i18n="tag_news">News</span><time datetime="2024-11-14" data-i18n="date5">14 November 2024</time></span>
+            <span class="index-row__title" data-i18n="insight5_h3">Bilobe joins the NVIDIA BioNeMo ecosystem</span>
+            <span class="index-row__excerpt" data-i18n="insight5_p">Our collaboration with NVIDIA BioNeMo and access to the HiPerGator supercomputer to accelerate AI research in molecular medicine.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-        <article class="insight-card reveal delay-3" data-category="policy" id="gdpr-ai">
-          <a href="articles/gdpr-ai.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=700&q=80&auto=format&fit=crop"
-                alt="GDPR and AI in healthcare" loading="lazy">
-              <span class="insight-tag policy">Policy</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2024-10-08">October 2024</time>
-              <h3>GDPR Meets AI: Data Protection by Design in Medical Systems</h3>
-              <p>How to architect AI healthcare solutions that treat GDPR compliance as a feature, not an afterthought — including federated learning, differential privacy, and audit trails.</p>
-              <span class="insight-more">Read more <span class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        </li>
+        <li class="index-row" data-category="policy">
+          <a class="index-row__link" href="articles/gdpr-ai.html">
+            <span class="index-row__meta"><span data-i18n="tag_policy">Policy</span><time datetime="2024-10-08" data-i18n="date6">8 October 2024</time></span>
+            <span class="index-row__title" data-i18n="insight6_h3">GDPR meets AI: data protection by design in medical systems</span>
+            <span class="index-row__excerpt" data-i18n="insight6_p">How to design healthcare AI that treats GDPR compliance as a feature, not an afterthought: federated learning, differential privacy and audit trails.</span>
+            <span class="index-row__arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </article>
-
-      </div>
-    </div>
-  </section>
+        </li>
+      </ol>
+    </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer id="footer">
-    <div class="container footer-inner">
-      <a href="index.html#hero" class="nav-brand">
-        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img-footer">
-        <span>Bilobe<sup>AI</sup></span>
-      </a>
-      <p>© 2026 Bilobe SRL · Via Ferrata 5, Pavia, Italy · P.IVA/C.F. 03039860188 · n.REA 341149 · Cap.Soc. € 10.000 i.v.</p>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a href="index.html" class="site-footer__brand" aria-label="Bilobe, home">
+          <img src="assets/logos/bilobe-logo-completo-reversed.svg" alt="Bilobe. Trustworthy. For healthcare. European." width="260" height="83">
+        </a>
+        <nav aria-label="Footer">
+          <ul class="site-footer__nav">
+          <li><a href="index.html#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="index.html#capabilities" data-i18n="nav_features">Features</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#people" data-i18n="nav_people">People</a></li>
+          <li><a href="insights.html" data-i18n="nav_insights">Insights</a></li>
+          <li><a href="index.html#get-in-touch" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
+        <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
+      <p class="site-footer__copy">© 2026 Bilobe SRL</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script src="assets/js/chrome.js" defer></script>
   <script>
     // Category filter
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards      = document.querySelectorAll('.insight-card[data-category]');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        cards.forEach(card => {
-          card.hidden = filter !== 'all' && card.dataset.category !== filter;
-        });
-      });
-    });
+    (() => {
+      const chips = document.querySelectorAll('.filter-chip');
+      const rows = document.querySelectorAll('.index-row');
+      chips.forEach(chip => chip.addEventListener('click', () => {
+        chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+        const f = chip.dataset.filter;
+        rows.forEach(r => { r.hidden = f !== 'all' && r.dataset.category !== f; });
+      }));
+    })();
   </script>
 </body>
 
