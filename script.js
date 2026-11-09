@@ -213,9 +213,7 @@ const TRANSLATIONS = {
     contact_service1: 'AI solutions for healthcare organizations', contact_service2: 'Regulatory-compliant deployments (EU MDR, GDPR, AI Act)',
     contact_service3: 'Research collaborations and partnerships', contact_service4: 'Custom NLP and XAI for clinical data',
     trust_response: 'Response within 2 business days', trust_confidential: 'Confidential by default',
-    contact_topics: 'Write to us about', contact_compose: 'Write to us', contact_copy: 'Copy address',
-    cookie_text: 'We use essential cookies to keep the site running and analytics cookies to understand how visitors use it.',
-    cookie_policy_link: 'Cookie Policy', cookie_decline: 'Decline', cookie_accept: 'Accept all',
+    contact_topics: 'Write to us about', footer_privacy: 'Privacy & cookies', footer_cookie_settings: 'Cookie settings', contact_compose: 'Write to us', contact_copy: 'Copy address',
   },
   it: {
     nav_features: 'Caratteristiche', nav_partners: 'Partner', nav_products: 'Prodotti',
@@ -323,9 +321,7 @@ const TRANSLATIONS = {
     contact_service1: 'Soluzioni AI per organizzazioni sanitarie', contact_service2: 'Implementazioni conformi alla normativa (EU MDR, GDPR, AI Act)',
     contact_service3: 'Collaborazioni e partnership di ricerca', contact_service4: 'NLP e XAI personalizzati per dati clinici',
     trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservatezza come regola',
-    contact_topics: 'Scrivici per', contact_compose: 'Scrivici', contact_copy: 'Copia indirizzo',
-    cookie_text: 'Utilizziamo cookie essenziali per mantenere il sito operativo e cookie analitici per capire come i visitatori lo utilizzano.',
-    cookie_policy_link: 'Informativa sui Cookie', cookie_decline: 'Rifiuta', cookie_accept: 'Accetta tutti',
+    contact_topics: 'Scrivici per', footer_privacy: 'Privacy e cookie', footer_cookie_settings: 'Impostazioni cookie', contact_compose: 'Scrivici', contact_copy: 'Copia indirizzo',
   }
 };
 
@@ -387,48 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.innerWidth <= 768) return;
       e.preventDefault();
       dropdownItem.classList.toggle('open');
-    });
-  }
-
-  // ── Cookie consent ──────────────────────────────────────
-  const banner = document.getElementById('cookie-banner');
-  const modal = document.getElementById('cookie-modal');
-  const backdrop = document.getElementById('cookie-modal-backdrop');
-
-  if (banner && modal) {
-    function hideBanner() { banner.hidden = true; }
-    function showBanner() { banner.hidden = false; }
-    function hideModal() { modal.hidden = true; }
-    function showModal() { modal.hidden = false; }
-
-    if (!localStorage.getItem('cookie-consent')) showBanner();
-
-    document.getElementById('cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      hideBanner();
-    });
-
-    document.getElementById('cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'declined');
-      hideBanner();
-    });
-
-    document.getElementById('open-cookie-policy').addEventListener('click', showModal);
-    document.getElementById('close-cookie-modal').addEventListener('click', hideModal);
-    backdrop.addEventListener('click', hideModal);
-
-    document.getElementById('modal-cookie-accept').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      hideModal(); hideBanner();
-    });
-
-    document.getElementById('modal-cookie-decline').addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'declined');
-      hideModal(); hideBanner();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !modal.hidden) hideModal();
     });
   }
 

@@ -474,83 +474,6 @@
     </div>
   </section>
 
-  <!-- COOKIE BANNER -->
-  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
-    <div class="cookie-banner-inner">
-      <div class="cookie-banner-text">
-        <span class="material-symbols-outlined cookie-banner-icon">cookie</span>
-        <p><span data-i18n="cookie_text">We use essential cookies to keep the site running and analytics cookies to
-            understand how visitors use it.</span>
-          <button class="cookie-policy-link" id="open-cookie-policy" data-i18n="cookie_policy_link">Cookie
-            Policy</button>
-        </p>
-      </div>
-      <div class="cookie-banner-actions">
-        <button class="btn-cookie-decline" id="cookie-decline" data-i18n="cookie_decline">Decline</button>
-        <button class="btn-cookie-accept" id="cookie-accept" data-i18n="cookie_accept">Accept all</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- COOKIE POLICY MODAL -->
-  <div id="cookie-modal" class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title"
-    hidden>
-    <div class="cookie-modal-backdrop" id="cookie-modal-backdrop"></div>
-    <div class="cookie-modal-box">
-      <div class="cookie-modal-header">
-        <h2 id="cookie-modal-title">Cookie Policy</h2>
-        <button class="cookie-modal-close" id="close-cookie-modal" aria-label="Close">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-      <div class="cookie-modal-body">
-        <p class="cookie-modal-updated">Last updated: March 2025</p>
-
-        <h3>What are cookies?</h3>
-        <p>Cookies are small text files placed on your device when you visit a website. They help the site remember
-          information about your visit and improve your experience.</p>
-
-        <h3>Cookies we use</h3>
-
-        <div class="cookie-table">
-          <div class="cookie-row cookie-row--head">
-            <span>Name</span><span>Type</span><span>Purpose</span><span>Duration</span>
-          </div>
-          <div class="cookie-row">
-            <span><code>cookie-consent</code></span>
-            <span class="cookie-tag essential">Essential</span>
-            <span>Stores your cookie consent choice so we don't ask again.</span>
-            <span>1 year</span>
-          </div>
-          <div class="cookie-row">
-            <span><code>_ga</code>, <code>_ga_*</code></span>
-            <span class="cookie-tag analytics">Analytics</span>
-            <span>Google Analytics — tracks page views and visitor behaviour in aggregate. Only set if you accept
-              analytics cookies.</span>
-            <span>2 years</span>
-          </div>
-        </div>
-
-        <h3>Third-party resources</h3>
-        <p>This site loads fonts from Google Fonts and images from external domains. These requests may result in
-          cookies or tracking set by those third parties under their own privacy policies.</p>
-
-        <h3>Your choices</h3>
-        <p>You can accept or decline non-essential cookies via the banner below. You can change your choice at any time
-          by clearing your browser's local storage or using the buttons below.</p>
-
-        <div class="cookie-modal-actions">
-          <button class="btn-cookie-decline" id="modal-cookie-decline" data-i18n="cookie_decline">Decline
-            analytics</button>
-          <button class="btn-cookie-accept" id="modal-cookie-accept" data-i18n="cookie_accept">Accept all</button>
-        </div>
-
-        <h3>Contact</h3>
-        <p>For privacy-related questions contact us at <a href="mailto:info@bilobe.eu">info@bilobe.eu</a>.</p>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="wrap">
@@ -571,12 +494,13 @@
       </div>
       <p class="site-footer__legal">Bilobe SRL · Via Ferrata 5, 27100 Pavia (PV), Italia · P.IVA/C.F. 03039860188 · REA PV-341149 · Capitale sociale € 10.000 ·
         <a href="mailto:info@bilobe.eu">info@bilobe.eu</a> · PEC <a href="mailto:bilobe@namirialpec.it">bilobe@namirialpec.it</a></p>
-      <p class="site-footer__copy">© 2026 Bilobe SRL</p>
+      <p class="site-footer__copy"><span>© 2026 Bilobe SRL</span><a href="privacy.html" data-i18n="footer_privacy">Privacy &amp; cookies</a><a href="#" data-consent-open hidden data-i18n="footer_cookie_settings">Cookie settings</a></p>
     </div>
   </footer>
 
   <script src="script.js"></script>
   <script src="assets/js/chrome.js" defer></script>
+  <script src="assets/js/consent.js" defer></script>
   <script src="assets/js/hero-graphic.js" defer></script>
   <script src="assets/js/product-demos.js" defer></script>
   <script src="assets/js/sections.js" defer></script>
