@@ -1601,9 +1601,6 @@ h2 {
 }
 
 /* ─── INSIGHTS ────────────────────────────────────────── */
-#insights {
-  background: var(--bg-alt);
-}
 
 .insights-header {
   display: flex;

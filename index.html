@@ -400,79 +400,44 @@
     </div>
   </section>
 
-  <!-- INSIGHTS PREVIEW -->
-  <section id="insights">
-    <div class="container">
-      <div class="insights-header reveal">
+  <!-- INSIGHTS: latest articles as editorial columns -->
+  <section class="journal" id="insights" aria-labelledby="insights-title">
+    <div class="wrap">
+      <div class="journal__head">
         <div>
-          <p class="label" data-i18n="insights_label">Insights</p>
-          <h2 data-i18n="insights_h2">News, ideas &amp;<br>research updates.</h2>
+          <p class="t-eyebrow journal__eyebrow" data-i18n="insights_label">Insights</p>
+          <h2 class="journal__heading" id="insights-title">
+            <span data-i18n="insights_h2_1">News, ideas</span>
+            <span class="journal__heading-accent" data-i18n="insights_h2_2">and research updates.</span>
+          </h2>
         </div>
-        <a href="insights.html" class="insights-view-all">
-          <span data-i18n="insights_view_all">View all</span> <span
-            class="material-symbols-outlined">arrow_forward</span>
-        </a>
+        <a class="journal__all" href="insights.html"><span data-i18n="insights_view_all">All insights</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-
-      <div class="insights-grid">
-
-        <article class="insight-card reveal delay-1">
-          <a href="articles/xai-clinical.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80&auto=format&fit=crop"
-                alt="Explainable AI in clinical settings" loading="lazy">
-              <span class="insight-tag research" data-i18n="tag_research">Research</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-03-10">March 2025</time>
-              <h3 data-i18n="insight1_h3">Explainable AI in Clinical Decision Support</h3>
-              <p data-i18n="insight1_p">How XAI techniques are reshaping clinician trust — and why transparency is the
-                next frontier for
-                medical AI adoption.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+      <div class="journal__list">
+        <article class="journal__item">
+          <a class="journal__link" href="articles/xai-clinical.html">
+            <p class="journal__meta"><span data-i18n="tag_research">Research</span><time datetime="2025-03-10" data-i18n="date1">10 March 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight1_h3">Explainable AI in clinical decision support</h3>
+            <p class="journal__excerpt" data-i18n="insight1_p">How XAI techniques are reshaping clinician trust, and why transparency is the next frontier for medical AI adoption.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
-        <article class="insight-card reveal delay-2">
-          <a href="articles/eu-ai-act.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=700&q=80&auto=format&fit=crop"
-                alt="EU AI Act and healthcare compliance" loading="lazy">
-              <span class="insight-tag policy" data-i18n="tag_policy">Policy</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-02-18">February 2025</time>
-              <h3 data-i18n="insight2_h3">EU AI Act: What It Means for HealthTech Startups</h3>
-              <p data-i18n="insight2_p">A practical guide to navigating the new EU AI Act requirements for high-risk
-                medical AI systems — from
-                risk classification to conformity assessment.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        <article class="journal__item">
+          <a class="journal__link" href="articles/eu-ai-act.html">
+            <p class="journal__meta"><span data-i18n="tag_policy">Policy</span><time datetime="2025-02-18" data-i18n="date2">18 February 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight2_h3">EU AI Act: what it means for healthtech startups</h3>
+            <p class="journal__excerpt" data-i18n="insight2_p">A practical guide to the new EU AI Act requirements for high-risk medical AI systems, from risk classification to conformity assessment.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
-        <article class="insight-card reveal delay-3">
-          <a href="articles/viralingo.html" class="insight-card-link">
-            <div class="insight-img-wrap">
-              <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80&auto=format&fit=crop"
-                alt="ViraLingo viral variant prediction" loading="lazy">
-              <span class="insight-tag technology" data-i18n="tag_technology">Technology</span>
-            </div>
-            <div class="insight-body">
-              <time class="insight-date" datetime="2025-01-22">January 2025</time>
-              <h3 data-i18n="insight3_h3">ViraLingo: Predicting Viral Variants with Pan-Viral LLMs</h3>
-              <p data-i18n="insight3_p">Our collaboration with the University of Florida on a large language model
-                trained across HIV,
-                Hepatitis, and Coronavirus genomes to predict dangerous variants.</p>
-              <span class="insight-more"><span data-i18n="read_more">Read more</span> <span
-                  class="material-symbols-outlined">arrow_forward</span></span>
-            </div>
+        <article class="journal__item">
+          <a class="journal__link" href="articles/viralingo.html">
+            <p class="journal__meta"><span data-i18n="tag_technology">Technology</span><time datetime="2025-01-22" data-i18n="date3">22 January 2025</time></p>
+            <h3 class="journal__title" data-i18n="insight3_h3">ViraLingo: predicting viral variants with pan-viral LLMs</h3>
+            <p class="journal__excerpt" data-i18n="insight3_p">Our collaboration with the University of Florida on a language model trained on HIV, hepatitis and coronavirus genomes to predict dangerous variants.</p>
+            <span class="journal__more"><span data-i18n="read_more">Read article</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </article>
-
       </div>
     </div>
   </section>
