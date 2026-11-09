@@ -1,121 +1,12 @@
-// ── h2 pixel-scramble: on-view (once) + per-word hover ──
-// Set to true to re-enable title scramble animations.
-const TITLE_ANIMATIONS_ENABLED = false;
-
-(function () {
-  const GLYPHS = '■□▪▫●▮▯▰▱•';
-  const STEP = 18;
-
-  function rand() {
-    return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-  }
-
-  // Collect non-empty text nodes from an element
-  function textNodes(el) {
-    const list = [];
-    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-    let n;
-    while ((n = walker.nextNode())) {
-      if (n.nodeValue.trim()) list.push({ node: n, original: n.nodeValue });
-    }
-    return list;
-  }
-
-  // Animate nodes from scrambled → revealed over `duration` ms.
-  // Returns a cancel function.
-  function scramble(nodes, duration) {
-    let timer = null;
-    function restore() {
-      clearTimeout(timer);
-      nodes.forEach(({ node, original }) => { node.nodeValue = original; });
-    }
-    const t0 = Date.now();
-    function tick() {
-      const p = Math.min((Date.now() - t0) / duration, 1);
-      nodes.forEach(({ node, original }) => {
-        node.nodeValue = original.split('').map((ch, i) => {
-          if (ch === ' ' || ch === '\n') return ch;
-          return i / original.length < p ? ch : rand();
-        }).join('');
-      });
-      if (p < 1) timer = setTimeout(tick, STEP);
-      else restore();
-    }
-    tick();
-    return restore;
-  }
-
-  // Wrap every word in a text node (preserving sibling elements) with a span
-  function wrapWords(el) {
-    Array.from(el.childNodes).forEach(child => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const parts = child.nodeValue.split(/(\s+)/);
-        if (parts.length <= 1) return;
-        const frag = document.createDocumentFragment();
-        parts.forEach(part => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) {
-            frag.appendChild(document.createTextNode(part));
-          } else {
-            const span = document.createElement('span');
-            span.className = 'h2-word';
-            span.textContent = part;
-            frag.appendChild(span);
-          }
-        });
-        el.replaceChild(frag, child);
-      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('h2-word')) {
-        wrapWords(child);
-      }
-    });
-  }
-
-  document.querySelectorAll('h2').forEach(h2 => {
-    wrapWords(h2);
-
-    let cancelInitial = null;
-
-    if (TITLE_ANIMATIONS_ENABLED) {
-      // Per-word hover
-      h2.querySelectorAll('.h2-word').forEach(word => {
-        let cancelWord = null;
-        word.addEventListener('mouseenter', () => {
-          if (cancelInitial) { cancelInitial(); cancelInitial = null; }
-          if (cancelWord) cancelWord();
-          cancelWord = scramble(textNodes(word), 180);
-        });
-        word.addEventListener('mouseleave', () => {
-          if (cancelWord) { cancelWord(); cancelWord = null; }
-        });
-      });
-
-      // First-view animation (once, after reveal completes)
-      let fired = false;
-      const io = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !fired) {
-          fired = true;
-          io.unobserve(h2);
-          setTimeout(() => {
-            cancelInitial = scramble(textNodes(h2), 450);
-          }, 500);
-        }
-      }, { threshold: 0.5 });
-      io.observe(h2);
-    }
-  });
-})();
-
 // ── i18n ────────────────────────────────────────────────
 const TRANSLATIONS = {
   en: {
-    nav_features: 'Features', nav_partners: 'Partners', nav_products: 'Products',
+    nav_features: 'Features', nav_products: 'Products',
     nav_insights: 'Insights', nav_about: 'About', nav_people: 'People',
     nav_contact: 'Contact', nav_book_demo: 'Book a demo',
     hero_title_1: 'Trustworthy.', hero_title_2: 'For healthcare.',
     hero_sub: 'Compliant, explainable AI for clinicians, patient protection and healthcare delivery.',
     hero_cta: 'Explore our products',
-    hero_scroll: 'Explore',
-    stat_research: 'Years of research', stat_founders: 'Expert founders', stat_partners: 'Research partners',
     features_label: 'Our capabilities',
     features_h2_1: 'Built for the complexity', features_h2_2: 'of clinical data.',
     cap1_label: 'Data', cap1_title: 'Unstructured data, made usable.',
@@ -128,12 +19,6 @@ const TRANSLATIONS = {
     cap3_body: 'Our tools support clinical judgement; they do not replace it. We evaluate them with clinicians and design each interaction so that the practitioner makes the final decision.',
     cap3_detail: 'Clinical evaluation · Human oversight · Fits existing workflows',
     partners_label: 'Research Partners',
-    feat1_h3: 'Handling Unstructured Data',
-    feat1_p: 'Is your health institution data mostly unstructured — text, images, biosignals — but filled with valuable insights? Bilobe leverages modern AI to unlock what\'s hidden in clinical data.',
-    feat2_h3: 'Trustworthy, Compliant & Secure',
-    feat2_p: 'Our AI solutions are built with trustworthiness at their core — compliant with EU MDR, GDPR, and the AI Act, with data protection and explainability at every layer.',
-    feat3_h3: 'Human-Centered Interaction',
-    feat3_p: 'Clinical evaluation practices and human-AI collaboration designed to keep practitioners in control — achieving the best of both human expertise and AI synergy.',
     products_label: 'Our products',
     products_h2_1: 'Purpose-built tools', products_h2_2: 'for clinical practice.',
     products_note: 'Illustrative example with synthetic data. Try it: every element responds.',
@@ -210,20 +95,18 @@ const TRANSLATIONS = {
     role_sci_f: 'Scientific consultant, co-founder · Ph.D.', role_sci_m: 'Scientific consultant, co-founder · Ph.D.',
     contact_label: 'Contact', contact_title_1: 'Let\'s get', contact_title_2: 'in touch.',
     contact_intro: 'Whether you\'re looking to integrate AI into your clinical workflow, explore a research collaboration, or simply learn more about what we do — we\'d love to hear from you.',
-    contact_service1: 'AI solutions for healthcare organizations', contact_service2: 'Regulatory-compliant deployments (EU MDR, GDPR, AI Act)',
+    contact_service1: 'AI solutions for healthcare organizations',
     contact_service3: 'Research collaborations and partnerships', contact_service4: 'Custom NLP and XAI for clinical data',
     trust_response: 'Response within 2 business days', trust_confidential: 'Confidential by default',
     contact_topics: 'Write to us about', footer_privacy: 'Privacy & cookies', footer_cookie_settings: 'Cookie settings', contact_compose: 'Write to us', contact_copy: 'Copy address',
   },
   it: {
-    nav_features: 'Caratteristiche', nav_partners: 'Partner', nav_products: 'Prodotti',
+    nav_features: 'Caratteristiche', nav_products: 'Prodotti',
     nav_insights: 'Approfondimenti', nav_about: 'Chi Siamo', nav_people: 'Team',
     nav_contact: 'Contatti', nav_book_demo: 'Prenota una demo',
     hero_title_1: 'Affidabile.', hero_title_2: 'Per la sanità.',
     hero_sub: 'AI conforme e spiegabile per i clinici, la tutela dei pazienti e l\'erogazione delle cure.',
     hero_cta: 'Esplora i nostri prodotti',
-    hero_scroll: 'Scopri',
-    stat_research: 'Anni di ricerca', stat_founders: 'Fondatori esperti', stat_partners: 'Partner di ricerca',
     features_label: 'Le nostre competenze',
     features_h2_1: 'Costruiti per la complessità', features_h2_2: 'dei dati clinici.',
     cap1_label: 'Dati', cap1_title: 'Dati non strutturati, resi utilizzabili.',
@@ -236,12 +119,6 @@ const TRANSLATIONS = {
     cap3_body: 'I nostri strumenti supportano il giudizio clinico, non lo sostituiscono. Li valutiamo insieme ai clinici e progettiamo ogni interazione perché sia il professionista a prendere la decisione finale.',
     cap3_detail: 'Valutazione clinica · Supervisione umana · Integrazione nei flussi di lavoro',
     partners_label: 'Partner di Ricerca',
-    feat1_h3: 'Gestione dei Dati Non Strutturati',
-    feat1_p: 'I dati della tua struttura sanitaria sono prevalentemente non strutturati — testi, immagini, biosegnali — ma ricchi di informazioni preziose? Bilobe sfrutta l\'IA moderna per estrarre ciò che è nascosto nei dati clinici.',
-    feat2_h3: 'Affidabile, Conforme e Sicuro',
-    feat2_p: 'Le nostre soluzioni AI sono costruite con la fiducia al centro — conformi a EU MDR, GDPR e AI Act, con protezione dei dati e spiegabilità a ogni livello.',
-    feat3_h3: 'Interazione Centrata sull\'Uomo',
-    feat3_p: 'Pratiche di valutazione clinica e collaborazione umano-IA progettate per mantenere i professionisti in controllo — combinando il meglio dell\'expertise umana e della sinergia con l\'IA.',
     products_label: 'I nostri prodotti',
     products_h2_1: 'Strumenti progettati', products_h2_2: 'per la pratica clinica.',
     products_note: 'Esempio illustrativo con dati sintetici. Provalo: ogni elemento risponde.',
@@ -318,7 +195,7 @@ const TRANSLATIONS = {
     role_sci_f: 'Consulente scientifica, co-fondatrice · Ph.D.', role_sci_m: 'Consulente scientifico, co-fondatore · Ph.D.',
     contact_label: 'Contatti', contact_title_1: 'Mettiamoci', contact_title_2: 'in contatto.',
     contact_intro: 'Che tu voglia integrare l\'IA nel tuo flusso di lavoro clinico, esplorare una collaborazione di ricerca, o semplicemente saperne di più su ciò che facciamo — ci farebbe piacere sentirti.',
-    contact_service1: 'Soluzioni AI per organizzazioni sanitarie', contact_service2: 'Implementazioni conformi alla normativa (EU MDR, GDPR, AI Act)',
+    contact_service1: 'Soluzioni AI per organizzazioni sanitarie',
     contact_service3: 'Collaborazioni e partnership di ricerca', contact_service4: 'NLP e XAI personalizzati per dati clinici',
     trust_response: 'Risposta entro 2 giorni lavorativi', trust_confidential: 'Riservatezza come regola',
     contact_topics: 'Scrivici per', footer_privacy: 'Privacy e cookie', footer_cookie_settings: 'Impostazioni cookie', contact_compose: 'Scrivici', contact_copy: 'Copia indirizzo',
@@ -326,8 +203,9 @@ const TRANSLATIONS = {
 };
 
 function detectDefaultLang() {
-  const saved = localStorage.getItem('bilobe-lang');
-  if (saved) return saved;
+  let saved = null;
+  try { saved = localStorage.getItem('bilobe-lang'); } catch (e) { /* storage blocked */ }
+  if (saved === 'en' || saved === 'it') return saved;
   const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
   return preferred.toLowerCase().startsWith('it') ? 'it' : 'en';
 }
@@ -336,7 +214,7 @@ let currentLang = detectDefaultLang();
 
 function applyLanguage(lang) {
   currentLang = lang;
-  localStorage.setItem('bilobe-lang', lang);
+  try { localStorage.setItem('bilobe-lang', lang); } catch (e) { /* storage blocked */ }
   document.documentElement.lang = lang;
   const t = TRANSLATIONS[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -350,18 +228,6 @@ function applyLanguage(lang) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Scroll reveal ───────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   // ── Language toggle ─────────────────────────────────────
   applyLanguage(currentLang);
 
@@ -369,21 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const clicked = e.target.closest('[data-lang]');
     if (clicked) applyLanguage(clicked.dataset.lang);
   });
-
-  // ── Products dropdown ────────────────────────────────────
-  const dropdownItem = document.querySelector('.nav-item-dropdown');
-  if (dropdownItem) {
-    dropdownItem.querySelectorAll('.nav-dropdown a').forEach(a => {
-      a.addEventListener('click', () => dropdownItem.classList.remove('open'));
-    });
-    document.addEventListener('click', e => {
-      if (!dropdownItem.contains(e.target)) dropdownItem.classList.remove('open');
-    });
-    dropdownItem.querySelector('.nav-dropdown-trigger').addEventListener('click', e => {
-      if (window.innerWidth <= 768) return;
-      e.preventDefault();
-      dropdownItem.classList.toggle('open');
-    });
-  }
 
 });

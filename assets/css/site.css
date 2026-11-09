@@ -1,6 +1,5 @@
 /* Bilobe website: components built on tokens.css.
-   Spec: website-kit/brand-book/components/WebsiteHero.md and brand-book/README.md.
-   Old sections still use /style.css until each is converted. */
+   Spec: website-kit/brand-book/components/WebsiteHero.md and brand-book/README.md. */
 
 :root {
   --wrap-max: 1440px;
@@ -16,7 +15,7 @@
   :root { --gutter: var(--space-4); --header-h: 64px; }
 }
 
-/* Base (pages that no longer load the old style.css rely on this) */
+/* Base */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: var(--header-h); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--surface); color: var(--ink); font: 400 16px/24px var(--font-sans); -webkit-font-smoothing: antialiased; }
@@ -891,4 +890,23 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .consent { transition: none; }
+}
+
+/* ---------- Partners (interim, until the redesign with the updated list and logos) ---------- */
+.partners { padding: var(--space-16) 0; background: var(--surface); }
+.partners__label { margin: 0 0 var(--space-8); text-align: center; color: var(--ink-muted); }
+.partners__carousel {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.partners__track { display: flex; align-items: center; gap: clamp(40px, 5vw, 72px); width: max-content; margin: 0; padding: 0; list-style: none; animation: partners-scroll 28s linear infinite; }
+.partners__track:hover { animation-play-state: paused; }
+@keyframes partners-scroll { to { transform: translateX(calc(-50% - clamp(40px, 5vw, 72px) / 2)); } }
+.partners__logo { flex: none; display: flex; align-items: center; justify-content: center; height: 80px; }
+.partners__logo img { width: auto; max-width: 160px; max-height: 64px; object-fit: contain; filter: grayscale(1); opacity: 0.5; transition: filter 0.35s, opacity 0.35s; }
+.partners__logo img:hover { filter: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .partners__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+  .partners__logo[aria-hidden="true"] { display: none; }
 }
