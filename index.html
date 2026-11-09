@@ -4,12 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js')</script>
   <title>Bilobe — Trustworthy AI for Healthcare</title>
   <meta name="description"
     content="Bilobe builds trustworthy, compliant, human-centered AI solutions for healthcare practitioners and organizations.">
-  <link rel="icon" href="images/logo/logo.ico" type="image/x-icon">
-  <link rel="icon" href="images/logo/logo-32x32.png" sizes="32x32" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bilobe">
+  <meta property="og:url" content="https://bilobe.eu/">
+  <meta property="og:title" content="Bilobe — Trustworthy AI for healthcare">
+  <meta property="og:description"
+    content="Compliant, explainable AI for clinicians, patient protection and healthcare delivery.">
+  <meta property="og:image" content="https://bilobe.eu/assets/og/bilobe-link-preview-graphic.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/logos/bilobe-logo-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/logo/logo.ico" sizes="any">
   <link rel="apple-touch-icon" href="images/logo/logo-touch-icon.png">
+  <link rel="preload" href="assets/fonts/Bilobe-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Legacy fonts: still used by sections not yet converted to the new identity. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -18,79 +32,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-brand">
-        <img src="images/logo/logo.gif" alt="Bilobe" class="nav-logo-img">
-        <span>Bilobe<sup>&nbsp;&nbsp;AI</sup></span>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a href="#top" class="site-header__brand" aria-label="Bilobe, home">
+        <img class="logo--default" src="assets/logos/bilobe-logo-no-tagline.svg" alt="Bilobe" width="142" height="38">
+        <img class="logo--reversed" src="assets/logos/bilobe-logo-no-tagline-reversed.svg" alt="Bilobe" width="142" height="38">
       </a>
-      <ul class="nav-links">
-        <li><a href="#features" data-i18n="nav_features">Features</a></li>
-        <li class="nav-item-dropdown">
-          <a href="#products" class="nav-dropdown-trigger">
-            <span data-i18n="nav_products">Products</span>
-            <span class="nav-chevron material-symbols-outlined">expand_more</span>
-          </a>
-          <ul class="nav-dropdown">
-            <li><a href="#mangrove-navigator">Mangrove Navigator</a></li>
-            <li><a href="#fireweed-elicitation">Fireweed Elicitation</a></li>
-            <li><a href="#moss-anonymizer">Moss Anonymizer</a></li>
-          </ul>
-        </li>
-        <li><a href="#about" data-i18n="nav_about">About</a></li>
-        <li><a href="#contact" data-i18n="nav_people">People</a></li>
-        <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
-        <li><a href="#get-in-touch" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-          <span class="lang-option active" data-lang="en">EN</span>
-          <span class="lang-sep">/</span>
-          <span class="lang-option" data-lang="it">IT</span>
-        </button>
-        <a href="#get-in-touch" class="nav-demo-btn" data-i18n="nav_book_demo">Book a demo</a>
-      </div>
-      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="site-nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__links">
+          <li><a href="#features" data-i18n="nav_features">Features</a></li>
+          <li><a href="#products" data-i18n="nav_products">Products</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#contact" data-i18n="nav_people">People</a></li>
+          <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
+        </ul>
+        <button class="lang-switch" id="lang-toggle" type="button" aria-label="Switch language / Cambia lingua">
+          <span class="lang-switch__option active" data-lang="en">EN</span>
+          <span aria-hidden="true">/</span>
+          <span class="lang-switch__option" data-lang="it">IT</span>
+        </button>
+        <a href="#get-in-touch" class="btn btn--action btn--pill site-header__cta" data-i18n="nav_book_demo">Book a demo</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-glow-1"></div>
-      <div class="hero-glow-2"></div>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__graphic" aria-hidden="true">
+      <img src="assets/graphics/bilobe-text-to-data-hero-dark.svg" alt="" width="980" height="600" fetchpriority="high">
     </div>
-    <div class="container">
-
-      <div class="hero-split">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="reveal delay-1" data-i18n="hero_title_1">Trustworthy.</span>
-            <span class="reveal delay-2 accent-text" data-i18n="hero_title_2">for&nbsp;Healthcare.</span>
-          </h1>
-          <p class="hero-sub reveal delay-3" data-i18n="hero_sub">
-            We build compliant, explainable AI that empowers clinicians,
-            protects patients, and transforms healthcare delivery.
-          </p>
-          <div class="hero-cta reveal delay-4">
-            <a href="#products" class="btn-outline-white" data-i18n="hero_cta">Explore our products</a>
-          </div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__title" id="hero-title">
+          <span data-i18n="hero_title_1">Trustworthy.</span>
+          <span class="hero__title-accent" data-i18n="hero_title_2">For healthcare.</span>
+        </h1>
+        <p class="hero__lead" data-i18n="hero_sub">Compliant, explainable AI for clinicians, patient protection and healthcare delivery.</p>
+        <div class="hero__actions">
+          <a href="#products" class="btn btn--lime">
+            <span data-i18n="hero_cta">Explore our products</span>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#get-in-touch" class="btn btn--outline-white" data-i18n="nav_book_demo">Book a demo</a>
         </div>
       </div>
-
-      <a href="#features" class="hero-scroll reveal delay-5" aria-label="Scroll down to explore">
-        <span class="hero-scroll-label" data-i18n="hero_scroll">Explore</span>
-        <span class="hero-scroll-mouse">
-          <span class="hero-scroll-wheel"></span>
-        </span>
-      </a>
     </div>
   </section>
 
@@ -750,6 +746,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="assets/js/hero-graphic.js" defer></script>
 </body>
 
 </html>

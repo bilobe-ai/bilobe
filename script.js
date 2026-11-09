@@ -111,8 +111,8 @@ const TRANSLATIONS = {
     nav_features: 'Features', nav_partners: 'Partners', nav_products: 'Products',
     nav_insights: 'Insights', nav_about: 'About', nav_people: 'People',
     nav_contact: 'Contact', nav_book_demo: 'Book a demo',
-    hero_title_1: 'Trustworthy.', hero_title_2: 'for Healthcare.',
-    hero_sub: 'We build compliant, explainable AI that empowers clinicians, protects patients, and transforms healthcare delivery.',
+    hero_title_1: 'Trustworthy.', hero_title_2: 'For healthcare.',
+    hero_sub: 'Compliant, explainable AI for clinicians, patient protection and healthcare delivery.',
     hero_cta: 'Explore our products',
     hero_scroll: 'Explore',
     stat_research: 'Years of research', stat_founders: 'Expert founders', stat_partners: 'Research partners',
@@ -166,8 +166,8 @@ const TRANSLATIONS = {
     nav_features: 'Caratteristiche', nav_partners: 'Partner', nav_products: 'Prodotti',
     nav_insights: 'Approfondimenti', nav_about: 'Chi Siamo', nav_people: 'Team',
     nav_contact: 'Contatti', nav_book_demo: 'Prenota una demo',
-    hero_title_1: 'Affidabile.', hero_title_2: 'per la Sanità.',
-    hero_sub: 'Costruiamo soluzioni AI conformi e spiegabili che potenziano i clinici, proteggono i pazienti e trasformano l\'erogazione delle cure.',
+    hero_title_1: 'Affidabile.', hero_title_2: 'Per la sanità.',
+    hero_sub: 'AI conforme e spiegabile per i clinici, la tutela dei pazienti e l\'erogazione delle cure.',
     hero_cta: 'Esplora i nostri prodotti',
     hero_scroll: 'Scopri',
     stat_research: 'Anni di ricerca', stat_founders: 'Fondatori esperti', stat_partners: 'Partner di ricerca',
@@ -237,7 +237,7 @@ function applyLanguage(lang) {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) el.textContent = t[key];
   });
-  document.querySelectorAll('.lang-option').forEach(opt => {
+  document.querySelectorAll('.lang-switch [data-lang]').forEach(opt => {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
 }
@@ -256,22 +256,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Navbar: switch to light when leaving dark hero ──────
-  const navbar = document.getElementById('navbar');
-  const hero = document.getElementById('hero');
-
-  if (hero) {
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      navbar.classList.toggle('light', !entry.isIntersecting);
-    }, { threshold: 0.05 });
-    heroObserver.observe(hero);
+  // ── Header: hairline once the page scrolls ─────────────
+  const header = document.getElementById('site-header');
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 4);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   // ── Language toggle ─────────────────────────────────────
   applyLanguage(currentLang);
 
   document.getElementById('lang-toggle').addEventListener('click', e => {
-    const clicked = e.target.closest('.lang-option');
+    const clicked = e.target.closest('[data-lang]');
     if (clicked) applyLanguage(clicked.dataset.lang);
   });
 
@@ -292,20 +289,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Mobile nav ──────────────────────────────────────────
-  const burger = document.querySelector('.nav-burger');
-  const navLinks = document.querySelector('.nav-links');
+  const burger = document.querySelector('.site-nav__burger');
+  const siteNav = document.getElementById('site-nav');
 
-  burger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    burger.setAttribute('aria-expanded', String(open));
-  });
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
-    });
-  });
+  if (burger && siteNav) {
+    const setOpen = open => {
+      siteNav.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    burger.addEventListener('click', () => setOpen(!siteNav.classList.contains('open')));
+    siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  }
 
   // ── Cookie consent ──────────────────────────────────────
   const banner = document.getElementById('cookie-banner');
