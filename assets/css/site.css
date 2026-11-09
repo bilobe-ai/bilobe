@@ -348,7 +348,8 @@ html { scroll-padding-top: var(--header-h); }
 
 .capabilities {
   padding-block: clamp(96px, 11vw, 160px);
-  background: var(--surface);
+  /* mint glow behind the heading; fixed size so it fades out before the section's top edge */
+  background: radial-gradient(640px 440px at 12% 560px, rgba(217, 239, 232, 0.85) 0%, rgba(217, 239, 232, 0) 70%), var(--surface);
   color: var(--ink);
   scroll-margin-top: 0;
 }

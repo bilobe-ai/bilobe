@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="assets/css/legacy-bridge.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/products.css">
+  <link rel="stylesheet" href="assets/css/chapters.css">
 </head>
 
 <body>
@@ -88,150 +90,78 @@
     </div>
   </section>
 
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="products_label">Our Products</p>
-        <h2 data-i18n="products_h2">Purpose-built tools<br>for clinical practice.</h2>
-      </div>
-      <div class="products-grid">
-
-        <!-- mangrove Navigator — featured full-width row -->
-        <div id="mangrove-navigator" class="product-card product-card--featured reveal delay-1">
-          <div class="product-cover">
-            <picture>
-              <source media="(max-width: 1024px)" srcset="./images/products/mangrove_cover.png">
-              <img src="./images/products/mangrove_cover_vertical.png" alt="Mangrove Navigator" loading="lazy">
-            </picture>
-          </div>
-          <div class="product-card-body">
-            <div class="product-card-top">
-              <h3 class="product-name">Mangrove Navigator</h3>
-              <p class="product-tagline" data-i18n="mangrove_tagline">Your expert guide through medical knowledge</p>
-              <p class="product-desc" data-i18n="mangrove_desc">An advanced conversational decision-support system
-                grounded in medical guidelines.
-                Deployable across multiple clinical scenarios — from triage support for general practitioners to
-                treatment adherence monitoring in hospital wards.</p>
+  <!-- PRODUCTS: one tab per product; each product works live on the stage (assets/js/product-demos.js) -->
+  <section class="products" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <p class="t-eyebrow products__eyebrow" data-i18n="products_label">Our products</p>
+      <h2 class="products__title" id="products-title">
+        <span data-i18n="products_h2_1">Purpose-built tools</span>
+        <span class="products__title-accent" data-i18n="products_h2_2">for clinical practice.</span>
+      </h2>
+      <div class="products__body">
+        <div class="products__side">
+          <div class="products__item is-active" data-product="mangrove" id="mangrove-navigator">
+            <button type="button" class="products__tab" aria-expanded="true" aria-controls="products-detail-mangrove">
+              <span class="products__kicker" data-i18n="kicker_mangrove">Decision support</span>
+              <span class="products__name">Mangrove<span class="products__name-2"> Navigator</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-mangrove">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="mangrove_tagline">Your expert guide through medical knowledge</p>
+                <p class="products__desc" data-i18n="mangrove_desc">A conversational decision-support system grounded in medical guidelines. It works across clinical scenarios, from triage support for general practitioners to treatment adherence monitoring on hospital wards.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_europe_title">Europe first</b><span data-i18n="ing_europe_desc">Hosted on European servers, with three sovereignty tiers: international cloud, European cloud or fully on-premise.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_guideline_title">Guideline-grounded, human-validated</b><span data-i18n="ing_guideline_desc">Knowledge comes only from guidelines and procedures curated and approved by our medical team.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_rag_title">Not just a RAG</b><span data-i18n="ing_rag_desc">Knowledge graphs built on established medical ontologies guide retrieval through real relationships between clinical entities, not text similarity alone.</span></li>
+                </ul>
+              </div>
             </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">public</span>
-                  <div>
-                    <strong data-i18n="ing_europe_title">Europe First</strong>
-                    <span data-i18n="ing_europe_desc">Models hosted exclusively on European servers, with three
-                      sovereignty tiers: international
-                      cloud, European cloud, or fully on-premise.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">verified</span>
-                  <div>
-                    <strong data-i18n="ing_guideline_title">Guideline-Grounded, Human-Validated</strong>
-                    <span data-i18n="ing_guideline_desc">Knowledge sourced exclusively from guidelines and procedures
-                      carefully curated and approved by
-                      our medical team.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">account_tree</span>
-                  <div>
-                    <strong data-i18n="ing_rag_title">Not Just a RAG</strong>
-                    <span data-i18n="ing_rag_desc">Knowledge graphs built on established medical ontologies for
-                      retrieval guided by real clinical
-                      entity relationships — not just semantics.</span>
-                  </div>
-                </li>
-              </ul>
+          </div>
+          <div class="products__item" data-product="fireweed" id="fireweed-elicitation">
+            <button type="button" class="products__tab" aria-expanded="false" aria-controls="products-detail-fireweed">
+              <span class="products__kicker" data-i18n="kicker_fireweed">Study design</span>
+              <span class="products__name">Fireweed<span class="products__name-2"> Elicitation</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-fireweed">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="fireweed_tagline">Helps you discover and define structure in your clinical notes</p>
+                <p class="products__desc" data-i18n="fireweed_desc">An AI agent system that drafts an eCRF from the data. It turns a clinician's high-level description into a structured variable registry, grounded in what the clinical notes actually contain.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_human_title">For the human, through the human</b><span data-i18n="ing_human_desc">It starts from the clinician's description and a short conversation, then checks back at every step so variables can be edited or added.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_databased_title">Data-based, not eminence-based</b><span data-i18n="ing_databased_desc">Fields come from real-world data, not abstract theory. Ambiguity stays with the decision maker, not with the person entering the data.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="products__item" data-product="moss" id="moss-anonymizer">
+            <button type="button" class="products__tab" aria-expanded="false" aria-controls="products-detail-moss">
+              <span class="products__kicker" data-i18n="kicker_moss">Data protection</span>
+              <span class="products__name">Moss<span class="products__name-2"> Anonymizer</span></span>
+              <span class="products__progress" aria-hidden="true"><i></i></span>
+            </button>
+            <div class="products__detail" id="products-detail-moss">
+              <div class="products__detail-inner">
+                <p class="products__tagline" data-i18n="moss_tagline">Making biomedical data ready for secondary use and sharing</p>
+                <p class="products__desc" data-i18n="moss_desc">A highly customisable pseudonymization system built for biomedical data. It runs entirely on-premise: no data ever leaves your institution.</p>
+                <ul class="ingredients">
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_yourdata_title">Your data, your service</b><span data-i18n="ing_yourdata_desc">Runs fully on-premise. Nothing is transmitted outside your infrastructure.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_plug_title">Plug and play</b><span data-i18n="ing_plug_desc">Drag files into the interface for immediate pseudonymization. One-off use needs no setup.</span></li>
+                  <li><svg class="ingredients__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="ing_pipeline_title">Pipeline-ready middle layer</b><span data-i18n="ing_pipeline_desc">Connect it to your existing data streams as transparent middleware that runs in the background.</span></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Fireweed Elicitation + Moss Anonymizer — two-column row -->
-        <div class="products-row">
-
-          <div id="fireweed-elicitation" class="product-card reveal delay-2">
-            <div class="product-card-top">
-              <h3 class="product-name">Fireweed Elicitation</h3>
-              <p class="product-tagline" data-i18n="fireweed_tagline">Helps you discover and define structure in your
-                clinical notes</p>
-              <p class="product-desc" data-i18n="fireweed_desc">An AI agent system that elicits an eCRF in a data-driven
-                way — turning a
-                clinician's high-level description into a structured variable registry grounded in the actual content of
-                clinical notes.</p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">person_check</span>
-                  <div>
-                    <strong data-i18n="ing_human_title">For the Human, Through the Human</strong>
-                    <span data-i18n="ing_human_desc">Starts with the clinician's description and a brief conversation,
-                      then loops back at every
-                      step so the user can edit variables or add new requirements.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">analytics</span>
-                  <div>
-                    <strong data-i18n="ing_databased_title">Data-Based, Not Eminence-Based</strong>
-                    <span data-i18n="ing_databased_desc">Fields emerge directly from real-world data, not from abstract
-                      theory. Ambiguity stays with
-                      the decision maker — not the data-entry person.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        <div class="products__stage">
+          <div class="products__screens">
+            <div class="products__screen is-active" data-product="mangrove" data-demo="mangrove"></div>
+            <div class="products__screen" data-product="fireweed" data-demo="fireweed"></div>
+            <div class="products__screen" data-product="moss" data-demo="moss"></div>
           </div>
-
-          <div id="moss-anonymizer" class="product-card reveal delay-3">
-            <div class="product-card-top">
-              <h3 class="product-name">Moss Anonymizer</h3>
-              <p class="product-tagline" data-i18n="moss_tagline">Making biomedical data ready for secondary use and
-                sharing</p>
-              <p class="product-desc" data-i18n="moss_desc">A highly customizable pseudonymization system
-                purpose-built for the biomedical
-                context. Designed to run entirely on-premise, with no data ever transmitted outside your institution.
-              </p>
-            </div>
-            <div class="product-ingredients">
-              <p class="product-ingredients-label" data-i18n="ingredients_label">The Ingredients</p>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">lock</span>
-                  <div>
-                    <strong data-i18n="ing_yourdata_title">Your Data, Your Service</strong>
-                    <span data-i18n="ing_yourdata_desc">Runs fully on-premise with zero data transmitted outside your
-                      infrastructure.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">electric_bolt</span>
-                  <div>
-                    <strong data-i18n="ing_plug_title">Plug &amp; Play</strong>
-                    <span data-i18n="ing_plug_desc">Drag and drop files directly into the interface for instant
-                      pseudonymization — no setup needed
-                      for one-off use.</span>
-                  </div>
-                </li>
-                <li class="ingredient-item">
-                  <span class="material-symbols-outlined ingredient-icon">mediation</span>
-                  <div>
-                    <strong data-i18n="ing_pipeline_title">Pipeline-Ready Middle Layer</strong>
-                    <span data-i18n="ing_pipeline_desc">Connect it directly into your existing data streams as
-                      transparent middleware — it runs
-                      silently in the background.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
+          <p class="products__note" data-i18n="products_note">Illustrative example with synthetic data. Try it: every element responds.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -319,38 +249,80 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-layout">
-
-        <div class="about-text">
-          <p class="label reveal" data-i18n="about_label">About Us</p>
-          <h2 class="about-statement reveal delay-1" data-i18n="about_h2">Born from 40 years of biomedical informatics
-            research.</h2>
-          <div class="about-tag reveal delay-2">
-            <span class="material-symbols-outlined">location_on</span>
-            <span data-i18n="about_location">Pavia, Italy</span>
+  <!-- ABOUT: our story, told in chapters (assets/js/chapters.js) -->
+  <section class="chapters about" id="about" aria-labelledby="about-title" data-nav-label="About Bilobe">
+    <div class="chapters__pin">
+      <div class="chapters__track">
+        <article class="chapters__panel chapters__panel--intro" data-label="Overview" data-label-i18n="about_nav">
+          <div class="wrap chapters__intro-grid">
+            <div>
+              <p class="t-eyebrow chapters__eyebrow" data-i18n="about_label">About us</p>
+              <h2 class="chapters__title" id="about-title">
+                <span data-i18n="about_h2_1">Born from 40 years</span>
+                <span class="chapters__title-accent" data-i18n="about_h2_2">of biomedical informatics research.</span>
+              </h2>
+            </div>
+            <div class="chapters__intro-side">
+              <p class="chapters__intro-text" data-i18n="about_intro">A company from Pavia that brings academic research into everyday clinical work.</p>
+              <p class="chapters__hint" aria-hidden="true"><span data-i18n="about_scroll">Scroll</span><svg viewBox="0 0 48 24"><path d="M2 12h42M34 4l10 8-10 8"/></svg></p>
+            </div>
           </div>
-          <div class="about-body">
-            <p class="reveal delay-3" data-i18n="about_p1">Born in Pavia, Italy from the 40-year tradition of the
-              Biomedical Informatics Lab
-              "Mario Stefanelli", Bilobe is the melting pot of cutting-edge academic research and real-world
-              implementation in healthcare.</p>
-            <p class="reveal delay-4" data-i18n="about_p2">Our mission is to support healthcare practitioners, enhance
-              patient outcomes, and
-              improve healthcare organizations with innovative technology — turning complex, unstructured data into
-              actionable insights through transparent and trustworthy solutions.</p>
-            <p class="reveal delay-5" data-i18n="about_p3">By combining advanced algorithms with deep medical domain
-              expertise, we make
-              healthcare more efficient, accessible, and personalized.</p>
+        </article>
+        <article class="chapters__panel chapters__panel--deep chapters__panel--photo" data-label="Origins" data-label-i18n="about_origins_nav" aria-labelledby="about_origins-name">
+          <div class="chapters__photo" aria-hidden="true">
+            <img src="assets/images/about-pavia-2000.webp" srcset="assets/images/about-pavia-1100.webp 1100w, assets/images/about-pavia-2000.webp 2000w" sizes="(max-width: 899px) 100vw, 55vw" alt="" width="2000" height="1500" loading="lazy" decoding="async">
           </div>
-        </div>
-
-        <div class="about-visual reveal delay-2">
-          <img src="./images/tamburo.jpg" alt="Biomedical research laboratory">
-        </div>
-
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_origins_kicker">Origins</p>
+              <h3 class="chapters__name" id="about_origins-name"><span data-i18n="about_origins_name1">Born</span><span data-i18n="about_origins_name2">in Pavia.</span></h3>
+            </div>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_origins_tagline">Forty years of biomedical informatics behind us.</p>
+              <p class="chapters__desc" data-i18n="about_origins_desc">Bilobe grew out of the Biomedical Informatics Lab “Mario Stefanelli” in Pavia and its forty-year research tradition. We bring that research into real-world healthcare.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li1_t">Pavia, Italy</b><span data-i18n="about_origins_li1_d">Where Bilobe was born and where it has its home.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li2_t">Biomedical Informatics Lab “Mario Stefanelli”</b><span data-i18n="about_origins_li2_d">Four decades of research in biomedical informatics.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_origins_li3_t">Research and practice</b><span data-i18n="about_origins_li3_d">Academic research, put to work in real clinical settings.</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="chapters__panel chapters__panel--light" data-label="Mission" data-label-i18n="about_mission_nav" aria-labelledby="about_mission-name">
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_mission_kicker">Mission</p>
+              <h3 class="chapters__name" id="about_mission-name"><span data-i18n="about_mission_name1">From data</span><span data-i18n="about_mission_name2">to care.</span></h3>
+            </div>
+            <svg class="chapters__mark" viewBox="0 0 240 240" aria-hidden="true"><path pathLength="1" d="M24 80h70M24 120h86M24 160h70"/><path pathLength="1" d="M94 80c22 0 26 40 46 40M94 160c22 0 26-40 46-40M110 120h30"/><circle pathLength="1" cx="176" cy="120" r="36"/><path pathLength="1" d="M169 103h14v10h10v14h-10v10h-14v-10h-10v-14h10z"/></svg>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_mission_tagline">Complex data, turned into information people can act on.</p>
+              <p class="chapters__desc" data-i18n="about_mission_desc">Our mission is to support healthcare practitioners, improve patient outcomes and help healthcare organisations work better, with technology that is transparent and trustworthy.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li1_t">Practitioners</b><span data-i18n="about_mission_li1_d">Support for clinical decisions and everyday work.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li2_t">Patients</b><span data-i18n="about_mission_li2_d">Better outcomes, with their data protected.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_mission_li3_t">Organisations</b><span data-i18n="about_mission_li3_d">Unstructured data, made usable for care and research.</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="chapters__panel chapters__panel--teal" data-label="Approach" data-label-i18n="about_approach_nav" aria-labelledby="about_approach-name">
+          <div class="wrap chapters__grid">
+            <div class="chapters__titles">
+              <p class="chapters__kicker" data-i18n="about_approach_kicker">Approach</p>
+              <h3 class="chapters__name" id="about_approach-name"><span data-i18n="about_approach_name1">Algorithms</span><span data-i18n="about_approach_name2">and medicine.</span></h3>
+            </div>
+            <svg class="chapters__mark" viewBox="0 0 240 240" aria-hidden="true"><circle pathLength="1" cx="92" cy="120" r="62"/><circle pathLength="1" cx="148" cy="120" r="62"/><path pathLength="1" d="M120 66v108"/></svg>
+            <div class="chapters__copy">
+              <p class="chapters__tagline" data-i18n="about_approach_tagline">Advanced methods, guided by clinical knowledge.</p>
+              <p class="chapters__desc" data-i18n="about_approach_desc">We combine advanced algorithms with deep medical domain expertise, so that healthcare becomes more efficient, more accessible and more personal.</p>
+            </div>
+            <ul class="chapters__list">
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_approach_li1_t">Advanced algorithms</b><span data-i18n="about_approach_li1_d">Methods from current research in AI and biomedical informatics.</span></li>
+                <li><svg class="chapters__list-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><b data-i18n="about_approach_li2_t">Medical expertise</b><span data-i18n="about_approach_li2_d">Knowledge of clinical practice built into how each tool works.</span></li>
+            </ul>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -722,7 +694,9 @@
 
   <script src="script.js"></script>
   <script src="assets/js/hero-graphic.js" defer></script>
+  <script src="assets/js/product-demos.js" defer></script>
   <script src="assets/js/sections.js" defer></script>
+  <script src="assets/js/chapters.js" defer></script>
 </body>
 
 </html>

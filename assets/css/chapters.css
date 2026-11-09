@@ -1,0 +1,169 @@
+/* Chapters: a pinned section whose vertical scroll moves horizontally through full-screen
+   chapters (scroll-led storytelling). Behaviour: assets/js/chapters.js.
+   Stacks vertically on portrait or narrow screens and with reduced motion.
+   Markup: section.chapters > .chapters__pin > .chapters__track > article.chapters__panel[data-label]
+   (modifiers --intro, --deep, --light, --teal). Inside a panel: .wrap.chapters__grid with
+   .chapters__titles (.chapters__kicker, h3.chapters__name > span + span), svg.chapters__mark
+   (viewBox 0 0 240 240, shapes with pathLength="1"), .chapters__copy (.chapters__tagline,
+   .chapters__desc) and ul.chapters__list. The script adds nav.chapters__progress. */
+
+.chapters__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1.07; letter-spacing: -0.01em; color: var(--ink); }
+.chapters__title span { display: block; }
+.chapters__title-accent { color: var(--lagoon); }
+.chapters__eyebrow { margin: 0 0 var(--space-6); color: var(--ink-muted); }
+
+.chapters__list { display: grid; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.chapters__list li { display: grid; grid-template-columns: 20px 1fr; gap: 2px var(--space-3); }
+.chapters__list-icon { grid-row: 1 / span 2; width: 20px; height: 20px; margin-top: 2px; fill: none; stroke: var(--leaf); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.chapters__list b { font: 600 16px/24px var(--font-sans); color: inherit; }
+.chapters__list span { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+
+.chapters { position: relative; padding: 0; background: var(--surface); scroll-margin-top: var(--header-h); }
+.chapters__pin { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); height: calc(100svh - var(--header-h)); overflow: hidden; }
+.chapters__track { display: flex; height: 100%; will-change: transform; }
+.chapters__panel { position: relative; flex: 0 0 100%; height: 100%; display: flex; align-items: center; overflow: hidden; }
+
+.chapters__panel--intro { background: var(--surface); color: var(--ink); }
+.chapters__panel--deep { background: radial-gradient(80% 100% at 85% 20%, var(--teal), rgba(3, 83, 101, 0) 70%), var(--deep); color: var(--white); }
+.chapters__panel--teal { background: radial-gradient(80% 100% at 15% 90%, var(--deep), rgba(1, 59, 72, 0) 70%), var(--teal); color: var(--white); }
+.chapters__panel--light { background: var(--surface-raised); color: var(--ink); }
+
+.chapters__intro-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); align-items: end; }
+.chapters__intro-grid > :first-child { grid-column: 1 / span 7; }
+.chapters__intro-side { grid-column: 9 / span 4; }
+.chapters__panel--intro .chapters__title { font-size: clamp(44px, 5.4vw, 80px); }
+.chapters__intro-text { margin: 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted); }
+.chapters__hint { display: inline-flex; align-items: center; gap: var(--space-3); margin: var(--space-8) 0 0; font: 600 12px/16px var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); }
+.chapters__hint svg { width: 48px; height: 24px; fill: none; stroke: var(--lagoon); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; animation: chapters-nudge 1.6s ease-in-out infinite; }
+@keyframes chapters-nudge { 50% { transform: translateX(8px); } }
+
+.chapters__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  column-gap: var(--space-6);
+  row-gap: clamp(32px, 5vh, 64px);
+  align-items: end;
+}
+.chapters__titles { grid-column: 1 / span 8; transform: translateX(calc(var(--d, 0) * 22vw)); }
+.chapters__kicker { margin: 0 0 var(--space-4); font: 600 12px/16px var(--font-sans); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; }
+.chapters__name { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 7.4vw, 120px); line-height: 0.98; letter-spacing: -0.015em; }
+.chapters__name span { display: block; }
+.chapters__panel--deep .chapters__name span + span, .chapters__panel--teal .chapters__name span + span { color: var(--lime); }
+.chapters__panel--light .chapters__name span + span { color: var(--lagoon); }
+
+.chapters__mark {
+  grid-column: 10 / span 3;
+  grid-row: 1;
+  justify-self: end;
+  width: min(100%, 30vh, 260px);
+  height: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: translateX(calc(var(--d, 0) * -8vw));
+}
+.chapters__mark * { stroke-dasharray: 1 1; stroke-dashoffset: calc(1 - var(--draw, 0)); }
+.chapters__panel--deep .chapters__mark, .chapters__panel--teal .chapters__mark { color: var(--lime); }
+.chapters__panel--light .chapters__mark { color: var(--lagoon); }
+
+.chapters__copy { grid-column: 1 / span 5; }
+.chapters__tagline { margin: 0 0 var(--space-3); font: 600 20px/28px var(--font-sans); }
+.chapters__desc { margin: 0; font: 400 17px/27px var(--font-sans); opacity: 0.86; }
+
+.chapters .chapters__list { grid-column: 7 / span 6; margin: 0; }
+.chapters .chapters__list li { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.7s cubic-bezier(.16, 1, .3, 1); }
+.chapters .chapters__list li.is-in { opacity: 1; transform: none; }
+.chapters__panel--deep .chapters__list span, .chapters__panel--teal .chapters__list span { color: rgba(255, 255, 255, 0.78); }
+.chapters__panel--deep .chapters__list-icon, .chapters__panel--teal .chapters__list-icon { stroke: var(--lime); }
+
+.chapters__progress {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-6);
+  z-index: 2;
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow-card);
+  transform: translateX(-50%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.chapters__progress button {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--ink-muted);
+  font: 600 13px/18px var(--font-sans);
+  cursor: pointer;
+}
+.chapters__progress button[aria-current="true"] { color: var(--ink); background: var(--surface-raised); }
+.chapters__progress button i { position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px; border-radius: 2px; background: var(--canopy); transform-origin: left; transform: scaleX(var(--fill, 0)); }
+.chapters__progress button span { position: relative; }
+
+/* stacked fallback: portrait screens, narrow screens, reduced motion */
+.chapters--static { height: auto !important; }
+.chapters--static .chapters__pin { position: static; height: auto; overflow: visible; }
+.chapters--static .chapters__track { display: block; transform: none !important; }
+.chapters--static .chapters__panel { height: auto; padding-block: clamp(72px, 12vw, 120px); }
+.chapters--static .chapters__titles, .chapters--static .chapters__mark { transform: none; }
+.chapters--static .chapters__progress, .chapters--static .chapters__hint { display: none; }
+
+@media (max-width: 899px), (max-aspect-ratio: 1/1) {
+  .chapters__intro-grid > :first-child, .chapters__intro-side, .chapters__titles, .chapters__copy, .chapters .chapters__list { grid-column: 1 / -1; }
+  .chapters__intro-side { margin-top: var(--space-6); }
+  .chapters__mark { grid-column: 1 / -1; grid-row: auto; justify-self: start; width: 120px; order: -1; }
+  .chapters__grid { row-gap: var(--space-8); }
+}
+
+/* Photo chapter: the brand's photo treatment. Solid deep behind the text, the photo fading
+   in from the side; text never sits on the photo. The photo is a brand duotone (deep to lime). */
+.chapters__photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 54%;
+  z-index: 0;
+  transform: translateX(calc(var(--d, 0) * -6vw));
+}
+.chapters__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 50%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 50%);
+}
+.chapters__panel--photo .chapters__grid { position: relative; z-index: 1; row-gap: clamp(24px, 3.5vh, 48px); }
+.chapters__panel--photo .chapters__titles,
+.chapters__panel--photo .chapters__copy,
+.chapters__panel--photo .chapters__list { grid-column: 1 / span 6; }
+.chapters__panel--photo .chapters__name { font-size: clamp(48px, 6.2vw, 100px); }
+
+/* Soft mint glow on the light grounds (the brand's light glow, #d9efe8). */
+.chapters__panel--intro { background: radial-gradient(50% 60% at 82% 62%, rgba(217, 239, 232, 0.9) 0%, rgba(217, 239, 232, 0) 70%), var(--surface); }
+.chapters__panel--light { background: radial-gradient(45% 55% at 84% 34%, #d9efe8 0%, rgba(217, 239, 232, 0) 72%), var(--surface-raised); }
+
+.chapters--static .chapters__panel--photo { flex-direction: column; align-items: stretch; padding-top: 0; }
+.chapters--static .chapters__photo { position: relative; width: 100%; height: clamp(220px, 45vw, 380px); transform: none; margin-bottom: var(--space-8); }
+.chapters--static .chapters__photo img {
+  -webkit-mask-image: linear-gradient(180deg, #000 35%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 35%, transparent 100%);
+}
+.chapters--static .chapters__panel--photo .chapters__titles,
+.chapters--static .chapters__panel--photo .chapters__copy,
+.chapters--static .chapters__panel--photo .chapters__list { grid-column: 1 / -1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chapters .chapters__list li { transition: none !important; }
+  .chapters__hint svg { animation: none !important; }
+}

@@ -844,9 +844,6 @@ h2 {
 }
 
 /* ─── ABOUT ───────────────────────────────────────────── */
-#about {
-  background: linear-gradient(to bottom, var(--bg-alt) 80%, var(--bg) 100%);
-}
 
 .about-layout {
   display: grid;
@@ -1298,9 +1295,6 @@ h2 {
 }
 
 /* ─── PRODUCTS ────────────────────────────────────────── */
-#products {
-  background: linear-gradient(to bottom, var(--bg) 80%, var(--bg-alt) 100%);
-}
 
 .products-grid {
   display: flex;
