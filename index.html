@@ -54,7 +54,7 @@
           <li><a href="#products" data-i18n="nav_products">Products</a></li>
           <li><a href="#capabilities" data-i18n="nav_features">Features</a></li>
           <li><a href="#about" data-i18n="nav_about">About</a></li>
-          <li><a href="#contact" data-i18n="nav_people">People</a></li>
+          <li><a href="#people" data-i18n="nav_people">People</a></li>
           <li><a href="#insights" data-i18n="nav_insights">Insights</a></li>
         </ul>
         <button class="lang-switch" id="lang-toggle" type="button" aria-label="Switch language / Cambia lingua">
@@ -327,150 +327,75 @@
     </div>
   </section>
 
-  <!-- PEOPLE -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="label" data-i18n="people_label">Our Team</p>
-        <h2><span data-i18n="people_h2">The people behind</span><br><img src="images/logo/logo.gif" alt="Bilobe"
-            class="inline-icon"> Bilobe.</h2>
+  <!-- PEOPLE: portraits in the brand duotone; natural colour on hover (or at the centre of the screen on touch) -->
+  <section class="people" id="people" aria-labelledby="people-title">
+    <div class="wrap">
+      <div class="people__grid">
+      <div class="people__intro">
+        <div class="people__sticky">
+          <p class="t-eyebrow people__eyebrow" data-i18n="people_label">Our team</p>
+          <h2 class="people__title" id="people-title">
+            <span data-i18n="people_h2_1">The people</span>
+            <span class="people__title-accent" data-i18n="people_h2_2">behind Bilobe.</span>
+          </h2>
+        </div>
       </div>
-      <div class="people-grid">
+      <div class="people__groups">
 
-        <div class="people-row people-row--main">
+      <div class="people__group">
+        <p class="people__group-label" data-i18n="people_founders">Founders</p>
+        <ul class="people__list people__list--lead">
+          <li class="person">
+            <div class="person__photo"><img src="images/team/enea-parimbelli.png" alt="Enea Parimbelli" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Enea Parimbelli</h3>
+            <p class="person__role" data-i18n="role_ceo">CEO, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener" aria-label="Enea Parimbelli on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/tommaso-buonocore.png" alt="Tommaso Buonocore" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Tommaso Buonocore</h3>
+            <p class="person__role" data-i18n="role_cto">CTO, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" aria-label="Tommaso Buonocore on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo person__photo--zoom"><img src="images/team/placeholder-woman.png" alt="Lorenza Rossi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Lorenza Rossi</h3>
+            <p class="person__role" data-i18n="role_cfo">CFO, co-founder · MEng</p>
+            <a class="person__link" href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener" aria-label="Lorenza Rossi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+        </ul>
+      </div>
 
-          <div class="person-card reveal delay-1">
-            <div class="person-img-wrap">
-              <img src="./images/team/enea-parimbelli.png" alt="Enea Parimbelli" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Enea Parimbelli</h3>
-              <p class="person-role" data-i18n="role_ceo">CEO, Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/enea-parimbelli-22453120/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-2">
-            <div class="person-img-wrap">
-              <img src="images/team/tommaso-buonocore.png" alt="Tommaso Buonocore" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Tommaso&nbsp;Buonocore</h3>
-              <p class="person-role" data-i18n="role_cto">CTO, Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/tbuonocore/" target="_blank" rel="noopener" class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-3">
-            <div class="person-img-wrap">
-              <img src="./images/team/placeholder-woman.png" alt="Lorenza Rossi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Lorenza Rossi</h3>
-              <p class="person-role" data-i18n="role_cfo">CFO, Co-Founder · MEng</p>
-              <a href="https://www.linkedin.com/in/lorenza-rossi-685184108/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="people-row people-row--consultants">
-
-          <div class="person-card reveal delay-1">
-            <div class="person-img-wrap">
-              <img src="./images/team/giovanna-nicora.png" alt="Giovanna Nicora" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Giovanna Nicora</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-2">
-            <div class="person-img-wrap">
-              <img src="./images/team/lucia-sacchi.png" alt="Lucia Sacchi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Lucia Sacchi</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-3">
-            <div class="person-img-wrap">
-              <img src="./images/team/arianna-dagliati.png" alt="Arianna Dagliati" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Arianna Dagliati</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div class="person-card reveal delay-4">
-            <div class="person-img-wrap">
-              <img
-                src="https://www.ilgiorno.it/image-service/version/c:YWE4NjQ1YTktNmNkMC00:YmQwNjc1/riccardo-bellazzi-premiato-per-la-dedizione-allinformatica-medica.webp"
-                alt="Riccardo Bellazzi" loading="lazy">
-            </div>
-            <div class="person-info">
-              <h3>Riccardo Bellazzi</h3>
-              <p class="person-role" data-i18n="role_scientific">Scientific Consultant &amp; Co-Founder · Ph.D.</p>
-              <a href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener"
-                class="linkedin-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
-                  <path
-                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.77z" />
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="people__group">
+        <p class="people__group-label" data-i18n="people_board">Scientific consultants</p>
+        <ul class="people__list people__list--board">
+          <li class="person">
+            <div class="person__photo"><img src="images/team/giovanna-nicora.png" alt="Giovanna Nicora" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Giovanna Nicora</h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/giovanna-nicora-826110143/" target="_blank" rel="noopener" aria-label="Giovanna Nicora on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/lucia-sacchi.png" alt="Lucia Sacchi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Lucia Sacchi</h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/lucia-sacchi/" target="_blank" rel="noopener" aria-label="Lucia Sacchi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="images/team/arianna-dagliati.png" alt="Arianna Dagliati" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Arianna Dagliati</h3>
+            <p class="person__role" data-i18n="role_sci_f">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/arianna-dagliati/" target="_blank" rel="noopener" aria-label="Arianna Dagliati on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+          <li class="person">
+            <div class="person__photo"><img src="https://www.ilgiorno.it/image-service/version/c:YWE4NjQ1YTktNmNkMC00:YmQwNjc1/riccardo-bellazzi-premiato-per-la-dedizione-allinformatica-medica.webp" alt="Riccardo Bellazzi" loading="lazy" decoding="async"></div>
+            <h3 class="person__name">Riccardo Bellazzi</h3>
+            <p class="person__role" data-i18n="role_sci_m">Scientific consultant, co-founder · Ph.D.</p>
+            <a class="person__link" href="https://www.linkedin.com/in/riccardo-bellazzi-a765881/" target="_blank" rel="noopener" aria-label="Riccardo Bellazzi on LinkedIn">LinkedIn<svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </li>
+        </ul>
+      </div>
+      </div>
       </div>
     </div>
   </section>

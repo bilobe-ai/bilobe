@@ -484,7 +484,159 @@ html { scroll-padding-top: var(--header-h); }
   .capability { padding-block: var(--space-12); }
 }
 
+/* ---------- People ---------- */
+/* Portraits in the brand duotone (shadows deep, lights mint), done in CSS so any photo fits.
+   Natural colour returns on hover or focus, or at the centre of the screen on touch devices. */
+
+.people {
+  padding-block: clamp(96px, 11vw, 160px);
+  background: radial-gradient(700px 480px at 92% 260px, rgba(217, 239, 232, 0.8) 0%, rgba(217, 239, 232, 0) 70%), var(--surface);
+  color: var(--ink);
+}
+
+.people__eyebrow { margin: 0 0 var(--space-6); color: var(--ink-muted); }
+
+.people__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  cursor: auto;
+}
+.people__title span { display: block; }
+.people__title-accent { color: var(--lagoon); }
+
+.people__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
+.people__intro { grid-column: 1 / span 4; }
+.people__sticky { position: sticky; top: calc(var(--header-h) + var(--space-16)); }
+.people__groups { grid-column: 5 / span 8; }
+.people__group + .people__group { margin-top: var(--space-16); }
+.people__group-label {
+  margin: 0 0 var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--line);
+  font: 600 12px/16px var(--font-sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.people__list {
+  display: grid;
+  gap: var(--space-12) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.people__list--lead { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.person { position: relative; transition: opacity 0.5s ease; }
+
+.person__photo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  background: #d9efe8;
+  transition: background-color 0.7s ease;
+}
+.person__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(1) contrast(1.08);
+  mix-blend-mode: multiply;
+  transition: filter 0.7s ease, transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+.person__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--deep);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+.person.is-lit .person__photo { background-color: #fff; }
+.person.is-lit .person__photo img { filter: none; transform: scale(1.04); }
+.person.is-lit .person__photo::after { opacity: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .person:hover .person__photo, .person:focus-within .person__photo { background-color: #fff; }
+  .person:hover .person__photo img, .person:focus-within .person__photo img { filter: none; transform: scale(1.04); }
+  .person:hover .person__photo::after, .person:focus-within .person__photo::after { opacity: 0; }
+  .people__list:has(.person:hover) .person:not(:hover) { opacity: 0.55; }
+}
+
+/* Source photos cropped as a circle: zoom in so the circle's edges stay outside the frame. */
+.person__photo--zoom img { transform: scale(1.32); object-position: center 40%; }
+.person.is-lit .person__photo--zoom img { transform: scale(1.36); }
+@media (hover: hover) and (pointer: fine) {
+  .person:hover .person__photo--zoom img, .person:focus-within .person__photo--zoom img { transform: scale(1.36); }
+}
+
+/* No photo yet: initials on the canopy-night tile (white clears 3:1 at this size). */
+.person__photo--monogram { display: grid; place-items: center; background: var(--canopy-night); }
+.person__photo--monogram::after { display: none; }
+.person__photo--monogram span { font-family: var(--font-display); font-size: clamp(56px, 6vw, 96px); line-height: 1; color: var(--white); }
+.person.is-lit .person__photo--monogram, .person:hover .person__photo--monogram { background: var(--canopy-night); }
+
+.person__name {
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 34px;
+  color: var(--ink);
+}
+.people__list--board .person__name { font-size: 24px; line-height: 30px; }
+.person__role { margin: var(--space-1) 0 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.person__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  font: 600 14px/20px var(--font-sans);
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.person__link .icon { width: 14px; height: 14px; }
+.person__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+
+/* Entrance: each portrait is uncovered from the bottom, one after another. */
+.js .people__list .person__photo { clip-path: inset(100% 0 0 0 round var(--radius-lg)); transition: clip-path 1.1s cubic-bezier(.16, 1, .3, 1), background-color 0.7s ease; }
+.js .people__list.is-in .person__photo { clip-path: inset(0 0 0 0 round var(--radius-lg)); }
+.js .people__list.is-in .person:nth-child(2) .person__photo { transition-delay: 0.1s, 0s; }
+.js .people__list.is-in .person:nth-child(3) .person__photo { transition-delay: 0.2s, 0s; }
+.js .people__list.is-in .person:nth-child(4) .person__photo { transition-delay: 0.3s, 0s; }
+
+@media (max-width: 1024px) {
+  .people__intro, .people__groups { grid-column: 1 / -1; }
+  .people__sticky { position: static; }
+  .people__groups { margin-top: var(--space-12); }
+  .people__list--lead { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .people__list--board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .people__list--lead, .people__list--board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-4); }
+  .person__photo { max-width: 200px; }
+  .person__name, .people__list--board .person__name { font-size: 24px; line-height: 30px; }
+  .person__role { font-size: 14px; line-height: 20px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn .icon, .site-header, .site-nav__links a { transition: none; }
   .capability::before, .capability > *, .capabilities__index a, .capabilities__index a::before { transition: none !important; }
+  .person, .person__photo, .person__photo img, .person__photo::after { transition: none !important; }
+  .js .people__list .person__photo { clip-path: none; }
 }

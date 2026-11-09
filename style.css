@@ -984,16 +984,6 @@ h2 {
 }
 
 /* ─── PEOPLE ──────────────────────────────────────────── */
-#contact {
-  background:
-    linear-gradient(to bottom,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.60) 10%,
-      rgba(255, 255, 255, 0.60) 90%,
-      rgba(245, 246, 248, 1) 100%),
-    url('images/bg/bg1.webp') center / cover no-repeat;
-  background-color: #00c5a8;
-}
 
 .people-grid {
   display: flex;

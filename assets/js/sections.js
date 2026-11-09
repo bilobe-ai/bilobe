@@ -96,4 +96,24 @@
       if (!visible) demos[current].pause();
     }, { threshold: 0.15 }).observe(products);
   }
+
+  // ---------- People: entrance, and natural colour at the centre of the screen on touch ----------
+  const peopleLists = Array.from(document.querySelectorAll('.people__list'));
+  if (peopleLists.length && 'IntersectionObserver' in window) {
+    const enter = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        enter.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -15% 0px' });
+    peopleLists.forEach(list => enter.observe(list));
+
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+      const lit = new IntersectionObserver(entries => {
+        entries.forEach(entry => entry.target.classList.toggle('is-lit', entry.isIntersecting));
+      }, { rootMargin: '-38% 0px -38% 0px' });
+      document.querySelectorAll('.person').forEach(p => lit.observe(p));
+    }
+  }
 })();
