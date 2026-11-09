@@ -698,9 +698,21 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   background: radial-gradient(60% 120% at 90% 0%, var(--teal) 0%, rgba(3, 83, 101, 0) 70%), var(--deep);
   color: rgba(255, 255, 255, 0.78);
 }
-.site-footer__top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: var(--space-12); }
+/* Logo, SSL badge and links on one row: the badge sits in the centre of the page width. */
+.site-footer__top { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--space-12); }
+.site-footer__top > nav { justify-self: end; }
 .site-footer__brand { display: block; padding: 6px 0; }
 .site-footer__brand img { display: block; width: 260px; height: auto; }
+/* SSL badge, centred in the footer between the logo and the links.
+   True of every page: the site is served only over HTTPS (Enforce HTTPS on GitHub Pages). */
+.site-footer__trust { display: flex; justify-content: center; }
+.secure-badge { display: inline-flex; align-items: center; gap: var(--space-3); margin: 0; padding: var(--space-2) var(--space-5, 20px) var(--space-2) var(--space-3); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.04); }
+.secure-badge__lock { flex: none; width: 24px; height: 29px; }
+.secure-badge__shackle { fill: none; stroke: rgba(255, 255, 255, 0.6); stroke-width: 5; stroke-linecap: round; }
+.secure-badge__check { fill: none; stroke: #fff; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.secure-badge__text { display: grid; text-transform: uppercase; }
+.secure-badge__text b { font: 600 16px/18px var(--font-sans); letter-spacing: 0.06em; color: var(--white); }
+.secure-badge__text span { font: 600 10px/14px var(--font-sans); letter-spacing: 0.18em; color: var(--lime); }
 .site-footer__nav { display: grid; grid-template-columns: repeat(3, auto); gap: var(--space-3) var(--space-12); margin: 0; padding: 0; list-style: none; }
 .site-footer__nav a { font: 600 15px/22px var(--font-sans); color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .site-footer__nav a:hover { border-bottom-color: var(--lime); }
@@ -712,6 +724,10 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .site-footer__copy a[hidden] { display: none; }
 .site-footer :focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 
+@media (max-width: 899px) {
+  .site-footer__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .site-footer__top > nav, .site-footer__trust { justify-self: start; }
+}
 @media (max-width: 640px) {
   .site-footer__nav { grid-template-columns: repeat(2, auto); gap: var(--space-3) var(--space-8); }
   .site-footer__brand img { width: 240px; }
@@ -738,7 +754,7 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(104px, 10vw, 152px) 0 clamp(80px, 8vw, 120px);
+  padding: clamp(104px, 10vw, 152px) 0 var(--space-16);
   background: var(--deep);
   color: var(--white);
 }
@@ -815,7 +831,7 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .contact__side { transition-delay: 0.26s; }
 
 /* The footer continues the deep end of the gradient without a seam. */
-.contact ~ .site-footer { background: var(--deep); }
+.contact ~ .site-footer { padding-top: var(--space-12); background: var(--deep); }
 
 @media (max-width: 1024px) {
   .contact__glow { background: radial-gradient(980px 640px at 100% 0%, #8cd687 0%, #30b092 24%, #208f93 44%, #013b48 82%); }
