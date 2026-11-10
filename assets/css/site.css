@@ -720,6 +720,9 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 .site-footer__legal a, .site-footer__copy a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
 .site-footer__copy { margin: var(--space-2) 0 0; font: 400 13px/20px var(--font-sans); color: rgba(255, 255, 255, 0.6); }
 .site-footer__copy { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-6); }
+/* Company details and copyright line, centred under the hairline. */
+.site-footer__legal { text-align: center; }
+.site-footer__copy { justify-content: center; }
 .site-footer__copy a { color: rgba(255, 255, 255, 0.86); }
 .site-footer__copy a[hidden] { display: none; }
 .site-footer :focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }

@@ -127,7 +127,8 @@
 @media (max-width: 899px), (max-aspect-ratio: 1/1) {
   .chapters__intro-grid > :first-child, .chapters__intro-side, .chapters__titles, .chapters__copy, .chapters .chapters__list { grid-column: 1 / -1; }
   .chapters__intro-side { margin-top: var(--space-6); }
-  .chapters__mark { grid-column: 1 / -1; grid-row: auto; justify-self: start; width: 120px; order: -1; }
+  /* Stacked on phones and portrait screens: no outline marks, they would only add scrolling. */
+  .chapters__mark { display: none; }
   .chapters__grid { row-gap: var(--space-8); }
 }
 
