@@ -245,6 +245,7 @@ li:not(.is-in) .field__freq i::after { transform: scaleX(0); }
 .ingredients { display: grid; gap: var(--space-4); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
 .ingredients li { display: grid; grid-template-columns: 20px 1fr; gap: 2px var(--space-3); }
 .ingredients__icon { grid-row: 1 / span 2; width: 20px; height: 20px; margin-top: 2px; fill: none; stroke: var(--leaf); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.products__cta { margin-top: var(--space-6); }
 .ingredients b { font: 600 16px/24px var(--font-sans); color: inherit; }
 .ingredients span { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
 
